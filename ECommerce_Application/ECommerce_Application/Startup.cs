@@ -30,8 +30,7 @@ namespace ECommerce_Application
                 app.UseDeveloperExceptionPage();
             }
 
-/*            app.UseMvc();
-*/            app.UseRouting();
+           app.UseRouting();
             app.UseStaticFiles();
             app.UseEndpoints(endpoints  =>
             {

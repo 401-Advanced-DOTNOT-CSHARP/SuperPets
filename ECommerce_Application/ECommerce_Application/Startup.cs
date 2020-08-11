@@ -56,7 +56,7 @@ namespace ECommerce_Application
             app.UseStaticFiles();
             app.UseEndpoints(endpoints  =>
             {
-
+                endpoints.MapRazorPages();
                 endpoints.MapDefaultControllerRoute();
             });
         }

@@ -1,20 +1,37 @@
-﻿@model ECommerce_Application.Models.DTO.CerealDTO
+﻿@model IEnumerable<ECommerce_Application.Models.DTO.CerealDTO>
 
-    <form method="post">
-        <label asp-for="@Model.Name"></label>
-        <input asp-for="@Model.Name" />
-        <br />
-        <label asp-for="@Model.Manufacturer"></label>
-        <input asp-for="@Model.Manufacturer" />
-        <br />
+<h2>Cereal!</h2>
 
-        <label asp-for="@Model.Calories"></label>
-        <input asp-for="@Model.Calories" />
-        <br />
+<form asp-controller="Products" asp-action="Index">
+    <p>
+        Name: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
 
-        <label asp-for="@Model.Carbohydrates"></label>
-        <input asp-for="@Model.Carbohydrates" />
-        <br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+                </table>
 
-        <button type="submit">Create new Cereal</button>
-    </form>
+                @foreach (var item in Model)
+                {
+                    <h3>@item.Name</h3>
+                    <p>@item.Manufacturer</p>
+                    <p>@item.Calories</p>
+                    <p>@item.Protein</p>
+                    <p>@item.Fat</p>
+                    <p>@item.Sodium</p>
+                    <p>@item.Fiber</p>
+                    <p>@item.Carbohydrates</p>
+                    <p>@item.Sugar</p>
+                    <p>@item.Potassium</p>
+                    <p>@item.Vitamins</p>
+                    <p>@item.Shelf</p>
+                    <p>@item.Weight</p>
+                    <p>@item.Cups</p>
+                    <p>@item.Rating</p>
+
+                }

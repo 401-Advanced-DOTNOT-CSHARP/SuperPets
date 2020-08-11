@@ -10,19 +10,19 @@ namespace ECommerce_Application.Models
         public string Name { get; set; }
         public string Manufacturer { get; set; }
         public string Type { get; set; }
-        public int Calories { get; set; }
-        public int Protein { get; set; }
-        public int Fat { get; set; }
-        public int Sodium { get; set; }
-        public int Fiber { get; set; }
-        public int Carbohydrates { get; set; }
-        public int Sugar { get; set; }
-        public int Potassium { get; set; }
-        public int Vitamins { get; set; }
-        public int Shelf { get; set; }
-        public decimal Weight { get; set; }
-        public decimal Cups { get; set; }
-        public decimal Rating { get; set; }
+        public string Calories { get; set; }
+        public string Protein { get; set; }
+        public string Fat { get; set; }
+        public string Sodium { get; set; }
+        public string Fiber { get; set; }
+        public string Carbohydrates { get; set; }
+        public string Sugar { get; set; }
+        public string Potassium { get; set; }
+        public string Vitamins { get; set; }
+        public string Shelf { get; set; }
+        public string Weight { get; set; }
+        public string Cups { get; set; }
+        public string Rating { get; set; }
 
 
     }

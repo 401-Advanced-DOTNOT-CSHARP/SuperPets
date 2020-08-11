@@ -11,34 +11,6 @@ namespace ECommerce_Application.Models.Services
     public class CerealRepository : ICereal
     {
 
-        public CerealDTO CreateCereal(CerealDTO cerealDTO)
-        {
-            List<string> newList = new List<string>();
-
-
-            newList.Add(cerealDTO.Name);
-            newList.Add(cerealDTO.Manufacturer);
-            newList.Add(cerealDTO.Type);
-            newList.Add(cerealDTO.Calories.ToString());
-            newList.Add(cerealDTO.Protein.ToString());
-            newList.Add(cerealDTO.Fat.ToString());
-            newList.Add(cerealDTO.Sodium.ToString());
-            newList.Add(cerealDTO.Fiber.ToString());
-            newList.Add(cerealDTO.Carbohydrates.ToString());
-            newList.Add(cerealDTO.Sugar.ToString());
-            newList.Add(cerealDTO.Potassium.ToString());
-            newList.Add(cerealDTO.Vitamins.ToString());
-            newList.Add(cerealDTO.Shelf.ToString());
-            newList.Add(cerealDTO.Weight.ToString());
-            newList.Add(cerealDTO.Cups.ToString());
-            newList.Add(cerealDTO.Rating.ToString());
-
-
-            string path = Environment.CurrentDirectory;
-            string newPath = Path.GetFullPath(Path.Combine(path, @"wwwroot\cereal.csv"));
-            File.AppendAllLines(path, newList);
-            return cerealDTO;
-        }
 
         public List<CerealDTO> GetAllCereal()
         {
@@ -46,9 +18,40 @@ namespace ECommerce_Application.Models.Services
 
         }
 
-        public CerealDTO GetCereal()
+        public List<CerealDTO> GetCereal()
         {
-            throw new NotImplementedException();
+            List<CerealDTO> newList = new List<CerealDTO>();
+            string path = Environment.CurrentDirectory;
+            string newPath = Path.GetFullPath(Path.Combine(path, @"wwwroot\cereal.csv"));
+            string[] myFile = File.ReadAllLines(newPath);
+
+            for (int i = 1; i < myFile.Length; i++)
+            {
+                string[] fields = myFile[i].Split(',');
+                newList.Add(new CerealDTO
+                {
+                    Name = fields[0],
+                    Manufacturer = fields[1],
+                    Calories = fields[2],
+                    Protein = fields[3],
+                    Fat = fields[4],
+                    Sodium = fields[5],
+                    Fiber = fields[6],
+                    Carbohydrates = fields[7],
+                    Sugar = fields[8],
+                    Potassium = fields[9],
+                    Vitamins = fields[10],
+                    Shelf = fields[11],
+                    Weight = fields[12],
+                    Cups = fields[13],
+                    Rating = fields[14]
+                });
+            }
+
+            return newList;
         }
+
+  
     }
 }
+

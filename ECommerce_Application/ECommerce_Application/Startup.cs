@@ -1,9 +1,15 @@
-using System.Configuration;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using ECommerce_Application.Data;
+using ECommerce_Application.Models;
 using ECommerce_Application.Models.Interfaces;
 using ECommerce_Application.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,28 +20,27 @@ namespace ECommerce_Application
     public class Startup
     {
         public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<IProduct, CerealRepository>();
-
-            //Resgistering our DbContext
-            services.AddDbContext<StoreDbContext>(options =>
+            services.AddDbContext<UserDbContext>(options =>
             {
-                //Install-Package Microsoft.EntityFrameWorkCore.SqlServer
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                // Install-Package Microsoft.EntityFrameworkCore.SqlServer
+                options.UseSqlServer(Configuration.GetConnectionString("UserConnection"));
             });
 
-            services.AddTransient<IProduct, CerealRepository>(); 
+            services.AddIdentity<Customer, IdentityRole>()
+                    .AddEntityFrameworkStores<UserDbContext>()
+                    .AddDefaultTokenProviders();
 
-           
+            services.AddTransient<ICereal, CerealRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,10 +52,11 @@ namespace ECommerce_Application
             }
 
            app.UseRouting();
+            app.UseAuthentication();
             app.UseStaticFiles();
             app.UseEndpoints(endpoints  =>
             {
-
+                endpoints.MapRazorPages();
                 endpoints.MapDefaultControllerRoute();
             });
         }

@@ -8,8 +8,7 @@ namespace ECommerce_Application.Models.Interfaces
 {
     public interface ICereal
     {
-        public CerealDTO GetCereal();
+        public List<CerealDTO> GetCereal();
         public List<CerealDTO> GetAllCereal();
-        public CerealDTO CreateCereal(CerealDTO cerealDTO);
     }
 }

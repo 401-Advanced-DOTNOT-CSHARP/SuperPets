@@ -1,40 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using ECommerce_Application.Models;
 using ECommerce_Application.Models.DTO;
 using ECommerce_Application.Models.Interfaces;
+using ECommerce_Application.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce_Application.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly ICereal _cereal;
+        private  ICereal _cereal;
 
         public ProductsController(ICereal cereal)
         {
             _cereal = cereal;
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Index()
         {
-            return View();
+            List<CerealDTO> cereal = _cereal.GetCereal().Cast<CerealDTO>().ToList();
+            return View(cereal);
         }
 
-        [HttpPost]
-        public IActionResult Create(CerealDTO cerealDTO)
+        public IActionResult Index(string searchString)
         {
+            List<CerealDTO> cereals = _cereal.GetCereal().Cast<CerealDTO>().ToList();
+            var results = cereals.Where(x => x.Name.Contains(searchString));
 
-            _cereal.CreateCereal(cerealDTO);
 
-            return RedirectToAction("Index");
-
+            return View(results);
         }
+
     }
 }

@@ -30,9 +30,9 @@ namespace ECommerce_Application
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
+           app.UseRouting();
+            app.UseStaticFiles();
+            app.UseEndpoints(endpoints  =>
             {
 
                 endpoints.MapDefaultControllerRoute();

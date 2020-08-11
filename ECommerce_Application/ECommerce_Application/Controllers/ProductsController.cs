@@ -9,30 +9,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce_Application.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductController : Controller
     {
-        private  ICereal _cereal;
+        private IProduct _product;
 
-        public ProductsController(ICereal cereal)
+        public ProductController(IProduct product)
         {
-            _cereal = cereal;
+            _product = product;
         }
 
-        [HttpGet]
-        public IActionResult Index()
-        {
-            List<CerealDTO> cereal = _cereal.GetCereal().Cast<CerealDTO>().ToList();
-            return View(cereal);
-        }
-
-        public IActionResult Index(string searchString)
-        {
-            List<CerealDTO> cereals = _cereal.GetCereal().Cast<CerealDTO>().ToList();
-            var results = cereals.Where(x => x.Name.Contains(searchString));
-
-
-            return View(results);
-        }
 
     }
 }

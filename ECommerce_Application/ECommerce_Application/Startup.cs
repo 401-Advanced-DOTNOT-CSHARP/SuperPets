@@ -36,6 +36,10 @@ namespace ECommerce_Application
                 options.UseSqlServer(Configuration.GetConnectionString("UserConnection"));
             });
 
+            services.AddIdentity<Customer, IdentityRole>()
+                    .AddEntityFrameworkStores<UserDbContext>()
+                    .AddDefaultTokenProviders();
+
             services.AddTransient<ICereal, CerealRepository>();
         }
 

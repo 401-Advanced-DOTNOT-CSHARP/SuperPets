@@ -1,0 +1,20 @@
+﻿@model ECommerce_Application.Models.DTO.CerealDTO
+
+    <form method="post">
+        <label asp-for="@Model.Name"></label>
+        <input asp-for="@Model.Name" />
+        <br />
+        <label asp-for="@Model.Manufacturer"></label>
+        <input asp-for="@Model.Manufacturer" />
+        <br />
+
+        <label asp-for="@Model.Calories"></label>
+        <input asp-for="@Model.Calories" />
+        <br />
+
+        <label asp-for="@Model.Carbohydrates"></label>
+        <input asp-for="@Model.Carbohydrates" />
+        <br />
+
+        <button type="submit">Create new Cereal</button>
+    </form>

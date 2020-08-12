@@ -1,0 +1,26 @@
+﻿@page
+@model ECommerce_Application.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<form method="post">
+    <label asp-for="@Model.Registration.FirstName"></label>
+    <input asp-for="@Model.Registration.FirstName" />
+
+    <label asp-for="@Model.Registration.LastName"></label>
+    <input asp-for="@Model.Registration.LastName" />
+
+    <label asp-for="@Model.Registration.Email"></label>
+    <input asp-for="@Model.Registration.Email" />
+
+    <label asp-for="@Model.Registration.Password"></label>
+    <input asp-for="@Model.Registration.Password" />
+
+    <label asp-for="@Model.Registration.ConfirmPassword"></label>
+    <input asp-for="@Model.Registration.ConfirmPassword" />
+
+    <button type="submit">SUBMIT</button>
+</form>

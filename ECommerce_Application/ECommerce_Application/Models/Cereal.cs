@@ -8,7 +8,6 @@ namespace ECommerce_Application.Models
 {
     public class Cereal : Product
     {
-        public string Name { get; set; }
         public string Manufacturer { get; set; }
         public string Type { get; set; }
         public string Calories { get; set; }

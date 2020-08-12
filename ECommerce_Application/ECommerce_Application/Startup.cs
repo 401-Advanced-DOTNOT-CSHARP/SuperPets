@@ -40,7 +40,7 @@ namespace ECommerce_Application
                     .AddEntityFrameworkStores<UserDbContext>()
                     .AddDefaultTokenProviders();
 
-            services.AddTransient<ICereal, CerealRepository>();
+            services.AddTransient<IProduct, CerealRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

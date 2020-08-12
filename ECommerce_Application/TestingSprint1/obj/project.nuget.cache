@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "IUkcaUPTI6PSNNlBCDsbqKhVi0VqIa39wkUYRpOEKriSt+LgsM4Io8Lq40glEi9LdvZwCiRbZDiWV1NQIYHQtw==",
+  "dgSpecHash": "3sh04p2axHAMZqRFNqZBqqAZzSlt9kDLlyHSq9kDReTR3HoTwtvcP2q75c9OuU1BZ4jPaS9HjjRGzuI2iYiHqg==",
   "success": true,
   "projectFilePath": "C:\\Users\\oogun\\source\\repos\\ECommerce-App\\ECommerce_Application\\TestingSprint1\\TestingSprint1.csproj",
   "expectedPackageFiles": [
@@ -41,7 +41,7 @@
     "C:\\Users\\oogun\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\oogun\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\oogun\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
-    "C:\\Users\\oogun\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\2.9.4\\microsoft.codeanalysis.analyzers.2.9.4.nupkg.sha512",
+    "C:\\Users\\oogun\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.0\\microsoft.codeanalysis.analyzers.3.3.0.nupkg.sha512",
     "C:\\Users\\oogun\\.nuget\\packages\\microsoft.codeanalysis.common\\3.3.1\\microsoft.codeanalysis.common.3.3.1.nupkg.sha512",
     "C:\\Users\\oogun\\.nuget\\packages\\microsoft.codeanalysis.csharp\\3.3.1\\microsoft.codeanalysis.csharp.3.3.1.nupkg.sha512",
     "C:\\Users\\oogun\\.nuget\\packages\\microsoft.codeanalysis.csharp.workspaces\\3.3.1\\microsoft.codeanalysis.csharp.workspaces.3.3.1.nupkg.sha512",

@@ -8,13 +8,8 @@ namespace ECommerce_Application.Models
 {
     public class Customer : IdentityUser
     {
-        public  string FirstName { get; set; }
-        public  string LastName { get; set; }
-    }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
-    public static class ApplicationRoles
-    {
-    public static string FirstName { get; set; }
-    public static string LastName { get; set; }
     }
 }

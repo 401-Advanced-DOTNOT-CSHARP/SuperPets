@@ -1,5 +1,4 @@
 ﻿using ECommerce_Application.Models;
-using ECommerce_Application.Models.Services;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,10 +10,9 @@ namespace ECommerce_Application.Data
 {
     public class UserDbContext : IdentityDbContext<Customer>
     {
-        public DbSet<Product> Products { get; set; }
         public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
         {
-            //This is remains empty
-          }
-}
+
+        }
+    }
 }

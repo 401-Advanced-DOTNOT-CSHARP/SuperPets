@@ -7,11 +7,9 @@
 <h1>Register</h1>
 
 <form method="post">
-    <div asp-validation-summary="All"></div>
     <label asp-for="@Model.Registration.FirstName"></label>
     <input asp-for="@Model.Registration.FirstName" />
-@*    <span asp-validation-for="@Model.Registration.FirstName"></span>
-*@
+
     <label asp-for="@Model.Registration.LastName"></label>
     <input asp-for="@Model.Registration.LastName" />
 

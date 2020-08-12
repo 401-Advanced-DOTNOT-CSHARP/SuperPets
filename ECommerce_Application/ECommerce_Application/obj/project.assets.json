@@ -8832,11 +8832,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Les\\source\\repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj",
+      "projectUniqueName": "C:\\Users\\Les\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj",
       "projectName": "ECommerce_Application",
-      "projectPath": "C:\\Users\\Les\\source\\repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj",
+      "projectPath": "C:\\Users\\Les\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj",
       "packagesPath": "C:\\Users\\Les\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Les\\source\\repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\obj\\",
+      "outputPath": "C:\\Users\\Les\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Les\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8912,8 +8912,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\Les\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

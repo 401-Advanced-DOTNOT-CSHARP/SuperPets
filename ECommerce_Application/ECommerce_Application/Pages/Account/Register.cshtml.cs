@@ -44,8 +44,6 @@ namespace ECommerce_Application.Pages.Account
                 return Page();
             }
 
-            return Page();
-
         }
 
         public class RegisterViewModel

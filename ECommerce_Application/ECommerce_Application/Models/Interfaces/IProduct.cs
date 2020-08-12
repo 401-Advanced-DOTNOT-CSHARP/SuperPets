@@ -10,6 +10,6 @@ namespace ECommerce_Application.Models.Interfaces
     public interface IProduct
     {
 
-        List<Product> GetProducts();
+        List<CerealDTO> GetProducts();
     }
 }

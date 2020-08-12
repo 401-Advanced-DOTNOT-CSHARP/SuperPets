@@ -1,4 +1,5 @@
-﻿using ECommerce_Application.Models.Interfaces;
+﻿using ECommerce_Application.Models.DTO;
+using ECommerce_Application.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
@@ -8,21 +9,14 @@ namespace ECommerce_Application.Models.Services
 {
     public class InventoryManagement : IProduct
     {
-        public List<Product> GetProducts()
-        {
-            throw new NotImplementedException();
-        }
-
-        public class ProductService : IProduct
-        {
 
 
             // Get product        
-            public List<Product> GetProducts()
+            public List<CerealDTO> GetProducts()
             {
                 // Header: name,mfr,type,calories,protein,fat,sodium,fiber,carbo,sugars,potass,vitamins,shelf,weight,cups,rating
 
-                List<Product> products = new List<Product>();
+                List<CerealDTO> products = new List<CerealDTO>();
                 string path = Environment.CurrentDirectory;
                 string newPath = Path.GetFullPath(Path.Combine(path, @"wwwroot\cereal.csv"));
                 string[] myFile = File.ReadAllLines(newPath);
@@ -31,7 +25,7 @@ namespace ECommerce_Application.Models.Services
                 for (int i = 1; i < myFile.Length; i++)
                 {
                     string[] fields = myFile[i].Split(',');
-                    products.Add(new Cereal
+                    products.Add(new CerealDTO
                     {
                         Name = fields[0],
                         Manufacturer = fields[1],
@@ -56,4 +50,4 @@ namespace ECommerce_Application.Models.Services
 
         }
     }
-}
+

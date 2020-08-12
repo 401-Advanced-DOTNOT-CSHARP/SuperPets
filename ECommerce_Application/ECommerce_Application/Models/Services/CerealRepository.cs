@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models.Services
 {
-    public class CerealRepository : IProduct
+    public class CerealRepository 
     {
 
 

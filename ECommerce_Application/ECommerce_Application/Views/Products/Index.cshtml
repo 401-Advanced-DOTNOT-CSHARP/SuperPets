@@ -19,12 +19,23 @@
     </div>
 
 
-    <form asp-controller="Products" asp-action="Index">
+    <form asp-controller="Products" asp-action="Index" method="post" >
         <p>
             Search for Cereal by Name: <input type="text" name="SearchString">
             <input type="submit" value="Filter" />
         </p>
     </form>
+
+    <form asp-controller="Products" asp-action="Index" method="get">
+        <input hidden type="text" name="SortBy" value="Descending" />
+        <button type="submit">Sort By Descending</button>
+    </form>
+
+    <form asp-controller="Products" asp-action="Index" method="get">
+        <input hidden type="text" value="Ascending" />
+        <button type="submit">Sort By Ascending</button>
+    </form>
+
 
     <table class="table">
         <thead>
@@ -80,53 +91,53 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Manufacturer)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Calories)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Protein)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fat)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sodium)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fiber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Carbohydrates)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Sugar)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Potassium)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Vitamins)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Shelf)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Weight)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cups)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rating)
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Manufacturer)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Calories)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Protein)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fat)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sodium)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fiber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Carbohydrates)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sugar)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Potassium)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vitamins)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Shelf)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Weight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cups)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

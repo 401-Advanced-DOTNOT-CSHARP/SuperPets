@@ -11,7 +11,7 @@ namespace ECommerce_Application.Controllers
 {
     public class ProductsController : Controller
     {
-        private  ICereal _cereal;
+        private ICereal _cereal;
 
         public ProductsController(ICereal cereal)
         {
@@ -19,13 +19,25 @@ namespace ECommerce_Application.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string sortBy)
         {
-            List<CerealDTO> cereal = _cereal.GetCereal().Cast<CerealDTO>().ToList();
-            return View(cereal);
+            if(sortBy == "Descending")
+            {
+                List<CerealDTO> cereal = _cereal.GetCereal().Cast<CerealDTO>().OrderByDescending(x => x.Name).ToList();
+                return View(cereal);
+            }
+            else
+            {
+                List<CerealDTO> cereal = _cereal.GetCereal().Cast<CerealDTO>().OrderBy(x => x.Name).ToList();
+                
+                return View(cereal);
+            }
+            
+            
         }
 
-        public IActionResult Index(string searchString)
+        [HttpPost]
+        public IActionResult Index(string searchString, string words)
         {
             List<CerealDTO> cereals = _cereal.GetCereal().Cast<CerealDTO>().ToList();
             var results = cereals.Where(x => x.Name.Contains(searchString));
@@ -33,6 +45,9 @@ namespace ECommerce_Application.Controllers
 
             return View(results);
         }
+
+
+
 
     }
 }

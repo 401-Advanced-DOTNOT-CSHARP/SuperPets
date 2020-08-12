@@ -1,0 +1,17 @@
+﻿@page
+@model ECommerce_Application.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<form method="post">
+    <label asp-for="@Model.Login.Email"></label>
+    <input asp-for="@Model.Login.Email" />
+
+    <label asp-for="@Model.Login.Password"></label>
+    <input asp-for="@Model.Login.Password" />
+
+    <button type="submit">SUBMIT</button>
+</form>

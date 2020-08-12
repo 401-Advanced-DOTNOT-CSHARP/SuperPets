@@ -453,3 +453,5 @@ C:\Users\oogun\source\repos\ECommerce-App\ECommerce_Application\TestingSprint1\o
 C:\Users\oogun\source\repos\ECommerce-App\ECommerce_Application\TestingSprint1\obj\Debug\netcoreapp3.1\TestingSprint1.dll
 C:\Users\oogun\source\repos\ECommerce-App\ECommerce_Application\TestingSprint1\obj\Debug\netcoreapp3.1\TestingSprint1.pdb
 C:\Users\oogun\source\repos\ECommerce-App\ECommerce_Application\TestingSprint1\obj\Debug\netcoreapp3.1\TestingSprint1.genruntimeconfig.cache
+C:\Users\oogun\source\repos\ECommerce-App\ECommerce_Application\TestingSprint1\obj\Debug\netcoreapp3.1\TestingSprint1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\oogun\source\repos\ECommerce-App\ECommerce_Application\TestingSprint1\obj\Debug\netcoreapp3.1\TestingSprint1.csproj.CoreCompileInputs.cache

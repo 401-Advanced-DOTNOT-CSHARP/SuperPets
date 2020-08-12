@@ -29,11 +29,10 @@ namespace ECommerce_Application
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
             services.AddDbContext<UserDbContext>(options =>
             {
                 // Install-Package Microsoft.EntityFrameworkCore.SqlServer
-                options.UseSqlServer(Configuration.GetConnectionString("UserConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddIdentity<Customer, IdentityRole>()
@@ -41,10 +40,12 @@ namespace ECommerce_Application
                     .AddDefaultTokenProviders();
 
             services.AddTransient<IProduct, CerealRepository>();
+
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -54,6 +55,11 @@ namespace ECommerce_Application
            app.UseRouting();
             app.UseAuthentication();
             app.UseStaticFiles();
+
+            var userManager = serviceProvider.GetRequiredService<UserManager<Customer>>();
+
+            RoleInitializer.SeedData(serviceProvider, userManager, Configuration);
+
             app.UseEndpoints(endpoints  =>
             {
                 endpoints.MapRazorPages();

@@ -36,11 +36,17 @@ namespace ECommerce_Application
                 options.UseSqlServer(Configuration.GetConnectionString("UserConnection"));
             });
 
+            services.AddDbContext<StoreDbContext>(options =>
+            {
+                // Install-Package Microsoft.EntityFrameworkCore.SqlServer
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
+
             services.AddIdentity<Customer, IdentityRole>()
                     .AddEntityFrameworkStores<UserDbContext>()
                     .AddDefaultTokenProviders();
 
-            services.AddTransient<ICereal, CerealRepository>();
+            services.AddTransient<IProduct, InventoryManagement>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

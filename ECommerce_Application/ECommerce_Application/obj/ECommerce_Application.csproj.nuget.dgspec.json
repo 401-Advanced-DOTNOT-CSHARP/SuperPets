@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oogun\\source\\repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj": {}
+    "C:\\Users\\oogun\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oogun\\source\\repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj": {
+    "C:\\Users\\oogun\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oogun\\source\\repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj",
+        "projectUniqueName": "C:\\Users\\oogun\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj",
         "projectName": "ECommerce_Application",
-        "projectPath": "C:\\Users\\oogun\\source\\repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj",
+        "projectPath": "C:\\Users\\oogun\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj",
         "packagesPath": "C:\\Users\\oogun\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oogun\\source\\repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\obj\\",
+        "outputPath": "C:\\Users\\oogun\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -67,10 +67,6 @@
             "System.Configuration.ConfigurationManager": {
               "target": "Package",
               "version": "[4.7.0, )"
-            },
-            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
-              "target": "Package",
-              "version": "[3.1.4, )"
             }
           },
           "imports": [
@@ -91,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

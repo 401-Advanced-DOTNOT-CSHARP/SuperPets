@@ -1,59 +1,72 @@
-﻿using ECommerce_Application.Models.Interfaces;
+﻿using ECommerce_Application.Data;
+using ECommerce_Application.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models.Services
 {
     public class InventoryManagement : IProduct
     {
-        public List<Product> GetProducts()
+        private readonly StoreDbContext _context;
+
+        public InventoryManagement(StoreDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+        }
+        public async Task<Product> CreateProduct(Product product)
+        {
+
+            _context.Entry(product).State = EntityState.Added;
+            await _context.SaveChangesAsync();
+            return product;
         }
 
-        public class ProductService : IProduct
+        public async Task DeleteProduct(int id)
         {
+            Product dog = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
+            _context.Entry(dog).State = EntityState.Deleted;
+            await _context.SaveChangesAsync();
+        }
 
+        public async Task<Product> GetProduct(int id)
+        {
+            var dog = await _context.Products
+                .Where(x => x.Id == id)
+                .FirstOrDefaultAsync();
 
-            // Get product        
-            public List<Product> GetProducts()
-            {
-                // Header: name,mfr,type,calories,protein,fat,sodium,fiber,carbo,sugars,potass,vitamins,shelf,weight,cups,rating
+            return dog;
+        }
 
-                List<Product> products = new List<Product>();
-                string path = Environment.CurrentDirectory;
-                string newPath = Path.GetFullPath(Path.Combine(path, @"wwwroot\cereal.csv"));
-                string[] myFile = File.ReadAllLines(newPath);
-                // make a dictionary of the differen manufactureres and have the lookup change out the text
+        public async Task<List<Product>> GetProducts()
+        {
+            List<Product> dogs = await _context.Products
+                .ToListAsync();
 
-                for (int i = 1; i < myFile.Length; i++)
-                {
-                    string[] fields = myFile[i].Split(',');
-                    products.Add(new Cereal
-                    {
-                        Name = fields[0],
-                        Manufacturer = fields[1],
-                        Calories = fields[2],
-                        Protein = fields[3],
-                        Fat = fields[4],
-                        Sodium = fields[5],
-                        Fiber = fields[6],
-                        Carbohydrates = fields[7],
-                        Sugar = fields[8],
-                        Potassium = fields[9],
-                        Vitamins = fields[10],
-                        Shelf = fields[11],
-                        Weight = fields[12],
-                        Cups = fields[13],
-                        Rating = fields[14]
-                    });
-                }
+            return dogs;
+        }
 
-                return products;
-            }
+        public async Task<Product> UpdateProduct(Product product)
+        {
+            var dog = await _context.Products.FindAsync(product.Id);
 
+            dog.Name = product.Name;
+            dog.Price = product.Price;
+            dog.SKU = product.SKU;
+            dog.SuperPower = product.SuperPower;
+            dog.Description = product.Description;
+            dog.Color = product.Color;
+            dog.Breed = product.Breed;
+            dog.Age = product.Age;
+
+            _context.Entry(dog).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return dog;
         }
     }
 }

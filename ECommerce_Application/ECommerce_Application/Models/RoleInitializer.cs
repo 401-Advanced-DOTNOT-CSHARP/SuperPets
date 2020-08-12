@@ -1,4 +1,4 @@
-﻿using ECommerce_Application.Data;
+﻿/*using ECommerce_Application.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -56,3 +56,4 @@ namespace ECommerce_Application.Models
         }
     }
 }
+*/

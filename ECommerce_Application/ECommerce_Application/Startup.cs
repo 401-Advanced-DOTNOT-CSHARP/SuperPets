@@ -58,8 +58,8 @@ namespace ECommerce_Application
 
             var userManager = serviceProvider.GetRequiredService<UserManager<Customer>>();
 
-            RoleInitializer.SeedData(serviceProvider, userManager, Configuration);
-
+/*            RoleInitializer.SeedData(serviceProvider, userManager, Configuration);
+*/
             app.UseEndpoints(endpoints  =>
             {
                 endpoints.MapRazorPages();

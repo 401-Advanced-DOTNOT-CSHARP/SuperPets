@@ -1,4 +1,5 @@
-﻿using ECommerce_Application.Models.Services;
+﻿using ECommerce_Application.Models;
+using ECommerce_Application.Models.Services;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

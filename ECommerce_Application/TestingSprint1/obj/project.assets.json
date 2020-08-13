@@ -9602,25 +9602,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\oogun\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Bryan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\oogun\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\TestingSprint1\\TestingSprint1.csproj",
+      "projectUniqueName": "C:\\Users\\Bryan\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\TestingSprint1\\TestingSprint1.csproj",
       "projectName": "TestingSprint1",
-      "projectPath": "C:\\Users\\oogun\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\TestingSprint1\\TestingSprint1.csproj",
-      "packagesPath": "C:\\Users\\oogun\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\oogun\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\TestingSprint1\\obj\\",
+      "projectPath": "C:\\Users\\Bryan\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\TestingSprint1\\TestingSprint1.csproj",
+      "packagesPath": "C:\\Users\\Bryan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Bryan\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\TestingSprint1\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\oogun\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Bryan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -9632,8 +9627,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\oogun\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj": {
-              "projectPath": "C:\\Users\\oogun\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj"
+            "C:\\Users\\Bryan\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj": {
+              "projectPath": "C:\\Users\\Bryan\\Source\\Repos\\ECommerce-App\\ECommerce_Application\\ECommerce_Application\\ECommerce_Application.csproj"
             }
           }
         }
@@ -9690,7 +9685,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

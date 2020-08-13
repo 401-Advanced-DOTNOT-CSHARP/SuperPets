@@ -12,4 +12,9 @@ namespace ECommerce_Application.Models
         public string LastName { get; set; }
 
     }
+    public static class ApplicationRoles
+    {
+        public const string Administrator = "Administrator";
+
+    }
 }

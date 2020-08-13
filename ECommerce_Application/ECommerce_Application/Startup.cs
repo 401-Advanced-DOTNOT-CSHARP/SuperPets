@@ -47,10 +47,17 @@ namespace ECommerce_Application
                     .AddDefaultTokenProviders();
 
             services.AddTransient<IProduct, InventoryManagement>();
+
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Administrator", policy => policy.RequireRole(ApplicationRoles.Administrator));
+
+           });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -60,6 +67,8 @@ namespace ECommerce_Application
            app.UseRouting();
             app.UseAuthentication();
             app.UseStaticFiles();
+            var userManager = serviceProvider.GetRequiredService<UserManager<Customer>>();
+            RoleInitializer.SeedData(serviceProvider, userManager, Configuration);
             app.UseEndpoints(endpoints  =>
             {
                 endpoints.MapRazorPages();

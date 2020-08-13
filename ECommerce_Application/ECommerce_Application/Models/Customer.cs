@@ -10,6 +10,7 @@ namespace ECommerce_Application.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName { get; set; }
 
     }
     public static class ApplicationRoles

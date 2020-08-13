@@ -31,6 +31,7 @@ namespace ECommerce_Application.Pages.Account
             {
                 Email = Registration.Email,
                 FirstName = Registration.FirstName,
+                FullName = Registration.FirstName + Registration.LastName,
                 LastName = Registration.LastName,
                 UserName = Registration.Email
             };

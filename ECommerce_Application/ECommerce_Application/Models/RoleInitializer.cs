@@ -54,6 +54,7 @@ namespace ECommerce_Application.Models
                 user.Email = user.UserName;
                 user.FirstName = user.FirstName;
                 user.LastName = user.LastName;
+                user.FullName = user.FirstName + user.LastName;
                 IdentityResult result = userManager.CreateAsync(user, _config["Password"]).Result;
                 if (result.Succeeded)
                 {

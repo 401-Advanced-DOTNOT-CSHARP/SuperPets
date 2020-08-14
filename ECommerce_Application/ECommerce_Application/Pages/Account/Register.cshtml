@@ -1,26 +1,39 @@
 ﻿@page
 @model ECommerce_Application.Pages.Account.RegisterModel
+@using Microsoft.AspNetCore.Identity;
+@using ECommerce_Application.Models;
+@inject SignInManager<Customer> SignInManager
 @{
     ViewData["Title"] = "Register";
+    Layout = "_Layout";
+
 }
 
-<h1>Register</h1>
+<head>
+    <link rel="stylesheet" href="~/Styles/StyleSheet.css" type="text/css" />
+</head>
 
-<form method="post">
-    <label asp-for="@Model.Registration.FirstName"></label>
-    <input asp-for="@Model.Registration.FirstName" />
 
-    <label asp-for="@Model.Registration.LastName"></label>
-    <input asp-for="@Model.Registration.LastName" />
+<body>
 
-    <label asp-for="@Model.Registration.Email"></label>
-    <input asp-for="@Model.Registration.Email" />
+    <h1 style="margin-bottom: 2em;">Register</h1>
 
-    <label asp-for="@Model.Registration.Password"></label>
-    <input asp-for="@Model.Registration.Password" />
+    <form method="post" style="text-align:center">
+        <label asp-for="@Model.Registration.FirstName"></label>
+        <input asp-for="@Model.Registration.FirstName" />
 
-    <label asp-for="@Model.Registration.ConfirmPassword"></label>
-    <input asp-for="@Model.Registration.ConfirmPassword" />
+        <label asp-for="@Model.Registration.LastName"></label>
+        <input asp-for="@Model.Registration.LastName" />
 
-    <button type="submit">SUBMIT</button>
-</form>
+        <label asp-for="@Model.Registration.Email"></label>
+        <input asp-for="@Model.Registration.Email" />
+
+        <label asp-for="@Model.Registration.Password"></label>
+        <input asp-for="@Model.Registration.Password" />
+
+        <label asp-for="@Model.Registration.ConfirmPassword"></label>
+        <input style="margin-bottom: 1em;" asp-for="@Model.Registration.ConfirmPassword" /><br />
+
+        <button class="btn btn-outline-warning" type="submit">SUBMIT</button>
+    </form>
+</body>

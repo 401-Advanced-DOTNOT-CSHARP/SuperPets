@@ -1,4 +1,4 @@
-﻿@model List<ECommerce_Application.Models.Product>
+﻿@model IEnumerable<ECommerce_Application.Models.Product>
 
 @{
     ViewData["Title"] = "Index";
@@ -6,33 +6,70 @@
 }
 
 <head>
-    <title>WELCOME TO OUR PRODUCTS WEBSITE</title>
+    <title>Home</title>
     <link rel="stylesheet" href="~/Styles/StyleSheet.css" type="text/css" />
 </head>
-<body>
-    <h1>WELCOME TO OUR PRODUCTS WEBSITE</h1>
-    <a href="Products">PRODUCTS</a>
-    @foreach(var item in Model)
-    {
-    <section>
-        <h2>Name: @item.Name</h2>
-        <ol>
-            <li>
-                <h3>Age: @item.Age</h3>
-            </li>
-            <li>
-                <h3>Breed: @item.Breed</h3>
-            </li>
-            <li>
-                <h3>Color: @item.Color</h3>
-            </li>
-            <li>
-                <h3>Super Powers: @item.SuperPower</h3>
-            </li>
-        </ol>
-        <h3>Price: $@item.Price</h3>
-        <p>Description: @item.Description</p>
-    </section>
 
-    }
+
+
+<body>
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Breed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SuperPower)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Age
+                    </td>
+                    <td>
+                        @item.Breed
+                    </td>
+                    <td>
+                        @item.Color
+                    </td>
+                    <td>
+                        @item.SuperPower
+                    </td>
+
+                    <td>
+                        $@item.Price
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
 </body>

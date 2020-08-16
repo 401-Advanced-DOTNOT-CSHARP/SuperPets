@@ -18,7 +18,7 @@ namespace ECommerce_Application.Migrations.StoreDb
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ECommerce_Application.Models.Services.Product", b =>
+            modelBuilder.Entity("ECommerce_Application.Models.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,10 +82,87 @@ namespace ECommerce_Application.Migrations.StoreDb
                             Age = 7,
                             Breed = "Golden Doodle",
                             Color = "Golden",
-                            Description = "Is a pro at Squirrel catching by flying into the trees to catch them",
+                            Description = "Her thick hips won't stop her from dragging you across the concrete to catch a squirrel",
                             Name = "Whiskey",
                             Price = 2000m,
                             SuperPower = "Fly"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Age = 6,
+                            Breed = "Labradoodle",
+                            Color = "black",
+                            Description = "Fastest dog in the world. She's beat Usain Bolt... Twice. ",
+                            Name = "Rye",
+                            Price = 90000000m,
+                            SuperPower = "Super speed"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Age = 3,
+                            Breed = "Siamese Cat",
+                            Color = "Black and White",
+                            Description = "Will knock anything on your desk onto the floor. Can also poop in toilet. ",
+                            Name = "Snowball",
+                            Price = 40000m,
+                            SuperPower = "Personality"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Age = 15,
+                            Breed = "Bear",
+                            Color = "Brown",
+                            Description = "Speaks English... And a little Spanish. ",
+                            Name = "Duke",
+                            Price = 9000m,
+                            SuperPower = "Speaking"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Age = 99,
+                            Breed = "Tabbie Cat (unsure)",
+                            Color = "Grey",
+                            Description = "Disrupts Zoom meetings. Can order Starbucks on occassion.",
+                            Name = "Josie",
+                            Price = 6000000m,
+                            SuperPower = "Ordering coffee"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Age = 8,
+                            Breed = "Lion",
+                            Color = "Orangeish",
+                            Description = "As if a lion wasn't enough, this guy comes with laser eyes. ",
+                            Name = "Chubbs",
+                            Price = 1000000m,
+                            SuperPower = "Laser Eyes"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Age = 15,
+                            Breed = "Hamster",
+                            Color = "Orange and White",
+                            Description = "An engineer who dabbles in explosives.",
+                            Name = "Peanut",
+                            Price = 500000m,
+                            SuperPower = "Super Genius"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Age = 6,
+                            Breed = "Pomeranian",
+                            Color = "Black",
+                            Description = "Makes bukoo money.",
+                            Name = "Mani",
+                            Price = 1000000000000m,
+                            SuperPower = "Can produce cash out of thin-air"
                         });
                 });
 #pragma warning restore 612, 618

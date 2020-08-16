@@ -1,19 +1,28 @@
 ﻿@page
 @model ECommerce_Application.Pages.Account.LoginModel
-login.cshtml
 
 @{
     ViewData["Title"] = "Login";
+    Layout = "_Layout";
+
 }
 
-<h1>Login</h1>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="~/Styles/StyleSheet.css" type="text/css" />
+</head>
 
-<form method="post">
-    <label asp-for="@Model.Login.Email"></label>
-    <input asp-for="@Model.Login.Email" />
+<body>
+    <h1 style="margin-bottom: 2em;">Login</h1>
 
-    <label asp-for="@Model.Login.Password"></label>
-    <input asp-for="@Model.Login.Password" />
+    <form method="post" style="text-align:center">
+        <label asp-for="@Model.Login.Email"></label>
+        <input style="margin-right: 4em;" asp-for="@Model.Login.Email" />
 
-    <button type="submit">SUBMIT</button>
-</form>
+        <label asp-for="@Model.Login.Password"></label>
+        <input style="margin-right: 4em;" asp-for="@Model.Login.Password" />
+
+        <button class="btn btn-outline-warning" type="submit">SUBMIT</button>
+    </form>
+     
+</body>

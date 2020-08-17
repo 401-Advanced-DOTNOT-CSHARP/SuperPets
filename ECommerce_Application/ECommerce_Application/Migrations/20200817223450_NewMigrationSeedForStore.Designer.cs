@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ECommerce_Application.Migrations.StoreDb
+namespace ECommerce_Application.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20200814213636_AddedTenSuperPetsSeed")]
-    partial class AddedTenSuperPetsSeed
+    [Migration("20200817223450_NewMigrationSeedForStore")]
+    partial class NewMigrationSeedForStore
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

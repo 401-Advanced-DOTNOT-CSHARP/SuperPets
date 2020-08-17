@@ -12,7 +12,7 @@ namespace ECommerce_Application.Data
     {
         public UserDbContext(DbContextOptions<UserDbContext> options) : base(options)
         {
-
+            //Just want to add some changes so we can see if the database updates//
         }
 
     }

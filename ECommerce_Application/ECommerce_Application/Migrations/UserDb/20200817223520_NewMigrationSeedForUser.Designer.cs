@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ECommerce_Application.Migrations
+namespace ECommerce_Application.Migrations.UserDb
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20200813225653_UpdateAdministratorUpdateSeed")]
-    partial class UpdateAdministratorUpdateSeed
+    [Migration("20200817223520_NewMigrationSeedForUser")]
+    partial class NewMigrationSeedForUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

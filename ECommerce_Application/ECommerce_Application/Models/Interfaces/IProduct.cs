@@ -10,6 +10,11 @@ namespace ECommerce_Application.Models.Interfaces
     public interface IProduct
     {
 
-        List<Product> GetProducts();
+        public Task<List<Product>> GetProducts();
+        public Task<Product> GetProduct(int id);
+        public Task<Product> UpdateProduct(Product product);
+        public Task<Product> CreateProduct(Product product);
+        public Task DeleteProduct(int id);
+
     }
 }

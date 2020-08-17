@@ -1,7 +1,4 @@
-﻿body {
-    background-color: black;
-    color: azure;
-}
+﻿
 
 h1{
     text-align: center;
@@ -12,3 +9,8 @@ h1, h2, h2, p, td, th, thead, table, title{
 
     color: azure;
 }
+
+#loginEmail {
+    display: inline-block;
+}
+

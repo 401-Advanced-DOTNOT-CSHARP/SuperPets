@@ -2,6 +2,7 @@
 using ECommerce_Application.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,14 +14,19 @@ namespace ECommerce_Application.Models.Services
     public class InventoryManagement : IProduct
     {
         private readonly StoreDbContext _context;
+        private readonly Blob _blobs;
+        private readonly IConfiguration _config;
 
-        public InventoryManagement(StoreDbContext context)
+
+        public InventoryManagement(StoreDbContext context, Blob blobs, IConfiguration config)
         {
             _context = context;
+            _blobs = blobs;
+            _config = config;
         }
         public async Task<Product> CreateProduct(Product product)
         {
-
+            product.Image = _blobs.GetBlob(product.Name, _config["ImageContainer"]).ToString();
             _context.Entry(product).State = EntityState.Added;
             await _context.SaveChangesAsync();
             return product;
@@ -62,6 +68,8 @@ namespace ECommerce_Application.Models.Services
             dog.Color = product.Color;
             dog.Breed = product.Breed;
             dog.Age = product.Age;
+            dog.Image = product.Image;
+
 
             _context.Entry(dog).State = EntityState.Modified;
             await _context.SaveChangesAsync();

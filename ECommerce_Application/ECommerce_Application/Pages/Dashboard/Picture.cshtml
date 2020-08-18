@@ -1,0 +1,19 @@
+﻿@page
+@model ECommerce_Application.Pages.Dashboard.PictureModel
+@{
+    ViewData["Title"] = "Picture";
+}
+
+    <form method="post" enctype="multipart/form-data">
+        <select asp-for="@Model.Name">
+            @foreach(var item in Model.Products)
+            {
+                <option value=@item.Name>@item.Name</option>
+            }
+        </select>
+
+        <label asp-for="@Model.Image"></label>
+        <input type="file" asp-for="@Model.Image" />
+        <button type="submit">Submit</button>
+    </form>
+

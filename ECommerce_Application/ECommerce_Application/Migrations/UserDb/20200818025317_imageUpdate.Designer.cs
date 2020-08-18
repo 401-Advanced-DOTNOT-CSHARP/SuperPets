@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce_Application.Migrations.UserDb
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20200817223520_NewMigrationSeedForUser")]
-    partial class NewMigrationSeedForUser
+    [Migration("20200818025317_imageUpdate")]
+    partial class imageUpdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

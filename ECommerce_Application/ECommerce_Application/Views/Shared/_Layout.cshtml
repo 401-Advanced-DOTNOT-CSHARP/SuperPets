@@ -30,7 +30,7 @@
                 <div class="mx-auto">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active" style="margin-right: 1em;">
-                            <a class="nav-link"  asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active" style="margin-right: 1em;">
                             <a class="nav-link" asp-page="/Account/Login">Login</a>
@@ -43,9 +43,12 @@
                                 Browse
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item"  asp-controller="Products" asp-action="Index">Super Hero Pets</a>
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Index">Super Hero Pets</a>
                                 <a class="dropdown-item" href="Accessories">Accessories</a>
                             </div>
+                        </li>
+                        <li class="nav-item active" style="margin-right: 1em;">
+                            <img class="nav-link" src="~/Assets/dogjake.png">
                         </li>
                     </ul>
                 </div>
@@ -70,17 +73,24 @@
                         <li class="nav-item active" style="margin-right: 1em;">
                             <a class="nav-link" asp-page="/Account/Register">Register</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item dropdown" style="margin-right: 1em;">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Browse
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item"  asp-controller="Products" asp-action="Index">Super Hero Pets</a>
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Index">Super Hero Pets</a>
                                 <a class="dropdown-item" href="Accessories">Accessories</a>
                             </div>
                         </li>
+                        <li >
+                            <a class="nav-link">
+                            <img style="height: 50px"  src="~/Assets/dogjake.png">                          
+                            </a>
+                        </li>
                     </ul>
                     </div>
+                
+                       
                     }
             </nav>
 

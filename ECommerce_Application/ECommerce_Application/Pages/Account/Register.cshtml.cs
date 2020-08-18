@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ECommerce_Application.Controllers;
 using ECommerce_Application.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -16,11 +17,14 @@ namespace ECommerce_Application.Pages.Account
     {
         private UserManager<Customer> _usermanager;
         private readonly SignInManager<Customer> _signInManager;
+        private IEmailSender _sender;
 
-        public RegisterModel(UserManager<Customer> userManager, SignInManager<Customer> signInManager)
+
+        public RegisterModel(UserManager<Customer> userManager, SignInManager<Customer> signInManager, IEmailSender sender)
         {
             _usermanager = userManager;
             _signInManager = signInManager;
+            _sender = sender;
         }
         [BindProperty]
         public RegisterViewModel Registration { get; set; }
@@ -39,13 +43,21 @@ namespace ECommerce_Application.Pages.Account
                 LastName = Registration.LastName,
                 UserName = Registration.Email
             };
-         
-               var result = await _usermanager.CreateAsync(customer, Registration.Password);
+
+
+            // Send registration confirmation to new user
+            string subject = "Thanks for signing up with Super Pets!";
+            string htmlMessage = $"<h1>Thank you {customer.FirstName}!</h1>";
+
+
+
+            var result = await _usermanager.CreateAsync(customer, Registration.Password);
             if (result.Succeeded)
             {
                 Claim fullName = new Claim("FullName", customer.FullName);
                 await _usermanager.AddClaimAsync(customer, fullName);
                 await _signInManager.SignInAsync(customer, isPersistent: false);
+                await _sender.SendEmailAsync(customer.Email, subject, htmlMessage);
                 return RedirectToAction("Index", "Home");
             }
             else

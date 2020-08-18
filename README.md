@@ -1,7 +1,7 @@
 # ECommerce Application
 
 
-# Author: Lami Beach, Lesley Rivera, Bryant Davis
+# Author: Lami Beach, Bryant Davis
 
 ---
 
@@ -43,6 +43,16 @@ string[] myFile = File.ReadAllLines(newPath);
 
 
 
+
+# Selling
+What are we selling:
+Hello and welcome to the wonderful world of super pets.
+We sell a range of pets from Dogs all the way to Bears!
+We currently have 10 animals to select from.
+We are hoping to implement accessories at some point.
+claims:
+Allow users to login
+Only administrator can upload pictures to the blob.
 
 
 # How it works:

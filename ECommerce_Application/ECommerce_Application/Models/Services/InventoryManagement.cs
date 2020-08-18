@@ -14,19 +14,18 @@ namespace ECommerce_Application.Models.Services
     public class InventoryManagement : IProduct
     {
         private readonly StoreDbContext _context;
-        private readonly Blob _blobs;
         private readonly IConfiguration _config;
+        private readonly IImage _image;
 
-
-        public InventoryManagement(StoreDbContext context, Blob blobs, IConfiguration config)
+        public InventoryManagement(StoreDbContext context, IImage image, IConfiguration config)
         {
             _context = context;
-            _blobs = blobs;
             _config = config;
+            _image = image;
         }
         public async Task<Product> CreateProduct(Product product)
         {
-            product.Image = _blobs.GetBlob(product.Name, _config["ImageContainer"]).ToString();
+            product.Image = _image.GetBlob(product.Name, _config["ImageContainer"]).ToString();
             _context.Entry(product).State = EntityState.Added;
             await _context.SaveChangesAsync();
             return product;

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ECommerce_Application.Migrations.UserDb
 {
-    public partial class NewMigrationSeedForUser : Migration
+    public partial class imageUpdate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

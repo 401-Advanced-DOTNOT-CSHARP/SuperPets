@@ -1,6 +1,4 @@
-﻿using Azure.Storage;
-using Azure.Storage.Blobs;
-using ECommerce_Application.Models.Interfaces;
+﻿using ECommerce_Application.Models.Interfaces;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Auth;
 using Microsoft.Azure.Storage.Blob;

@@ -2,11 +2,13 @@
 @model ECommerce_Application.Pages.Dashboard.PictureModel
 @{
     ViewData["Title"] = "Picture";
+    Layout = "_Layout";
+
 }
 
     <form method="post" enctype="multipart/form-data">
         <select asp-for="@Model.Name">
-            @foreach(var item in Model.Products)
+            @foreach (var item in Model.Products)
             {
                 <option value=@item.Name>@item.Name</option>
             }

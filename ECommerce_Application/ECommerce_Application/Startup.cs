@@ -47,6 +47,7 @@ namespace ECommerce_Application
                     .AddDefaultTokenProviders();
 
             services.AddTransient<IProduct, InventoryManagement>();
+            services.AddTransient<IImage, Blob>();
 
 
             services.AddAuthorization(options =>
@@ -66,6 +67,7 @@ namespace ECommerce_Application
 
            app.UseRouting();
             app.UseAuthentication();
+            app.UseAuthorization();
             app.UseStaticFiles();
             var userManager = serviceProvider.GetRequiredService<UserManager<Customer>>();
             RoleInitializer.SeedData(serviceProvider, userManager, Configuration);

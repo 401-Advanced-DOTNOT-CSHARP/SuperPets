@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models
 {
+    /// <summary>
+    /// comment
+    /// </summary>
     public class Product
     {
         public int Id { get; set; }
@@ -16,6 +19,7 @@ namespace ECommerce_Application.Models
         public int Age { get; set; }
         public string SuperPower { get; set; }
         public string Color { get; set; }
+        public string Image { get; set; }
 
 
 

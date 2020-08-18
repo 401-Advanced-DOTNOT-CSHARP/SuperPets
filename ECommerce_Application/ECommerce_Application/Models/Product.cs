@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models
 {
+    /// <summary>
+    /// comment
+    /// </summary>
     public class Product
     {
         public int Id { get; set; }

@@ -37,12 +37,14 @@ namespace ECommerce_Application.Models.Services
 
             return cbc;
         }
-        public async Task<CloudBlob> GetBlob(string imageName, string containerName)
+        public async Task<string> GetBlob(string imageName, string containerName)
         {
             var container = await GetContainer(containerName);
             CloudBlob cb = container.GetBlobReference(imageName);
+            string FileURL = cb.Uri.AbsoluteUri;
 
-            return cb;
+            return FileURL;
+
         }
 
         public async Task UploadImage(string fileName, byte[] image, string contentType)

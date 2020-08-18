@@ -25,7 +25,8 @@ namespace ECommerce_Application.Models.Services
         }
         public async Task<Product> CreateProduct(Product product)
         {
-            product.Image = _image.GetBlob(product.Name, _config["ImageContainer"]).ToString();
+
+            product.Image = await _image.GetBlob(product.Name, _config["ImageContainer"]);
             _context.Entry(product).State = EntityState.Added;
             await _context.SaveChangesAsync();
             return product;
@@ -67,7 +68,16 @@ namespace ECommerce_Application.Models.Services
             dog.Color = product.Color;
             dog.Breed = product.Breed;
             dog.Age = product.Age;
-            dog.Image = product.Image;
+            if(dog.Image == null)
+            {
+            dog.Image = await _image.GetBlob(product.Name, _config["ImageContainer"]);
+
+            }
+            else
+            {
+                dog.Image = product.Image;
+            }
+
 
 
             _context.Entry(dog).State = EntityState.Modified;

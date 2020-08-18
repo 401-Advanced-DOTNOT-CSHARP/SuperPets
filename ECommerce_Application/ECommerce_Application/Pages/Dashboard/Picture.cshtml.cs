@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce_Application.Pages.Dashboard
 {
-      /*  [Authorize(Policy = "Administrator")]*/
+    [Authorize(Policy = "Administrator")]
     public class PictureModel : PageModel
     {
         private IImage _image;
@@ -31,9 +31,9 @@ namespace ECommerce_Application.Pages.Dashboard
             _product = product;
         }
         public async void OnGet()
-        
+
         {
-           Products = await _product.GetProducts();
+            Products = await _product.GetProducts();
         }
 
         public async void OnPost()

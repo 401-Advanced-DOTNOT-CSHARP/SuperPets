@@ -5,12 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using ECommerce_Application.Models;
 using ECommerce_Application.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce_Application.Pages.Dashboard
 {
+        [Authorize(Policy = "Administrator")]
     public class PictureModel : PageModel
     {
         private IImage _image;
@@ -29,6 +31,7 @@ namespace ECommerce_Application.Pages.Dashboard
             _product = product;
         }
         public async void OnGet()
+        
         {
            Products = await _product.GetProducts();
         }

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce_Application.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20200817223450_NewMigrationSeedForStore")]
-    partial class NewMigrationSeedForStore
+    [Migration("20200818025259_imageUpdate")]
+    partial class imageUpdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,9 @@ namespace ECommerce_Application.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

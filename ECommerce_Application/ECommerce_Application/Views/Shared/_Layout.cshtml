@@ -30,7 +30,7 @@
                 <div class="mx-auto">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active" style="margin-right: 1em;">
-                            <a class="nav-link" href="Home">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link"  asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active" style="margin-right: 1em;">
                             <a class="nav-link" asp-page="/Account/Login">Login</a>
@@ -43,7 +43,7 @@
                                 Browse
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="Products">Super Hero Pets</a>
+                                <a class="dropdown-item"  asp-controller="Products" asp-action="Index">Super Hero Pets</a>
                                 <a class="dropdown-item" href="Accessories">Accessories</a>
                             </div>
                         </li>
@@ -62,7 +62,7 @@
                 <div class="mx-auto" style="margin-bottom: 3em;">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active" style="margin-right: 1em;">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active" style="margin-right: 1em;">
                             <a class="nav-link" asp-page="/Account/Login">Login</a>
@@ -75,7 +75,7 @@
                                 Browse
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="Products">Super Hero Pets</a>
+                                <a class="dropdown-item"  asp-controller="Products" asp-action="Index">Super Hero Pets</a>
                                 <a class="dropdown-item" href="Accessories">Accessories</a>
                             </div>
                         </li>
@@ -91,6 +91,7 @@
     <div>
         @RenderBody()
     </div>
+ 
     <footer>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

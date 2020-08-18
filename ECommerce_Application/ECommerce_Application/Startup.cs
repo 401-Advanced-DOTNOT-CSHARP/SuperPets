@@ -47,6 +47,7 @@ namespace ECommerce_Application
                     .AddDefaultTokenProviders();
 
             services.AddTransient<IProduct, InventoryManagement>();
+            services.AddTransient<IImage, Blob>();
 
 
             services.AddAuthorization(options =>

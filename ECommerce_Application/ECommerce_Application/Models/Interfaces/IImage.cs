@@ -11,6 +11,6 @@ namespace ECommerce_Application.Models.Interfaces
     {
         public Task UploadImage(string fileName, byte[] image, string contentType);
         public Task<CloudBlobContainer> GetContainer(string containerName);
-        public Task<CloudBlob> GetBlob(string imageName, string containerName);
+        public Task<string> GetBlob(string imageName, string containerName);
     }
 }

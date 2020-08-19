@@ -1,4 +1,10 @@
-﻿
+﻿section{
+    width: 200px;
+}
+.dog{
+    width: 100px;
+    height: 100px;
+}
 
 h1{
     text-align: center;

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce_Application.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20200818025259_imageUpdate")]
-    partial class imageUpdate
+    [Migration("20200819003754_AddingPetsToPostSeedNew")]
+    partial class AddingPetsToPostSeedNew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,102 @@ namespace ECommerce_Application.Migrations
                 .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("ECommerce_Application.Models.Post", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Posts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Rampage",
+                            Price = 200m,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Snowball",
+                            Price = 200m,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Whiskey",
+                            Price = 2000m,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Rye",
+                            Price = 90000000m,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Snowball",
+                            Price = 40000m,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Duke",
+                            Price = 9000m,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Josie",
+                            Price = 6000000m,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Chubbs",
+                            Price = 1000000m,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Peanut",
+                            Price = 500000m,
+                            Quantity = 1
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Mani",
+                            Price = 1000000000000m,
+                            Quantity = 1
+                        });
+                });
 
             modelBuilder.Entity("ECommerce_Application.Models.Product", b =>
                 {

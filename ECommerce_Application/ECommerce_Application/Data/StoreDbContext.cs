@@ -141,89 +141,14 @@ namespace ECommerce_Application.Data
                            SuperPower = "Can produce cash out of thin-air",
 
                        }
-
-
-
                 );
-            modelBuilder.Entity<Post>().HasData(
-
-                       new Post
-                       {
-                           Id = 1,
-                           Name = "Rampage",
-                           Price = 200,
-                           Quantity = 1
-                       },
-                        new Post
-                        {
-                            Id = 2,
-                            Name = "Snowball",
-                            Price = 200,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 3,
-                            Name = "Whiskey",
-                            Price = 2000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 4,
-                            Name = "Rye",
-                            Price = 90000000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 5,
-                            Name = "Snowball",
-                            Price = 40000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 6,
-                            Name = "Duke",
-                            Price = 9000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 7,
-                            Name = "Josie",
-                            Price = 6000000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 8,
-                            Name = "Chubbs",
-                            Price = 1000000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 9,
-                            Name = "Peanut",
-                            Price = 500000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 10,
-                            Name = "Mani",
-                            Price = 1000000000000,
-                            Quantity = 1
-                        }
 
 
 
-                ); ;
+                
         }
 
         public DbSet<Product> Products { get; set; }
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<Cart> Carts { get; set; }
     }
 }

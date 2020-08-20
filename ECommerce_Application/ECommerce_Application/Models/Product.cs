@@ -20,9 +20,8 @@ namespace ECommerce_Application.Models
         public string SuperPower { get; set; }
         public string Color { get; set; }
         public string Image { get; set; }
-        public bool IsAvailable { get; set; }
-        public int CartId { get; set; }
-        public Cart Cart { get; set; }
+        public int Quantity { get; set; }
+        public string Category { get; set; }
 
 
     }

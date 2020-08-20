@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ECommerce_Application.Migrations.UserDb
+namespace ECommerce_Application.Migrations
 {
-    public partial class AddingUserToPostSeedNew : Migration
+    public partial class inital : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

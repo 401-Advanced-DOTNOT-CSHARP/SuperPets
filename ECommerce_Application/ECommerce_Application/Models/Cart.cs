@@ -11,7 +11,7 @@ namespace ECommerce_Application.Models
         public string UserEmail { get; set; }
         public decimal Price { get; set; }
         public int Quantity  { get; set; }
-        public List<Product> Products { get; set; }
+        public List<CartItem> CartItems { get; set; }
 
     }
 }

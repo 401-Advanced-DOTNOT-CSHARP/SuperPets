@@ -37,7 +37,6 @@ namespace ECommerce_Application.Models.Services
         {
             var cart = await _context.Carts
                 .Where(x => x.UserEmail == email)
-                .Include(x => x.Products)
                 .FirstOrDefaultAsync();
 
             return cart;
@@ -46,19 +45,7 @@ namespace ECommerce_Application.Models.Services
         public async Task<Cart> UpdateCart(Cart cart)
         {
             var updatedCart = await _context.Carts.FindAsync(cart.Id);
-
-            decimal price = 0;
-            foreach(var item in cart.Products)
-            {
-                price += item.Price;
-                item.CartId = updatedCart.Id;
-                item.IsAvailable = false;
-                await _product.UpdateProduct(item);
-
-            }
-            int quantity = updatedCart.Products.Count();
-            updatedCart.Price = price;
-            updatedCart.Quantity = quantity;
+            updatedCart = cart;
            
 
             _context.Entry(updatedCart).State = EntityState.Modified;

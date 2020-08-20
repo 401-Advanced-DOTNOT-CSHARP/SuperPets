@@ -4,16 +4,14 @@ using ECommerce_Application.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ECommerce_Application.Migrations.UserDb
+namespace ECommerce_Application.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20200819003822_AddingUserToPostSeedNew")]
-    partial class AddingUserToPostSeedNew
+    partial class UserDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

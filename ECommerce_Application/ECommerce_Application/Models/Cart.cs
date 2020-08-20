@@ -5,15 +5,13 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models
 {
-    public class Post 
+    public class Cart 
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string UserEmail { get; set; }
         public decimal Price { get; set; }
-        public string Image { get; set; }
-
         public int Quantity  { get; set; }
-
+        public List<Product> Products { get; set; }
 
     }
 }

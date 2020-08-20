@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using ECommerce_Application.Controllers;
 using ECommerce_Application.Models;
+using ECommerce_Application.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -18,13 +19,14 @@ namespace ECommerce_Application.Pages.Account
         private UserManager<Customer> _usermanager;
         private readonly SignInManager<Customer> _signInManager;
         private IEmailSender _sender;
+        private readonly ICart _cart;
 
-
-        public RegisterModel(UserManager<Customer> userManager, SignInManager<Customer> signInManager, IEmailSender sender)
+        public RegisterModel(UserManager<Customer> userManager, SignInManager<Customer> signInManager, IEmailSender sender, ICart cart)
         {
             _usermanager = userManager;
             _signInManager = signInManager;
             _sender = sender;
+            _cart = cart;
         }
         [BindProperty]
         public RegisterViewModel Registration { get; set; }
@@ -58,6 +60,11 @@ namespace ECommerce_Application.Pages.Account
                 await _usermanager.AddClaimAsync(customer, fullName);
                 await _signInManager.SignInAsync(customer, isPersistent: false);
                 await _sender.SendEmailAsync(customer.Email, subject, htmlMessage);
+                Cart cart = new Cart()
+                {
+                    UserEmail = customer.Email
+                };
+                await _cart.CreateCart(cart);
                 return RedirectToAction("Index", "Home");
             }
             else

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce_Application.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20200819003754_AddingPetsToPostSeedNew")]
-    partial class AddingPetsToPostSeedNew
+    [Migration("20200820005701_updatedStoreWithCarts")]
+    partial class updatedStoreWithCarts
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,18 +20,12 @@ namespace ECommerce_Application.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ECommerce_Application.Models.Post", b =>
+            modelBuilder.Entity("ECommerce_Application.Models.Cart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -39,81 +33,12 @@ namespace ECommerce_Application.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserEmail")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Posts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Rampage",
-                            Price = 200m,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Snowball",
-                            Price = 200m,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Whiskey",
-                            Price = 2000m,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Rye",
-                            Price = 90000000m,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Snowball",
-                            Price = 40000m,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            Id = 6,
-                            Name = "Duke",
-                            Price = 9000m,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            Id = 7,
-                            Name = "Josie",
-                            Price = 6000000m,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            Id = 8,
-                            Name = "Chubbs",
-                            Price = 1000000m,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            Id = 9,
-                            Name = "Peanut",
-                            Price = 500000m,
-                            Quantity = 1
-                        },
-                        new
-                        {
-                            Id = 10,
-                            Name = "Mani",
-                            Price = 1000000000000m,
-                            Quantity = 1
-                        });
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("ECommerce_Application.Models.Product", b =>
@@ -129,6 +54,9 @@ namespace ECommerce_Application.Migrations
                     b.Property<string>("Breed")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Color")
                         .HasColumnType("nvarchar(max)");
 
@@ -137,6 +65,9 @@ namespace ECommerce_Application.Migrations
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -152,6 +83,8 @@ namespace ECommerce_Application.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CartId");
+
                     b.ToTable("Products");
 
                     b.HasData(
@@ -160,8 +93,10 @@ namespace ECommerce_Application.Migrations
                             Id = 1,
                             Age = 2,
                             Breed = "Staffordshire Terrier",
+                            CartId = 0,
                             Color = "Brindle",
                             Description = "Absolutely is an attention hog. He will chill and hang out with you all day and love life. He enjoys the outdoors from sunbathing in the backyard to going for long walks. Is very obedient and will let you clean his ears, brush ",
+                            IsAvailable = false,
                             Name = "Rampage",
                             Price = 200m,
                             SuperPower = "Super Love"
@@ -171,8 +106,10 @@ namespace ECommerce_Application.Migrations
                             Id = 2,
                             Age = 4,
                             Breed = "Poodle",
+                            CartId = 0,
                             Color = "White",
                             Description = "Loves ",
+                            IsAvailable = false,
                             Name = "Snowball",
                             Price = 200m,
                             SuperPower = "Super Love"
@@ -182,8 +119,10 @@ namespace ECommerce_Application.Migrations
                             Id = 3,
                             Age = 7,
                             Breed = "Golden Doodle",
+                            CartId = 0,
                             Color = "Golden",
                             Description = "Her thick hips won't stop her from dragging you across the concrete to catch a squirrel",
+                            IsAvailable = false,
                             Name = "Whiskey",
                             Price = 2000m,
                             SuperPower = "Fly"
@@ -193,8 +132,10 @@ namespace ECommerce_Application.Migrations
                             Id = 4,
                             Age = 6,
                             Breed = "Labradoodle",
+                            CartId = 0,
                             Color = "black",
                             Description = "Fastest dog in the world. She's beat Usain Bolt... Twice. ",
+                            IsAvailable = false,
                             Name = "Rye",
                             Price = 90000000m,
                             SuperPower = "Super speed"
@@ -204,8 +145,10 @@ namespace ECommerce_Application.Migrations
                             Id = 5,
                             Age = 3,
                             Breed = "Siamese Cat",
+                            CartId = 0,
                             Color = "Black and White",
                             Description = "Will knock anything on your desk onto the floor. Can also poop in toilet. ",
+                            IsAvailable = false,
                             Name = "Snowball",
                             Price = 40000m,
                             SuperPower = "Personality"
@@ -215,8 +158,10 @@ namespace ECommerce_Application.Migrations
                             Id = 6,
                             Age = 15,
                             Breed = "Bear",
+                            CartId = 0,
                             Color = "Brown",
                             Description = "Speaks English... And a little Spanish. ",
+                            IsAvailable = false,
                             Name = "Duke",
                             Price = 9000m,
                             SuperPower = "Speaking"
@@ -226,8 +171,10 @@ namespace ECommerce_Application.Migrations
                             Id = 7,
                             Age = 99,
                             Breed = "Tabbie Cat (unsure)",
+                            CartId = 0,
                             Color = "Grey",
                             Description = "Disrupts Zoom meetings. Can order Starbucks on occassion.",
+                            IsAvailable = false,
                             Name = "Josie",
                             Price = 6000000m,
                             SuperPower = "Ordering coffee"
@@ -237,8 +184,10 @@ namespace ECommerce_Application.Migrations
                             Id = 8,
                             Age = 8,
                             Breed = "Lion",
+                            CartId = 0,
                             Color = "Orangeish",
                             Description = "As if a lion wasn't enough, this guy comes with laser eyes. ",
+                            IsAvailable = false,
                             Name = "Chubbs",
                             Price = 1000000m,
                             SuperPower = "Laser Eyes"
@@ -248,8 +197,10 @@ namespace ECommerce_Application.Migrations
                             Id = 9,
                             Age = 15,
                             Breed = "Hamster",
+                            CartId = 0,
                             Color = "Orange and White",
                             Description = "An engineer who dabbles in explosives.",
+                            IsAvailable = false,
                             Name = "Peanut",
                             Price = 500000m,
                             SuperPower = "Super Genius"
@@ -259,12 +210,23 @@ namespace ECommerce_Application.Migrations
                             Id = 10,
                             Age = 6,
                             Breed = "Pomeranian",
+                            CartId = 0,
                             Color = "Black",
                             Description = "Makes bukoo money.",
+                            IsAvailable = false,
                             Name = "Mani",
                             Price = 1000000000000m,
                             SuperPower = "Can produce cash out of thin-air"
                         });
+                });
+
+            modelBuilder.Entity("ECommerce_Application.Models.Product", b =>
+                {
+                    b.HasOne("ECommerce_Application.Models.Cart", "Cart")
+                        .WithMany("Products")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

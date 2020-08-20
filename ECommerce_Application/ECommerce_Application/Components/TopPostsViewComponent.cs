@@ -21,7 +21,7 @@ namespace ECommerce_Application.Components
         {
 
             // do some logic to pull from the DB, the posts
-            var posts = await _context.Posts.OrderByDescending(x => x.Id).Take(number).ToListAsync();
+            var posts = await _context.Products.OrderByDescending(x => x.Id).Take(number).ToListAsync();
 
             return View(posts);
         }

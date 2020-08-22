@@ -36,12 +36,10 @@ namespace ECommerce_Application.Pages.Dashboard
 
         {
             Products = await _product.GetProducts();
-            return RedirectToPage("Index", Products);
-
-
+            return Page();
         }
 
-        public async void OnPost()
+        public async Task<IActionResult> OnPost()
         {
             string ext = Path.GetExtension(Image.FileName);
 
@@ -54,6 +52,8 @@ namespace ECommerce_Application.Pages.Dashboard
                     await _image.UploadImage(Name, bytes, Image.ContentType);
                 }
             }
+
+            return Page();
 
         }
     }

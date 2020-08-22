@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ECommerce_Application.Migrations
+namespace ECommerce_Application.Migrations.UserDb
 {
-    public partial class inital : Migration
+    public partial class updatedStore : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ECommerce_Application.Migrations.StoreDb
+namespace ECommerce_Application.Migrations
 {
     [DbContext(typeof(StoreDbContext))]
-    [Migration("20200820212935_inital")]
-    partial class inital
+    [Migration("20200822215202_updatedStore")]
+    partial class updatedStore
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -84,6 +84,9 @@ namespace ECommerce_Application.Migrations.StoreDb
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsFeature")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -113,6 +116,7 @@ namespace ECommerce_Application.Migrations.StoreDb
                             Color = "Brindle",
                             Description = "Absolutely is an attention hog. He will chill and hang out with you all day and love life. He enjoys the outdoors from sunbathing in the backyard to going for long walks. Is very obedient and will let you clean his ears, brush ",
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Rampage",
+                            IsFeature = true,
                             Name = "Rampage",
                             Price = 200m,
                             Quantity = 1,
@@ -127,6 +131,7 @@ namespace ECommerce_Application.Migrations.StoreDb
                             Color = "White",
                             Description = "Loves ",
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Snowball",
+                            IsFeature = false,
                             Name = "Snowball",
                             Price = 200m,
                             Quantity = 1,
@@ -141,6 +146,7 @@ namespace ECommerce_Application.Migrations.StoreDb
                             Color = "Golden",
                             Description = "Her thick hips won't stop her from dragging you across the concrete to catch a squirrel",
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Whiskey",
+                            IsFeature = false,
                             Name = "Whiskey",
                             Price = 2000m,
                             Quantity = 1,
@@ -155,6 +161,7 @@ namespace ECommerce_Application.Migrations.StoreDb
                             Color = "black",
                             Description = "Fastest dog in the world. She's beat Usain Bolt... Twice. ",
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/rye.jpeg",
+                            IsFeature = false,
                             Name = "Rye",
                             Price = 90000000m,
                             Quantity = 1,
@@ -169,6 +176,7 @@ namespace ECommerce_Application.Migrations.StoreDb
                             Color = "Brown and White",
                             Description = "Will knock anything on your desk onto the floor. Can also poop in toilet. ",
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/backup.jpeg",
+                            IsFeature = false,
                             Name = "Snowball",
                             Price = 40000m,
                             Quantity = 1,
@@ -183,6 +191,7 @@ namespace ECommerce_Application.Migrations.StoreDb
                             Color = "Brown",
                             Description = "Speaks English... And a little Spanish. ",
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Duke1.jpeg",
+                            IsFeature = false,
                             Name = "Duke",
                             Price = 9000m,
                             Quantity = 1,
@@ -197,6 +206,7 @@ namespace ECommerce_Application.Migrations.StoreDb
                             Color = "Grey",
                             Description = "Disrupts Zoom meetings. Can order Starbucks on occassion.",
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Josie",
+                            IsFeature = false,
                             Name = "Josie",
                             Price = 6000000m,
                             Quantity = 1,
@@ -211,6 +221,7 @@ namespace ECommerce_Application.Migrations.StoreDb
                             Color = "Orangeish",
                             Description = "As if a dog wasn't enough, this guy comes with laser eyes. ",
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/chubbs.jpeg",
+                            IsFeature = false,
                             Name = "Chubbs",
                             Price = 1000000m,
                             Quantity = 1,
@@ -225,6 +236,7 @@ namespace ECommerce_Application.Migrations.StoreDb
                             Color = "Orange and White",
                             Description = "An engineer who dabbles in explosives.",
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Peanut.jpeg",
+                            IsFeature = false,
                             Name = "Peanut",
                             Price = 500000m,
                             Quantity = 1,
@@ -239,6 +251,7 @@ namespace ECommerce_Application.Migrations.StoreDb
                             Color = "Black",
                             Description = "Makes bukoo money.",
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Mani",
+                            IsFeature = false,
                             Name = "Mani",
                             Price = 100000m,
                             Quantity = 1,

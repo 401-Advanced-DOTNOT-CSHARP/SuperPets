@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ECommerce_Application.Migrations
+namespace ECommerce_Application.Migrations.UserDb
 {
     [DbContext(typeof(UserDbContext))]
     partial class UserDbContextModelSnapshot : ModelSnapshot

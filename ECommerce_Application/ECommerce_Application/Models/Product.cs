@@ -22,6 +22,7 @@ namespace ECommerce_Application.Models
         public string Image { get; set; }
         public int Quantity { get; set; }
         public string Category { get; set; }
+        public bool IsFeature { get; set; }
 
 
     }

@@ -32,10 +32,13 @@ namespace ECommerce_Application.Pages.Dashboard
             _image = image;
             _product = product;
         }
-        public async void OnGet()
+        public async Task<IActionResult> OnGet()
 
         {
             Products = await _product.GetProducts();
+            return RedirectToPage("Index", Products);
+
+
         }
 
         public async void OnPost()

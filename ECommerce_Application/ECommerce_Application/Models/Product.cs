@@ -10,6 +10,7 @@ namespace ECommerce_Application.Models
     /// </summary>
     public class Product
     {
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string SKU { get; set; }

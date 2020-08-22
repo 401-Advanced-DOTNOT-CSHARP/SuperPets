@@ -36,7 +36,8 @@ namespace ECommerce_Application.Data
                     SuperPower = "Super Love",
                     Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Rampage",
                     Category = "Bully",
-                    Quantity = 1
+                    Quantity = 1,
+                    IsFeature = true
                 },
                 new Product
                 {

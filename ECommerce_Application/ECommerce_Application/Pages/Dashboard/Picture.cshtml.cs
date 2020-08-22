@@ -32,13 +32,14 @@ namespace ECommerce_Application.Pages.Dashboard
             _image = image;
             _product = product;
         }
-        public async void OnGet()
+        public async Task<IActionResult> OnGet()
 
         {
             Products = await _product.GetProducts();
+            return Page();
         }
 
-        public async void OnPost()
+        public async Task<IActionResult> OnPost()
         {
             string ext = Path.GetExtension(Image.FileName);
 
@@ -51,6 +52,8 @@ namespace ECommerce_Application.Pages.Dashboard
                     await _image.UploadImage(Name, bytes, Image.ContentType);
                 }
             }
+
+            return Page();
 
         }
     }

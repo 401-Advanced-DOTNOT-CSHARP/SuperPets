@@ -12,14 +12,15 @@ namespace ECommerce_Application.Models.Services
     public class CartItemService : ICartItem
     {
         private readonly StoreDbContext _context;
+        private readonly ICart _cart;
 
-        public CartItemService(StoreDbContext context)
+        public CartItemService(StoreDbContext context, ICart cart)
         {
             _context = context;
+            _cart = cart;
         }
         public async Task<CartItem> AddProductToCart(Product product, Cart cart, int quantity)
         {
-
             CartItem cartItem = new CartItem()
             {
                 Cart = cart,
@@ -28,6 +29,10 @@ namespace ECommerce_Application.Models.Services
                 ProductId = product.Id,
                 Quantity = quantity
             };
+            cart.Quantity += quantity;
+            cart.Price += product.Price;
+
+            await _cart.UpdateCart(cart);
             _context.Entry(cartItem).State = EntityState.Added;
             await _context.SaveChangesAsync();
             return cartItem;

@@ -33,9 +33,14 @@ namespace ECommerce_Application.Models.Services
             return cartItem;
         }
 
-        public Task<CartItem> GetCartItem(int id)
+        public async Task<List<CartItem>> GetCartItems(string userEmail)
         {
-            throw new NotImplementedException();
+            var cartItem = await _context.CartItems.Where(x => x.Cart.UserEmail == userEmail)
+                .Include(x => x.Product)
+                .Include(x => x.Cart)
+                .ToListAsync();
+            return cartItem;
+
         }
 
         public async Task RemoveProductFromCart(Product product, Cart cart)

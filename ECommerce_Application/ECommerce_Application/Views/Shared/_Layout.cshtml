@@ -27,7 +27,7 @@
 
                     </li>
                 </ul>
-                @if (this.User.Identity.IsAuthenticated)
+                @if (this.User.IsInRole("Administrator"))
                 {
                     <div class="mx-auto">
                         <ul class="navbar-nav mr-auto">

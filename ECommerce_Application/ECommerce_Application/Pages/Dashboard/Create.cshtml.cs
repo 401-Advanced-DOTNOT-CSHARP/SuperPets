@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce_Application.Pages.Dashboard
 {
-/*    [Authorize(Policy = "Administrator")]*/
+    [Authorize(Policy = "Administrator")]
 
     public class CreateModel : PageModel
     {

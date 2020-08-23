@@ -1,11 +1,55 @@
 ﻿@model ECommerce_Application.Models.Cart
 <h1>Items in Cart</h1>
+@if(Model != null)
+{
+
+    <table>
+        <thead>
+        <tr>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+
+        </thead>
+        <tbody>
 
 @foreach (var item in @Model.CartItems)
 {
-    <h2>@item.Quantity</h2>
-    <h1>@item.Product.Name</h1>
-    <h2>@item.Product.Price</h2>
+    <tr>
+        <td>
+    @item.Quantity
+        </td>
+        <td>
+
+    @item.Product.Name
+        </td>
+        <td>
+    @item.Product.Price
+
+        </td>
+    </tr>
 }
-    <h2>@Model.Quantity</h2>
-    <h2>@Model.Price</h2>
+            <tr>
+                <td>
+    @Model.Quantity
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+    @Model.Price
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+}

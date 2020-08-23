@@ -161,7 +161,7 @@ namespace ECommerce_Application.Migrations
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/rye.jpeg",
                             IsFeature = false,
                             Name = "Rye",
-                            Price = 90000000m,
+                            Price = 9000m,
                             Quantity = 1,
                             SuperPower = "Super speed"
                         },
@@ -176,7 +176,7 @@ namespace ECommerce_Application.Migrations
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/backup.jpeg",
                             IsFeature = false,
                             Name = "Snowball",
-                            Price = 40000m,
+                            Price = 4000m,
                             Quantity = 1,
                             SuperPower = "Personality"
                         },
@@ -206,7 +206,7 @@ namespace ECommerce_Application.Migrations
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Josie",
                             IsFeature = false,
                             Name = "Josie",
-                            Price = 6000000m,
+                            Price = 6000m,
                             Quantity = 1,
                             SuperPower = "Ordering coffee"
                         },
@@ -221,7 +221,7 @@ namespace ECommerce_Application.Migrations
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/chubbs.jpeg",
                             IsFeature = false,
                             Name = "Chubbs",
-                            Price = 1000000m,
+                            Price = 1000m,
                             Quantity = 1,
                             SuperPower = "Laser Eyes"
                         },
@@ -236,7 +236,7 @@ namespace ECommerce_Application.Migrations
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Peanut.jpeg",
                             IsFeature = false,
                             Name = "Peanut",
-                            Price = 500000m,
+                            Price = 5000m,
                             Quantity = 1,
                             SuperPower = "Super Genius"
                         },
@@ -251,7 +251,7 @@ namespace ECommerce_Application.Migrations
                             Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Mani",
                             IsFeature = false,
                             Name = "Mani",
-                            Price = 100000m,
+                            Price = 1000m,
                             Quantity = 1,
                             SuperPower = "Can produce cash out of thin-air"
                         });

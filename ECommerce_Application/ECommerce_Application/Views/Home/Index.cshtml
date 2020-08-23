@@ -30,17 +30,19 @@
             {
                 image = @item.Image;
             }
-             @if (item.IsFeature)
-             {
-            <section style='width: 150px; margin-bottom: 20px; margin-right: 40px;'>
-                <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id"><img style='width: 150px; height: 125px;' src="@image" alt="image" /></a><br />
-                <h1> @item.Name</h1>
-                <h3>@item.Price</h3>
-            </section>
+            @if (item.IsFeature)
+            {
+                <section style='width: 150px; margin-bottom: 20px; margin-right: 40px;'>
+                    <a asp-page="/Categories/Product" asp-route-id="@item.Id"><img style='width: 150px; height: 125px;' src="@image" alt="image" /></a><br />
+                    <h1> @item.Name</h1>
+                    <h3>@item.Price</h3>
+                </section>
 
-             }
+            }
+
 
         }
     </section>
+            <a asp-controller="Categories" asp-action="All">Shop All</a>
 
 </body>

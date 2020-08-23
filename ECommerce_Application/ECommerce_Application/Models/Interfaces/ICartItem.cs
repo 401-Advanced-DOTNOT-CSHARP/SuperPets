@@ -9,7 +9,7 @@ namespace ECommerce_Application.Models.Interfaces
     {
         public Task<CartItem> GetCartItem(int id);
         public Task<CartItem> UpdateCartItem(CartItem cartItem);
-        public Task<CartItem> AddProductToCart(Product product, Cart cart);
+        public Task<CartItem> AddProductToCart(Product product, Cart cart, int quantity);
         public Task RemoveProductFromCart(Product product, Cart cart);
     }
 }

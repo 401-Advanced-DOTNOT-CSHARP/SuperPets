@@ -12,8 +12,18 @@
 <form method="post" style="text-align:center">
     <label asp-for="@Model.Quantity">Quantity Available: @Model.Product.Quantity</label>
     <input asp-for="@Model.Quantity" placeholder="1" />
-
-
+    <input hidden asp-for="@Model.Product.Id" value="@Model.Product.Id" />
+    <input hidden asp-for="@Model.Product.Quantity" value="@Model.Quantity" />
+    <input hidden asp-for="@Model.Product.Image" value="@Model.Product.Image" />
+    <input hidden asp-for="@Model.Product.IsFeature" value="@Model.Product.IsFeature" />
+    <input hidden asp-for="@Model.Product.Name" value="@Model.Product.Name" />
+    <input hidden asp-for="@Model.Product.Price" value="@Model.Product.Price" />
+    <input hidden asp-for="@Model.Product.SuperPower" value="@Model.Product.SuperPower" />
+    <input hidden asp-for="@Model.Product.Description" value="@Model.Product.Description" />
+    <input hidden asp-for="@Model.Product.Color" value="@Model.Product.Color" />
+    <input hidden asp-for="@Model.Product.Category" value="@Model.Product.Category" />
+    <input hidden asp-for="@Model.Product.Breed" value="@Model.Product.Breed" />
+    <input hidden asp-for="@Model.Product.Age" value="@Model.Product.Age" />
     <button class="btn btn-outline-warning" type="submit">Add to Cart</button>
 </form>
 <img src=@Model.Product.Image>

@@ -14,46 +14,24 @@
 
 <body>
 
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="1700" data-wrap="true">
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="5000" data-wrap="false" style="margin-bottom: 2em;">
         <div class="carousel-inner">
-            <div class="carousel-item active" >
+            <div class="carousel-item active">
                 <img style="width: 85%; display: block;  margin-left: auto;  margin-right: auto;" class="d-block " src="https://cdn1-www.dogtime.com/assets/uploads/2019/04/dc-extended-universe-dceu-dog-names.jpg">
             </div>
-            <div class="carousel-item" >
+            <div class="carousel-item">
                 <img style="width: 75%; display: block;  margin-left: auto;  margin-right: auto;" class="d-block " src="https://s3.amazonaws.com/petcentral.com/wp-content/uploads/2020/08/14171356/dog-superhero-cosumes-robin-halloween-costume.jpg">
             </div>
-            <div class="carousel-item" >
+            <div class="carousel-item">
                 <img style="width: 80%; display: block;  margin-left: auto;  margin-right: auto;" class="d-block " src="https://img.huffingtonpost.com/asset/5834a7ba180000230c30f853.jpeg?ops=scalefit_630_noupscale" alt="Third slide">
             </div>
         </div>
     </div>
 
-    <section style='width: 75%; display: flex; flex-flow: row wrap; margin: 0 auto;'>
-
-        @foreach (var item in Model)
-        {
-            string image = "";
-            @if (@item.Image == null)
-            {
-                image = "https://i.ytimg.com/vi/jzUlYLC1DVA/maxresdefault.jpg";
-            }
-            @if (@item.Image != null)
-            {
-                image = @item.Image;
-            }
-            @if (item.IsFeature)
-            {
-                <section style='width: 150px; margin-bottom: 20px; margin-right: 40px;'>
-                    <a asp-controller="Products" asp-action="Details" asp-route-id="@item.Id"><img style='width: 150px; height: 125px;' src="@image" alt="image" /></a><br />
-                    <h1> @item.Name</h1>
-                    <h3>@item.Price</h3>
-                </section>
-
-            }
 
 
-        }
-    </section>
-            <a asp-controller="Categories" asp-action="All">Shop All</a>
+    <div>
+        <a class="btn btn-danger" style="color:white" asp-controller="Categories" asp-action="All">SHOP ALL</a>
+    </div>
 
 </body>

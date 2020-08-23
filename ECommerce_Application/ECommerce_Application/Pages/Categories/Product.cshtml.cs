@@ -35,7 +35,8 @@ namespace ECommerce_Application.Pages.Categories
         }
         public async Task<IActionResult> OnGet(int id)
         {
-            Product = await _product.GetProduct(id);
+            Product product = await _product.GetProduct(id);
+            Product = product;
             if (Product == null)
             {
                 return NotFound();

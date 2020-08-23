@@ -7,7 +7,7 @@ namespace ECommerce_Application.Models.Interfaces
 {
     public interface ICartItem
     {
-        public Task<CartItem> GetCartItem(int id);
+        public Task<List<CartItem>> GetCartItems(string userEmail);
         public Task<CartItem> UpdateCartItem(CartItem cartItem);
         public Task<CartItem> AddProductToCart(Product product, Cart cart, int quantity);
         public Task RemoveProductFromCart(Product product, Cart cart);

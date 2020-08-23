@@ -17,14 +17,16 @@ namespace ECommerce_Application.Models.Services
         {
             _context = context;
         }
-        public async Task<CartItem> AddProductToCart(Product product, Cart cart)
+        public async Task<CartItem> AddProductToCart(Product product, Cart cart, int quantity)
         {
+
             CartItem cartItem = new CartItem()
             {
                 Cart = cart,
                 Product = product,
                 CartId = cart.Id,
-                ProductId = product.Id
+                ProductId = product.Id,
+                Quantity = quantity
             };
             _context.Entry(cartItem).State = EntityState.Added;
             await _context.SaveChangesAsync();

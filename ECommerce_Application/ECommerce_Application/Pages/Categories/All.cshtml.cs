@@ -12,7 +12,6 @@ namespace ECommerce_Application.Pages.Categories
     public class AllModel : PageModel
     {
         private readonly IProduct _product;
-        private readonly IImage _image;
 
         [BindProperty]
         public List<Product> Products { get; set; }

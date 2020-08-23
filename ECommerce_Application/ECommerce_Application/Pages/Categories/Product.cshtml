@@ -1,0 +1,31 @@
+﻿@page
+@model ECommerce_Application.Pages.Categories.ProductModel
+@{
+    ViewData["Title"] = "Product";
+    Layout = "_Layout";
+
+}
+
+<h1>@Model.Product.Name</h1>
+<h2>Price: $@Model.Product.Price</h2>
+<h2>Category: @Model.Product.Category</h2>
+<form method="post" style="text-align:center">
+    <label asp-for="@Model.Quantity">Quantity Available: @Model.Product.Quantity</label>
+    <input asp-for="@Model.Quantity" placeholder="1"/>
+
+
+    <button class="btn btn-outline-warning" type="submit">Add to Cart</button>
+</form>
+<img src=@Model.Product.Image>
+
+<h2>Age: @Model.Product.Age</h2>
+<h2>Breed: @Model.Product.Breed</h2>
+<h2>Color: @Model.Product.Color</h2>
+<h2>SuperPower: @Model.Product.SuperPower</h2>
+<p>Description: @Model.Product.Description</p>
+
+
+
+
+
+

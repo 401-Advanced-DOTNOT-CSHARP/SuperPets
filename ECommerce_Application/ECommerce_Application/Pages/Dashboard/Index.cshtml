@@ -1,0 +1,118 @@
+﻿@page
+@model ECommerce_Application.Pages.Dashboard.IndexModel
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        <a style="color:white" asp-page="Create">Create A New Super Pet</a><br>
+        <a style="color:white" asp-page="Picture">Upload A New Picture For Super Pet</a>
+
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].SKU)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].Breed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].SuperPower)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].Color)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Products[0].IsFeature)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.Products)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SKU)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Breed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SuperPower)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Color)
+                    </td>
+                    <td>
+                        @if (@item.Image != null)
+                        {
+                            <img src=" @item.Image;" />
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsFeature)
+                    </td>
+                    <td>
+                        <a style="color:white" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> 
+                        <a style="color:white" asp-page="./Details" asp-route-id="@item.Id">Details</a> 
+                        <a style="color:white" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

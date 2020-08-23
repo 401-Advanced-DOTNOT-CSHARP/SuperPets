@@ -13,8 +13,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace ECommerce_Application.Pages.Dashboard
 {
 /*    [Authorize(Policy = "Administrator")]
-*/    
-    
+*/
+
     public class PictureModel : PageModel
     {
         private IImage _image;

@@ -33,7 +33,7 @@ namespace ECommerce_Application.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return new RedirectToPageResult("/");
                 }
             }
 

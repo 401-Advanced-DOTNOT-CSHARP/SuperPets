@@ -1,9 +1,11 @@
-﻿@model List<ECommerce_Application.Models.Cart>
+﻿@model ECommerce_Application.Models.Cart
+<h1>Items in Cart</h1>
 
-<h1>Default</h1>
-
-@foreach (var item in Model)
+@foreach (var item in @Model.CartItems)
 {
-   // <h1>@item.Name</h1>
-
+    <h2>@item.Quantity</h2>
+    <h1>@item.Product.Name</h1>
+    <h2>@item.Product.Price</h2>
 }
+    <h2>@Model.Quantity</h2>
+    <h2>@Model.Price</h2>

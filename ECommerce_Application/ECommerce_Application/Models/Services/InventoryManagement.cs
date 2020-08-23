@@ -68,6 +68,7 @@ namespace ECommerce_Application.Models.Services
             dog.Color = product.Color;
             dog.Breed = product.Breed;
             dog.Age = product.Age;
+            dog.Quantity = product.Quantity;
             if(dog.Image == null)
             {
             dog.Image = await _image.GetBlob(product.Name, _config["ImageContainer"]);

@@ -17,23 +17,30 @@ namespace ECommerce_Application.Models.Services
         {
             _context = context;
         }
-        public async Task<CartItem> AddProductToCart(Product product, Cart cart)
+        public async Task<CartItem> AddProductToCart(Product product, Cart cart, int quantity)
         {
+
             CartItem cartItem = new CartItem()
             {
                 Cart = cart,
                 Product = product,
                 CartId = cart.Id,
-                ProductId = product.Id
+                ProductId = product.Id,
+                Quantity = quantity
             };
             _context.Entry(cartItem).State = EntityState.Added;
             await _context.SaveChangesAsync();
             return cartItem;
         }
 
-        public Task<CartItem> GetCartItem(int id)
+        public async Task<List<CartItem>> GetCartItems(string userEmail)
         {
-            throw new NotImplementedException();
+            var cartItem = await _context.CartItems.Where(x => x.Cart.UserEmail == userEmail)
+                .Include(x => x.Product)
+                .Include(x => x.Cart)
+                .ToListAsync();
+            return cartItem;
+
         }
 
         public async Task RemoveProductFromCart(Product product, Cart cart)

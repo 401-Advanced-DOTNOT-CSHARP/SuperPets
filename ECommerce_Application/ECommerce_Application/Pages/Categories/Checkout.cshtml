@@ -1,0 +1,31 @@
+﻿@page
+@model ECommerce_Application.Pages.Categories.CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "_Layout";
+}
+
+<h1>Checkout</h1>
+
+<form method="post">
+    <label asp-for="@Model.Order.FirstName">First Name</label>
+    <input asp-for="@Model.Order.FirstName" />
+    <label asp-for="@Model.Order.LastName">Last Name</label>
+    <input asp-for="@Model.Order.LastName" />
+    <label asp-for="@Model.Order.Address">Address</label>
+    <input asp-for="@Model.Order.Address" />
+    <label asp-for="@Model.Order.City">City</label>
+    <input asp-for="@Model.Order.City" />
+    <label asp-for="@Model.Order.State">State</label>
+    <input asp-for="@Model.Order.State" />
+    <label asp-for="@Model.Order.ZipCode">ZipCode</label>
+    <input asp-for="@Model.Order.ZipCode" />
+    <label asp-for="@Model.Order.UserEmail">Email</label>
+    <input asp-for="@Model.Order.UserEmail" />
+
+    <input hidden asp-for="@Model.Cart.Id" value="@Model.Cart.Id" />
+    <input hidden asp-for="@Model.Cart.Price" value="@Model.Cart.Price" />
+    <input hidden asp-for="@Model.Cart.Quantity" value="@Model.Cart.Quantity" />
+    <button type="submit">Pay Now</button>
+</form>
+

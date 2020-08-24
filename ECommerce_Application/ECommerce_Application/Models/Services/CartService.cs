@@ -39,6 +39,7 @@ namespace ECommerce_Application.Models.Services
                 .Where(x => x.UserEmail == email)
                 .Include(x => x.CartItems)
                 .ThenInclude(x => x.Product)
+                .OrderByDescending(x => x.Date)
                 .FirstOrDefaultAsync();
 
             return cart;

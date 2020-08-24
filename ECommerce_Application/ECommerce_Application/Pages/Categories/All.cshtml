@@ -5,12 +5,17 @@
     Layout = "_Layout";
 
 }
+<head>
+    <link rel="stylesheet" href="~/Styles/StyleSheet.css" type="text/css" />
 
-    <body>
+</head>
 
-        <section style='width: 75%; display: flex; flex-flow: row wrap; margin: 0 auto;'>
-            @if(Model.Products != null)
-            {
+<body>
+
+
+    <section style='width: 75%; display: flex; flex-flow: row wrap; margin: 0 auto;'>
+        @if (Model.Products != null)
+        {
 
             @foreach (var item in @Model.Products)
             {
@@ -23,14 +28,105 @@
                 {
                     image = @item.Image;
                 }
-                <section style='width: 150px; margin-bottom: 20px; margin-right: 40px;'>
-                    <a asp-page="/Categories/Product" asp-route-id="@item.Id"><img style='width: 150px; height: 125px;' src="@image" alt="image" /></a><br />
-                    <h1>Name: @item.Name</h1>
-                    <h3>Price: @item.Price</h3>
+                <section style=' width: 24%; height: 20%; margin-right: 5em; margin-bottom: 5em;'>
+                    <div>
+                        <div class="hovereffect">
+                           <img class="img-responsive" style='width: 90%; display: block;  margin-left: auto;  margin-right: auto; border-radius: 20px;' src="@image" alt="image" /><br />
+                            <div class="overlay">
+                                <a asp-page="/Categories/Product" asp-route-id="@item.Id"><h2 style="text-align:center;">@item.Name</h2></a>
+                                <h2 style="text-align:center;">Price: @item.Price</h2>
+
+
+                            </div>
+                        </div>
+                    </div>
 
                 </section>
             }
-            }
-        </section>
+        }
+    </section>
 
-    </body>
+</body>
+
+
+<style>
+    .hovereffect {
+        width: 100%;
+        height: 100%;
+        float: left;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        cursor: default;
+    }
+
+        .hovereffect .overlay {
+            position: absolute;
+            overflow: hidden;
+            width: 80%;
+            height: 80%;
+            left: 10%;
+            top: 10%;
+
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+            -webkit-transform: scale(0,1);
+            -ms-transform: scale(0,1);
+            transform: scale(0,1);
+        }
+
+        .hovereffect:hover .overlay {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .hovereffect img {
+            display: block;
+            position: relative;
+            -webkit-transition: all 0.35s;
+            transition: all 0.35s;
+        }
+
+        .hovereffect:hover img {
+            filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="linear" slope="0.6" /><feFuncG type="linear" slope="0.6" /><feFuncB type="linear" slope="0.6" /></feComponentTransfer></filter></svg>#filter');
+            filter: brightness(0.6);
+            -webkit-filter: brightness(0.6);
+        }
+
+        .hovereffect h2 {
+            text-transform: uppercase;
+            text-align: center;
+            position: relative;
+            font-size: 17px;
+            background-color: transparent;
+            color: #FFF;
+            padding: 1em 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+            -webkit-transform: translate3d(0,-100%,0);
+            transform: translate3d(0,-100%,0);
+        }
+
+        .hovereffect a, .hovereffect p {
+            color: #FFF;
+            padding: 1em 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+            -webkit-transform: translate3d(0,100%,0);
+            transform: translate3d(0,100%,0);
+        }
+
+        .hovereffect:hover a, .hovereffect:hover p, .hovereffect:hover h2 {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
+        }
+</style>

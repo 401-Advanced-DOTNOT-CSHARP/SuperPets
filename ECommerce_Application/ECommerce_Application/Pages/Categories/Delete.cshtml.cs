@@ -7,12 +7,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ECommerce_Application.Data;
 using ECommerce_Application.Models;
-using Microsoft.AspNetCore.Authorization;
 
-namespace ECommerce_Application.Pages.Dashboard
+namespace ECommerce_Application.Pages.Categories
 {
-   [Authorize(Policy = "Administrator")]
-
     public class DeleteModel : PageModel
     {
         private readonly ECommerce_Application.Data.StoreDbContext _context;
@@ -23,8 +20,7 @@ namespace ECommerce_Application.Pages.Dashboard
         }
 
         [BindProperty]
-        public Product Product { get; set; }
-        
+        public CartItem CartItem { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -33,9 +29,11 @@ namespace ECommerce_Application.Pages.Dashboard
                 return NotFound();
             }
 
-            Product = await _context.Products.FirstOrDefaultAsync(m => m.Id == id);
+            CartItem = await _context.CartItems
+                .Include(c => c.Cart)
+                .Include(c => c.Product).FirstOrDefaultAsync(m => m.CartId == id);
 
-            if (Product == null)
+            if (CartItem == null)
             {
                 return NotFound();
             }
@@ -49,11 +47,13 @@ namespace ECommerce_Application.Pages.Dashboard
                 return NotFound();
             }
 
-            Product = await _context.Products.FindAsync(id);
+            CartItem = await _context.CartItems
+                 .Include(c => c.Cart)
+                .Include(c => c.Product).FirstOrDefaultAsync(m => m.CartId == id);
 
-            if (Product != null)
+            if (CartItem != null)
             {
-                _context.Products.Remove(Product);
+                _context.CartItems.Remove(CartItem);
                 await _context.SaveChangesAsync();
             }
 

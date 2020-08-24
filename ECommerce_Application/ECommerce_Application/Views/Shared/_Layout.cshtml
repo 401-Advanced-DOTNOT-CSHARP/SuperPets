@@ -54,20 +54,21 @@
                 }
                 else
                 {
-                <div class="mx-auto">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active" style="margin-right: 1em;">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li>
-                            <a asp-page="/Categories/Cart"><img src="https://previews.123rf.com/images/asmati/asmati1603/asmati160301228/53562975-shopping-cart-line-vector-icon-on-transparent-background.jpg" /></a>
-                        </li>
-                        <li>
+                    <div class="mx-auto">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active" style="margin-right: 1em;">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li>
+                                <a asp-page="/Categories/Index"><img style="width:40px;" src="https://img.icons8.com/nolan/2x/fast-cart.png" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul>
+                        <li style="list-style:none;">
                             <form asp-page="/Account/Logout" method="post"> <button class="btn btn-outline-warning" type="submit"> LOGOUT</button></form>
                         </li>
                     </ul>
-                </div>
-
                 }
 
 
@@ -75,34 +76,34 @@
             else
             {
 
-            <div class="mx-auto" style="margin-bottom: 3em;">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active" style="margin-right: 1em;">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active" style="margin-right: 1em;">
-                        <a class="nav-link" asp-page="/Account/Login">Login</a>
-                    </li>
-                    <li class="nav-item active" style="margin-right: 1em;">
-                        <a class="nav-link" asp-page="/Account/Register">Register</a>
-                    </li>
-                </ul>
-            </div>
+                <div class="mx-auto" style="margin-bottom: 3em;">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active" style="margin-right: 1em;">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active" style="margin-right: 1em;">
+                            <a class="nav-link" asp-page="/Account/Login">Login</a>
+                        </li>
+                        <li class="nav-item active" style="margin-right: 1em;">
+                            <a class="nav-link" asp-page="/Account/Register">Register</a>
+                        </li>
+                    </ul>
+                </div>
             }
-            
 
 
-            
+
+
         </nav>
 
-        <h1>WELCOME TO SUPER HERO PETS!</h1>
+    
     </header>
 
 
     <div>
         @RenderBody()
     </div>
- 
+
     <footer>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

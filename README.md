@@ -86,7 +86,7 @@ Unit testing is included in the ECommerceTesting/Testing project using the xUnit
 
 ### Overall Project Schema
 ***[Add a description of your DB schema. Explain the relationships to me.]***
-![Database Schema](/assets/img/ERD.png)
+![Database Schema](/wwwroot/Assets/erd.png)
 
 ---
 ## Model Properties and Requirements

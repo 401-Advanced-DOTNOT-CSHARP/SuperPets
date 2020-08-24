@@ -34,27 +34,29 @@
         <tbody>
             @foreach (var item in Model.CartItem)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Product.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cart.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cart.Price)
-                </td>
-                <td>
-                    <a class="btn btn-danger" style="color:white" asp-page="./Edit" asp-route-id="@item.CartId">Edit</a>
-                    <a class="btn btn-danger" style="color:white" asp-page="./Delete" asp-route-id="@item.CartId">Delete</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cart.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cart.Price)
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" style="color:white" asp-page="./Edit" asp-route-id="@item.CartId">Edit</a>
+                        <a class="btn btn-danger" style="color:white" asp-page="./Delete" asp-route-id="@item.CartId">Delete</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
+    <button><a asp-page="/Categories/Checkout">Checkout</a></button>
+
 </body>
 
 

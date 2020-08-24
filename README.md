@@ -130,8 +130,7 @@ Unit testing is included in the ECommerceTesting/Testing project using the xUnit
 ---
 
 ## Authors
-Bryant Davis
-Lami Beach
+Bryant Davis & Lami Beach
 
 ---
 
@@ -148,3 +147,5 @@ BatSuperDog: https://longreads.com/2018/03/22/my-dog-is-10-3-supermutt/ (Krista 
 RobinSuperDog: https://petcentral.chewy.com/your-dog-will-save-the-day-with-these-halloween-superhero-costumes/ (Pet Central)
 
 PetCostumedDog: https://www.familyminded.com/s/pet-costumes-for-your-furry-friend-311d952248e04966 (Jessie Fetterling)
+
+BootstrapCheckOutTheme: https://mdbootstrap.com/education/bootstrap/ (MDBootstrap.com) 

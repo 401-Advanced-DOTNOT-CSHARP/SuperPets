@@ -26,6 +26,9 @@ namespace ECommerce_Application.Pages.Categories
         [BindProperty]
         public Cart Cart { get; set; }
 
+
+
+
         public async Task<IActionResult> OnGet()
         {
            Cart = await _cart.GetCart(User.Identity.Name);

@@ -32,7 +32,7 @@
         <button class="btn btn-outline-warning" type="submit">Add to Cart</button>
     </form>
 
-    <img  style='width: 30%; display: block;  margin-left: auto;  margin-right: auto; border-radius: 20px;' src=@Model.Product.Image>
+    <img style='width: 30%; display: block;  margin-left: auto;  margin-right: auto; border-radius: 20px;' src=@Model.Product.Image>
 
     <h2 style="text-align: center; margin-top: 1em;">Age: @Model.Product.Age</h2>
     <h2 style="text-align: center; margin-top: 1em;">Breed: @Model.Product.Breed</h2>
@@ -42,6 +42,9 @@
 
 
     @await Component.InvokeAsync("TopPosts", User.Identity.Name)
+
+
+   <button><a asp-page="/Categories/Checkout">Checkout</a></button>
 
 </body>
 

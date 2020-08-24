@@ -37,6 +37,9 @@ namespace ECommerce_Application.Models.Services
         {
             var cart = await _context.Carts
                 .Where(x => x.UserEmail == email)
+                .Include(x => x.CartItems)
+                .ThenInclude(x => x.Product)
+                .OrderByDescending(x => x.Date)
                 .FirstOrDefaultAsync();
 
             return cart;

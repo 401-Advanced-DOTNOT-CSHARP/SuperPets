@@ -75,7 +75,7 @@ namespace ECommerce_Application.Data
                      Breed = "Labradoodle",
                      Color = "black",
                      Description = "Fastest dog in the world. She's beat Usain Bolt... Twice. ",
-                     Price = 90000000,
+                     Price = 9000,
                      SuperPower = "Super speed",
                      Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/rye.jpeg",
                      Category = "Poodles",
@@ -89,7 +89,7 @@ namespace ECommerce_Application.Data
                       Breed = "Dog",
                       Color = "Brown and White",
                       Description = "Will knock anything on your desk onto the floor. Can also poop in toilet. ",
-                      Price = 40000,
+                      Price = 4000,
                       SuperPower = "Personality",
                       Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/backup.jpeg",
                       Category = "Poodles",
@@ -117,7 +117,7 @@ namespace ECommerce_Application.Data
                         Breed = "Dog",
                         Color = "Grey",
                         Description = "Disrupts Zoom meetings. Can order Starbucks on occassion.",
-                        Price = 6000000,
+                        Price = 6000,
                         SuperPower = "Ordering coffee",
                         Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Josie",
                         Category = "Bully",
@@ -131,7 +131,7 @@ namespace ECommerce_Application.Data
                          Breed = "Dog",
                          Color = "Orangeish",
                          Description = "As if a dog wasn't enough, this guy comes with laser eyes. ",
-                         Price = 1000000,
+                         Price = 1000,
                          SuperPower = "Laser Eyes",
                          Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/chubbs.jpeg",
                          Category = "Bully",
@@ -145,7 +145,7 @@ namespace ECommerce_Application.Data
                           Breed = "Dog",
                           Color = "Orange and White",
                           Description = "An engineer who dabbles in explosives.",
-                          Price = 500000,
+                          Price = 5000,
                           SuperPower = "Super Genius",
                           Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Peanut.jpeg",
                           Category = "Bully",
@@ -159,7 +159,7 @@ namespace ECommerce_Application.Data
                            Breed = "Pomeranian",
                            Color = "Black",
                            Description = "Makes bukoo money.",
-                           Price = 100000,
+                           Price = 1000,
                            SuperPower = "Can produce cash out of thin-air",
                            Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Mani",
                            Category = "Mixed",
@@ -173,6 +173,8 @@ namespace ECommerce_Application.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
 
 
     }

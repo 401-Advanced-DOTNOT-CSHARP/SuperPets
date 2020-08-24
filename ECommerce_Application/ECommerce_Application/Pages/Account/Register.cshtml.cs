@@ -62,7 +62,8 @@ namespace ECommerce_Application.Pages.Account
                 await _sender.SendEmailAsync(customer.Email, subject, htmlMessage);
                 Cart cart = new Cart()
                 {
-                    UserEmail = customer.Email
+                    UserEmail = customer.Email,
+                    Date = DateTime.Now
                 };
                 await _cart.CreateCart(cart);
                 return RedirectToAction("Index", "Home");

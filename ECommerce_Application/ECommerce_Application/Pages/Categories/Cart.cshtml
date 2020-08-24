@@ -1,0 +1,11 @@
+﻿@page
+@model ECommerce_Application.Pages.Categories.CartModel
+@{
+    ViewData["Title"] = "Cart";
+    Layout = "_Layout";
+
+}
+
+<h1>Cart</h1>
+
+@await Component.InvokeAsync("TopPosts", User.Identity.Name)

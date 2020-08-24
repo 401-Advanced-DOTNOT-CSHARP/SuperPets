@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ECommerce_Application.Data;
+using ECommerce_Application.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,18 +13,19 @@ namespace ECommerce_Application.Components
     public class TopPostsViewComponent : ViewComponent
     {
         private StoreDbContext _context;
-        public TopPostsViewComponent(StoreDbContext context)
+        private readonly ICart _cart;
+
+        public TopPostsViewComponent(StoreDbContext context, ICart cart)
         {
             _context = context;
+            _cart = cart;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int number)
+        public async Task<IViewComponentResult> InvokeAsync(string userEmail)
         {
+            var cart = await _cart.GetCart(userEmail);
 
-            // do some logic to pull from the DB, the posts
-            var posts = await _context.Products.OrderByDescending(x => x.Id).Take(number).ToListAsync();
-
-            return View(posts);
+            return View(cart);
         }
     }
 }

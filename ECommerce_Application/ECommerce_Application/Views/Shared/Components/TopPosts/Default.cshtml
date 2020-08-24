@@ -1,9 +1,55 @@
-﻿@model List<ECommerce_Application.Models.Cart>
-
-<h1>Default</h1>
-
-@foreach (var item in Model)
+﻿@model ECommerce_Application.Models.Cart
+<h1>Items in Cart</h1>
+@if(Model != null)
 {
-   // <h1>@item.Name</h1>
 
+    <table>
+        <thead>
+        <tr>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+
+        </thead>
+        <tbody>
+
+@foreach (var item in @Model.CartItems)
+{
+    <tr>
+        <td>
+    @item.Quantity
+        </td>
+        <td>
+
+    @item.Product.Name
+        </td>
+        <td>
+    @item.Product.Price
+
+        </td>
+    </tr>
+}
+            <tr>
+                <td>
+    @Model.Quantity
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+    @Model.Price
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button><a asp-page="/Categories/Checkout">Checkout</a></button>
 }

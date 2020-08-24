@@ -51,6 +51,10 @@ namespace ECommerce_Application
             services.AddTransient<IImage, Blob>();
             services.AddTransient<IEmailSender, EmailSenderService>();
             services.AddTransient<ICart, CartService>();
+            services.AddTransient<ICartItem, CartItemService>();
+            services.AddTransient<IOrder, OrderService>();
+            services.AddTransient<IPayment, PaymentService>();
+
 
 
             services.AddAuthorization(options =>

@@ -1,19 +1,25 @@
 ﻿@model ECommerce_Application.Models.Cart
-<h1>Items in Cart</h1>
+<h1 style="text-align: center; margin-top: 5em;">Items in Cart</h1>
 @if(Model != null)
 {
 
-    <table>
+    <table class="table">
         <thead>
         <tr>
             <th>
-                Quantity
+                @Html.DisplayNameFor(model => model.Quantity)
+
             </th>
             <th>
-                Name
+                @Html.DisplayNameFor(model => model.CartItems)
+
             </th>
             <th>
-                Price
+                @Html.DisplayNameFor(model => model.Price)
+
+            </th>
+            <th>
+
             </th>
         </tr>
 
@@ -24,14 +30,14 @@
 {
     <tr>
         <td>
-    @item.Quantity
+            @Html.DisplayFor(modelItem => item.Quantity)
         </td>
         <td>
 
-    @item.Product.Name
+            @Html.DisplayFor(modelItem => item.Product.Name)
         </td>
         <td>
-    @item.Product.Price
+            @Html.DisplayFor(modelItem => item.Product.Price)
 
         </td>
     </tr>

@@ -18,7 +18,10 @@
         {
 
             @foreach (var item in @Model.Products)
-            {
+            {   
+                @if(item.Quantity != 0)
+                {
+
                 string image = "";
                 @if (@item.Image == null)
                 {
@@ -43,6 +46,7 @@
 
                 </section>
             }
+                }
         }
     </section>
 

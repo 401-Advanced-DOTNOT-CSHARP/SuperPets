@@ -24,6 +24,8 @@
                     <!--Card content-->
                     <form method="post" class="card-body">
 
+        <input hidden asp-for="@Model.Order.CartId" value="@Model.Cart.Id" />
+        <input hidden asp-for="@Model.Order.UserEmail" value="@User.Identity.Name" />
                         <!--Grid row-->
                         <div class="row">
 
@@ -52,8 +54,6 @@
 
                         </div>
                         <!--Grid row-->
-
-
                         <!--email-->
                         <div class="md-form mb-5">
                             <input asp-for="@Model.Order.UserEmail" type="text" id="email" class="form-control" placeholder="youremail@example.com">
@@ -79,7 +79,7 @@
                             <div class="col-lg-4 col-md-12 mb-4">
 
                                 <label for="country">Country</label>
-                                <select  class="custom-select d-block w-100" id="country" required>
+                                <select class="custom-select d-block w-100" id="country" required>
                                     <option value="">Country</option>
                                     <option>United States</option>
                                 </select>
@@ -101,6 +101,10 @@
                                     Please provide a valid state.
                                 </div>
 
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <label asp-for="@Model.Order.City" for="city" class="">City</label>
+                                <input asp-for="@Model.Order.City" type="text" id="city" class="form-control" placeholder="City">
                             </div>
                             <!--Grid column-->
                             <!--Grid column-->
@@ -155,7 +159,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label >Credit card number</label>
+                                <label>Credit card number</label>
                                 <select class="custom-select d-block w-100">
                                     <option value="0">Select a card:</option>
                                     <option value="1">XXX-XXX-XXX-XXXX</option>
@@ -203,9 +207,7 @@
             <div class="col-md-4 mb-4">
                 <form method="post">
                     <!-- Heading -->
-
-
-                      @*      <input  asp-for="@Model.Cart.Quantity" value="@Model.Cart.Quantity" />Items*@
+                    @*      <input  asp-for="@Model.Cart.Quantity" value="@Model.Cart.Quantity" />Items*@
 
                     <!-- Cart -->
                     <ul class="list-group mb-3 z-depth-1">
@@ -217,7 +219,7 @@
                     </ul>
                     <!-- Cart -->
 
-                    </form>
+                </form>
             </div>
             <!--Grid column-->
 

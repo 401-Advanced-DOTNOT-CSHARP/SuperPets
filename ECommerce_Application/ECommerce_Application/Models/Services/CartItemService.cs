@@ -13,11 +13,13 @@ namespace ECommerce_Application.Models.Services
     {
         private readonly StoreDbContext _context;
         private readonly ICart _cart;
+        private readonly IProduct _product;
 
-        public CartItemService(StoreDbContext context, ICart cart)
+        public CartItemService(StoreDbContext context, ICart cart, IProduct product)
         {
             _context = context;
             _cart = cart;
+            _product = product;
         }
         public async Task<CartItem> AddProductToCart(Product product, Cart cart, int quantity)
         {
@@ -30,8 +32,10 @@ namespace ECommerce_Application.Models.Services
                 Quantity = quantity
             };
             cart.Quantity += quantity;
-            cart.Price += product.Price;
+            cart.Price += product.Price * quantity;
+            product.Quantity -= quantity;
 
+            await _product.UpdateProduct(product);
             await _cart.UpdateCart(cart);
             _context.Entry(cartItem).State = EntityState.Added;
             await _context.SaveChangesAsync();
@@ -48,12 +52,27 @@ namespace ECommerce_Application.Models.Services
 
         }
 
+        public async Task<CartItem> GetCartItem(int productId, int cartId)
+        {
+            var cartItem = await _context.CartItems.Where(x => x.ProductId == productId && x.CartId == cartId)
+                .Include(x => x.Product)
+                .Include(x => x.Cart)
+                .FirstOrDefaultAsync();
+            return cartItem;
+
+        }
+
         public async Task RemoveProductFromCart(Product product, Cart cart)
         {
             CartItem removedCartItem = _context.CartItems
                 .Where(x => x.CartId == cart.Id && x.ProductId == product.Id)
                 .FirstOrDefault();
 
+            cart.Quantity -= removedCartItem.Quantity;
+            cart.Price -= product.Price * removedCartItem.Quantity;
+            product.Quantity += removedCartItem.Quantity;
+            await _product.UpdateProduct(product);
+            await _cart.UpdateCart(cart);
             _context.Entry(removedCartItem).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
 
@@ -70,6 +89,34 @@ namespace ECommerce_Application.Models.Services
             _context.Entry(updatedCartItem).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return updatedCartItem;
+        }
+        public async Task<CartItem> UpdateCartQuantityAndPrice(Product product, Cart cart, int quantity)
+        {
+            var cartItem = await _context.CartItems.Where(x => x.ProductId == product.Id && x.CartId == cart.Id)
+                .Include(x => x.Product)
+                .Include(x => x.Cart)
+                .FirstOrDefaultAsync();
+            if(cartItem.Quantity > quantity && product.Quantity >= quantity-1)
+            {
+                cart.Quantity -= cartItem.Quantity - quantity;
+                cart.Price -= product.Price * (cartItem.Quantity - quantity); 
+                cartItem.Quantity = quantity;
+                product.Quantity += cartItem.Quantity - quantity;
+            }
+            if(cartItem.Quantity < quantity && product.Quantity >= quantity - 1)
+            {
+                cart.Quantity += quantity - cartItem.Quantity;
+                cart.Price += product.Price * (quantity - cartItem.Quantity);
+                cartItem.Quantity = quantity;
+                product.Quantity -= quantity - cartItem.Quantity;
+
+            }
+            await _product.UpdateProduct(product);
+            await _cart.UpdateCart(cart);
+            await UpdateCartItem(cartItem);
+
+            return cartItem;
+
         }
     }
 }

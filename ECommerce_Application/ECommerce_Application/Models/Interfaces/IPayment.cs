@@ -7,6 +7,6 @@ namespace ECommerce_Application.Models.Interfaces
 {
     public interface IPayment
     {
-        Task<string> Run(string userEmail);
+        Task<string> Run(string userEmail, string cardName, string expiration, string cvc);
     }
 }

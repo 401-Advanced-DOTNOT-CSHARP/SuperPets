@@ -25,7 +25,7 @@ namespace ECommerce_Application.Models.Services
             _order = order;
             _userManager = userManager;
         }
-        public async Task<string> Run(string userEmail)
+        public async Task<string> Run(string userEmail, string cardName, string expiration, string cvc)
         {
             // decalred the type of environment
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
@@ -43,9 +43,9 @@ namespace ECommerce_Application.Models.Services
 
             var creditCard = new creditCardType
             {
-                cardNumber = "4111111111111111",
-                expirationDate = "1120",
-                cardCode = "555"
+                cardNumber = _config[cardName],
+                expirationDate = expiration,
+                cardCode = cvc
             };
             
             customerAddressType billingAddress = await GetsBillingAddress(userEmail);
@@ -70,9 +70,16 @@ namespace ECommerce_Application.Models.Services
             controller.Execute();
 
             var response = controller.GetApiResponse();
+            if(response != null)
+            {
+                if(response.messages.resultCode == messageTypeEnum.Ok)
+                {
+                    return "Success";
+                }
+            }
 
 
-            return "";
+            return "Failed";
         }
 
         private async Task<customerAddressType> GetsBillingAddress(string userEmail)

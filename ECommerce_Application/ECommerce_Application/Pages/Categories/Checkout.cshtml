@@ -166,39 +166,22 @@
                                 <label style="color:black;">Credit card number</label>
                                 <select class="custom-select d-block w-100" asp-for="@Model.Name">
                                     <option>Select a card:</option>
-                                    <option value="My Credit Card">My Credit Card: XXX-XXX-XXX-0002</option>
-                                    <option value="My Spouses Credit Card">My Spouses Credit Card: XXX-XXX-XXX-0002</option>
-                                    <option value="Joint Card">Joint Card: XXX-XXX-XXX-0002</option>
-                                    <option value="My Moms Debit Card">My Moms Debit Card: XXX-XXX-XXX-0002</option>
-                                    <option value="My Dads Debit Card">My Dads Debit Card: XXX-XXX-XXX-0002</option>
-                                    <option value="My Debit Card">My Debit Card: XXX-XXX-XXX-0002</option>
-                                    <option value="My Spouses Debit Card">My Spouses Debit Card: XXX-XXX-XXX-0002</option>
-                                    <option value="My Brothers Debit Card">My Brothers Debit Card: XXX-XXX-XXX-0002</option>
-                                    <option value="My Sisters Debit Card">My Sisters Debit Card: XXX-XXX-XXX-0002</option>
+                                    <option value="My Credit Card">American Express: XXX-XXX-XXX-0002</option>
+                                    <option value="My Spouses Credit Card">Discover Card: XXX-XXX-XXX-0012</option>
+                                    <option value="Joint Card">JCB: XXX-XXX-XXX-0017</option>
+                                    <option value="My Moms Debit Card">Visa: XXX-XXX-XXX-1111</option>
+                                    <option value="My Debit Card">Visa: XXX-XXX-XXX-0027</option>
+                                    <option value="My Spouses Debit Card">Visa: XXX-XXX-XXX-8888</option>
+                                    <option value="My Dads Debit Card">MasterCard: XXX-XXX-XXX-0015</option>
+                                    <option value="My Brothers Debit Card">MasterCard: XXX-XXX-XXX-9703</option>
+                                    <option value="My Sisters Debit Card">MasterCard: XXX-XXX-XXX-9711</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Credit card number is required
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-expiration">Expiration</label>
-                                <input asp-for="@Model.Expiration" class="form-control" />                                
-                                <div class="invalid-feedback">
-                                    Expiration date required
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-expiration">CVV</label>
 
-                                <input asp-for="@Model.CVC" class="form-control" />
-
-                                <div class="invalid-feedback">
-                                    Security code required
-                                </div>
-                            </div>
-                        </div>
                         <hr class="mb-4">
                         <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
 

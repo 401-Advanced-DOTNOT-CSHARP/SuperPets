@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce_Application.Pages.Account
 {
+    /// <summary>
+    /// References the page
+    /// </summary>
     public class LogoutModel : PageModel
     {
         private SignInManager<Customer> _signInManager;
@@ -17,11 +20,16 @@ namespace ECommerce_Application.Pages.Account
         {
             _signInManager = signIn;
         }
+
         public void OnGet()
         {
 
         }
 
+        /// <summary>
+        /// Redirect the user to home on logging out
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPost()
         {
             await _signInManager.SignOutAsync();

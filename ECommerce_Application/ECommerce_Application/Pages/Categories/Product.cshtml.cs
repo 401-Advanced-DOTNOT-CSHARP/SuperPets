@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce_Application.Pages.Categories
 {
+    /// <summary>
+    /// References the page
+    /// </summary>
     public class ProductModel : PageModel
     {
         private readonly IProduct _product;
@@ -17,6 +20,10 @@ namespace ECommerce_Application.Pages.Categories
         private readonly ICart _cart;
         private readonly UserManager<Customer> _userManager;
 
+
+        /// <summary>
+        /// Properties for the product
+        /// </summary>
         [BindProperty]
         public Product Product { get; set; }
         [BindProperty]
@@ -33,6 +40,13 @@ namespace ECommerce_Application.Pages.Categories
             _cart = cart;
             _userManager = userManager;
         }
+
+
+        /// <summary>
+        /// Returns individual products
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OnGet(int id)
         {
             Product product = await _product.GetProduct(id);
@@ -45,6 +59,10 @@ namespace ECommerce_Application.Pages.Categories
             return Page();
         }
 
+        /// <summary>
+        /// On post Add the product to cart
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPost()
         {
 

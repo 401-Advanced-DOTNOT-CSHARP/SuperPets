@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models
 {
+    /// <summary>
+    /// Cart item class to specify the specific product
+    /// </summary>
     public class CartItem
     {
         public int ProductId { get; set; }

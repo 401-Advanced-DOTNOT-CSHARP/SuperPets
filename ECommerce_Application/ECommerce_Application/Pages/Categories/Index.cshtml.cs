@@ -11,6 +11,9 @@ using ECommerce_Application.Models.Interfaces;
 
 namespace ECommerce_Application.Pages.Categories
 {
+    /// <summary>
+    /// References the page
+    /// </summary>
     public class IndexModel : PageModel
     {
         private readonly ICartItem _cartItem;
@@ -21,6 +24,11 @@ namespace ECommerce_Application.Pages.Categories
             _cart = cart;
             _cartItem = cartItem;
         }
+
+
+        /// <summary>
+        /// Required properties for Cart Index page
+        /// </summary>
         [BindProperty]
         public Cart Cart { get;set; }
         [BindProperty]
@@ -33,6 +41,10 @@ namespace ECommerce_Application.Pages.Categories
         public int Quantity { get; set; }
 
 
+        /// <summary>
+        /// Get the cart based on the users info
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnGet()
         {
 ;           Cart = await _cart.GetCart(User.Identity.Name);
@@ -40,6 +52,11 @@ namespace ECommerce_Application.Pages.Categories
             return Page();
         }
 
+
+        /// <summary>
+        /// Delete the information based on user
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostDelete()
         {
             CartItem = await _cartItem.GetCartItem(ProductId, CartId);
@@ -48,6 +65,11 @@ namespace ECommerce_Application.Pages.Categories
             return RedirectToPage("./Index");
         }
 
+
+        /// <summary>
+        /// Update based upon user
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostUpdate()
         {
             CartItem = await _cartItem.GetCartItem(ProductId, CartId);

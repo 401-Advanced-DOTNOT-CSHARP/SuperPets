@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace ECommerce_Application.Models
 {
     /// <summary>
-    /// comment
+    /// The product class represents the meat of our site. It contains what we're selling.
     /// </summary>
     public class Product
     {

@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace ECommerce_Application.Models.Services
 {
+    /// <summary>
+    /// Referencing Microsofts built-in interface
+    /// </summary>
     public class EmailSenderService : IEmailSender
     {
         private IConfiguration _configuration;
@@ -18,6 +21,15 @@ namespace ECommerce_Application.Models.Services
             _configuration = configuration;
         }
 
+
+
+        /// <summary>
+        /// Microsofts email sender interface requires SendEmailAsync as a method
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="subject"></param>
+        /// <param name="htmlMessage"></param>
+        /// <returns></returns>
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             SendGridClient client = new SendGridClient(_configuration["SENDGRID_API_KEY"]);

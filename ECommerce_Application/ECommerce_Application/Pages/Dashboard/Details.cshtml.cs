@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce_Application.Pages.Dashboard
 {
+    /// <summary>
+    /// Only admin can edit
+    /// </summary>
     [Authorize(Policy = "Administrator")]
 
     public class DetailsModel : PageModel
@@ -24,6 +27,12 @@ namespace ECommerce_Application.Pages.Dashboard
 
         public Product Product { get; set; }
 
+
+        /// <summary>
+        /// Get the details upon request
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)

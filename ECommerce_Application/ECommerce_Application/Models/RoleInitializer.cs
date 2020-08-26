@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models
 {
+    /// <summary>
+    /// RoleInitializer to set our Administrator role
+    /// </summary>
     public class RoleInitializer
     {
         private static readonly List<IdentityRole> Roles = new List<IdentityRole>()
@@ -23,7 +26,12 @@ namespace ECommerce_Application.Models
         //add the roles into the db directly
 
 
-
+        /// <summary>
+        /// Seed the users and bring in the Services and Configuration
+        /// </summary>
+        /// <param name="serviceProvider"></param>
+        /// <param name="userManager"></param>
+        /// <param name="_config"></param>
         public static void SeedData(IServiceProvider serviceProvider, UserManager<Customer> userManager, IConfiguration _config)
         {
             using (var dbContext = new UserDbContext(serviceProvider.GetRequiredService<DbContextOptions<UserDbContext>>()))
@@ -34,6 +42,10 @@ namespace ECommerce_Application.Models
             }
         }
 
+        /// <summary>
+        /// Add roles to the database
+        /// </summary>
+        /// <param name="context"></param>
         public static void AddRoles(UserDbContext context)
         {
             if (context.Roles.Any()) return;
@@ -45,6 +57,13 @@ namespace ECommerce_Application.Models
             }
         }
 
+
+
+        /// <summary>
+        /// Seed the user Administrator with required information
+        /// </summary>
+        /// <param name="userManager"></param>
+        /// <param name="_config"></param>
         public static void SeedUsers(UserManager<Customer> userManager, IConfiguration _config)
         {
             if (userManager.FindByEmailAsync(_config["Administrator"]).Result == null)

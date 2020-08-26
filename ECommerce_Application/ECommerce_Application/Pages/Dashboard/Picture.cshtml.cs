@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce_Application.Pages.Dashboard
 {
+    /// <summary>
+    /// Only admin can edit
+    /// </summary>
     [Authorize(Policy = "Administrator")]
 
 
@@ -32,6 +35,11 @@ namespace ECommerce_Application.Pages.Dashboard
             _image = image;
             _product = product;
         }
+
+        /// <summary>
+        /// get the products to add pictures to
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnGet()
 
         {
@@ -39,6 +47,10 @@ namespace ECommerce_Application.Pages.Dashboard
             return Page();
         }
 
+        /// <summary>
+        /// Update the image upon post
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPost()
         {
             string ext = Path.GetExtension(Image.FileName);

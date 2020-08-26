@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
 using static ECommerce_Application.Pages.Account.RegisterModel;
 
 namespace ECommerce_Application.Pages.Categories
@@ -18,24 +19,34 @@ namespace ECommerce_Application.Pages.Categories
         private readonly ICart _cart;
         private readonly IPayment _payment;
         private IEmailSender _sender;
+        private readonly IConfiguration _config;
         private UserManager<Customer> _usermanager;
 
 
-        public CheckoutModel(IOrder order, ICart cart, IPayment payment, IEmailSender sender)
+        public CheckoutModel(IOrder order, ICart cart, IPayment payment, IEmailSender sender, IConfiguration config)
         {
             _order = order;
             _cart = cart;
             _payment = payment;
             _sender = sender;
+            _config = config;
 
         }
         [BindProperty]
         public Order Order { get; set; }
         [BindProperty]
         public Cart Cart { get; set; }
-
         [BindProperty]
         public RegisterViewModel Registration { get; set; }
+        [BindProperty]
+        public string Name { get; set; }
+        [BindProperty]
+        public bool Payment { get; set; }
+        [BindProperty]
+        public string Expiration { get; set; }
+        [BindProperty]
+        public string CVC { get; set; }
+
 
 
         public async Task<IActionResult> OnGet()
@@ -45,15 +56,28 @@ namespace ECommerce_Application.Pages.Categories
         }
         public async Task<IActionResult> OnPost()
         {
-            
-
+            Cart = await _cart.GetCart(User.Identity.Name);
             string subject = $"Receipt of purchase from SuperPets for {Order.FirstName}";
-            string htmlMessage = $"Your Order {Order.Date}!</h1><br><ul><li>{Order.CartId}</li></ul><ul><li>{Cart.CartItems}</li></ul><br><ul><li>{Order.Address}</li></ul>";
-
             Order.Date = DateTime.Now;
+            string htmlMessage = $"<h1>Your Order {Order.Date}!</h1><br><ul><li>{Order.CartId}</li></ul><ul>";
+            foreach (var item in Cart.CartItems)
+            {
+                htmlMessage += $"<li><h2>Name: {item.Product.Name}</h2>" +
+                    $"<h2>Quantity: {item.Quantity}</h2>" +
+                    $"<h2>Price: {item.Quantity * item.Product.Price}</h2></li>";
+            }
+            htmlMessage += $"<li>Total: {Cart.Price}</ul><br><ul><li>Shipping Address: {Order.Address}</li><li>City: {Order.City}</li><li>State: {Order.State}</li><li>ZipCode: {Order.ZipCode}</li></ul>";
+            string card = "Card:";
+            card += Name;
+            card += ":Number";
             Order.Cart = Cart;
             await _order.CreateOrder(Order);
-            var payment = await _payment.Run(Order.UserEmail);
+            var payment = await _payment.Run(Order.UserEmail, card, Expiration, CVC);
+            if(payment == "Failed")
+            {
+                Payment = true;
+                return Page();
+            }
             await _sender.SendEmailAsync(Order.UserEmail, subject, htmlMessage);
 
             Cart.Date = DateTime.Now;
@@ -65,7 +89,7 @@ namespace ECommerce_Application.Pages.Categories
             };
             await _cart.CreateCart(cart);
 
-            return new RedirectToPageResult("/");
+            return new RedirectToPageResult($"/");
         }
     }
 }

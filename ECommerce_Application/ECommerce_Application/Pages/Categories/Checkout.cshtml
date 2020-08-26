@@ -7,6 +7,10 @@
 
 <!--Main layout-->
 <main class="mt-5 pt-4">
+    @if (Model.Payment)
+    {
+        <p>Payment failed to process</p>
+    }
     <div class="container wow fadeIn">
 
         <!-- Heading -->
@@ -100,11 +104,11 @@
                                 <div class="invalid-feedback">
                                     Please provide a valid state.
                                 </div>
-
-                            </div>
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <label asp-for="@Model.Order.City" for="city" class="">City</label>
                                 <input asp-for="@Model.Order.City" type="text" id="city" class="form-control" placeholder="City">
+                            </div>
+
                             </div>
                             <!--Grid column-->
                             <!--Grid column-->
@@ -159,10 +163,18 @@
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label>Credit card number</label>
-                                <select class="custom-select d-block w-100">
-                                    <option value="0">Select a card:</option>
-                                    <option value="1">XXX-XXX-XXX-XXXX</option>
+                                <label style="color:black;">Credit card number</label>
+                                <select class="custom-select d-block w-100" asp-for="@Model.Name">
+                                    <option>Select a card:</option>
+                                    <option value="My Credit Card">My Credit Card: XXX-XXX-XXX-0002</option>
+                                    <option value="My Spouses Credit Card">My Spouses Credit Card: XXX-XXX-XXX-0002</option>
+                                    <option value="Joint Card">Joint Card: XXX-XXX-XXX-0002</option>
+                                    <option value="My Moms Debit Card">My Moms Debit Card: XXX-XXX-XXX-0002</option>
+                                    <option value="My Dads Debit Card">My Dads Debit Card: XXX-XXX-XXX-0002</option>
+                                    <option value="My Debit Card">My Debit Card: XXX-XXX-XXX-0002</option>
+                                    <option value="My Spouses Debit Card">My Spouses Debit Card: XXX-XXX-XXX-0002</option>
+                                    <option value="My Brothers Debit Card">My Brothers Debit Card: XXX-XXX-XXX-0002</option>
+                                    <option value="My Sisters Debit Card">My Sisters Debit Card: XXX-XXX-XXX-0002</option>
                                 </select>
                                 <div class="invalid-feedback">
                                     Credit card number is required
@@ -172,10 +184,7 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="cc-expiration">Expiration</label>
-                                <select class="custom-select d-block w-100">
-                                    <option value="0">Select Expiration Date:</option>
-                                    <option value="1">02/2026</option>
-                                </select>
+                                <input asp-for="@Model.Expiration" class="form-control" />                                
                                 <div class="invalid-feedback">
                                     Expiration date required
                                 </div>
@@ -183,10 +192,7 @@
                             <div class="col-md-3 mb-3">
                                 <label for="cc-expiration">CVV</label>
 
-                                <select class="custom-select d-block w-100">
-                                    <option value="0">CVV (3 numbers on back):</option>
-                                    <option value="1">911</option>
-                                </select>
+                                <input asp-for="@Model.CVC" class="form-control" />
 
                                 <div class="invalid-feedback">
                                     Security code required

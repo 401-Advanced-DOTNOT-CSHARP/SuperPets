@@ -11,6 +11,9 @@ using ECommerce_Application.Models;
 
 namespace ECommerce_Application.Pages.Categories
 {
+    /// <summary>
+    /// References the page
+    /// </summary>
     public class EditModel : PageModel
     {
         private readonly ECommerce_Application.Data.StoreDbContext _context;
@@ -23,6 +26,12 @@ namespace ECommerce_Application.Pages.Categories
         [BindProperty]
         public CartItem CartItem { get; set; }
 
+
+        /// <summary>
+        /// Allow the user to edit their product information
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -43,6 +52,10 @@ namespace ECommerce_Application.Pages.Categories
             return Page();
         }
 
+        /// <summary>
+        /// Post the users updated information
+        /// </summary>
+        /// <returns></returns>
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()

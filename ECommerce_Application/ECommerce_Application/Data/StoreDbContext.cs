@@ -10,11 +10,16 @@ namespace ECommerce_Application.Data
 {
     public class StoreDbContext : DbContext
     {
+        //Remains empty//
         public StoreDbContext(DbContextOptions<StoreDbContext> options) : base(options)
         {
 
         }
 
+        /// <summary>
+        /// Create the database model of the products
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -170,6 +175,9 @@ namespace ECommerce_Application.Data
 
         }
 
+        /// <summary>
+        /// This is the information we want to query. Collection of all entitys. 
+        /// </summary>
         public DbSet<Product> Products { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }

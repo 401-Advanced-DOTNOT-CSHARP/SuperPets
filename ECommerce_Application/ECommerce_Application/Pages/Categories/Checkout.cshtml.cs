@@ -13,6 +13,9 @@ using static ECommerce_Application.Pages.Account.RegisterModel;
 
 namespace ECommerce_Application.Pages.Categories
 {
+    /// <summary>
+    /// References the Page
+    /// </summary>
     public class CheckoutModel : PageModel
     {
         private readonly IOrder _order;
@@ -32,6 +35,10 @@ namespace ECommerce_Application.Pages.Categories
             _config = config;
 
         }
+
+        /// <summary>
+        /// All these properties are required to checkkout
+        /// </summary>
         [BindProperty]
         public Order Order { get; set; }
         [BindProperty]
@@ -49,11 +56,20 @@ namespace ECommerce_Application.Pages.Categories
 
 
 
+        /// <summary>
+        /// Get the users information and return the page
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnGet()
         {
            Cart = await _cart.GetCart(User.Identity.Name);
             return Page();
         }
+
+        /// <summary>
+        /// Post the users order information on the page, and send them a receipt with said information
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPost()
         {
             Cart = await _cart.GetCart(User.Identity.Name);
@@ -71,6 +87,7 @@ namespace ECommerce_Application.Pages.Categories
             card += Name;
             card += ":Number";
             Order.Cart = Cart;
+            Order.OrderNumber = $"{Guid.NewGuid().ToString()}{Order.Id}";
             await _order.CreateOrder(Order);
             var payment = await _payment.Run(Order.UserEmail, card, Expiration, CVC);
             if(payment == "Failed")
@@ -89,7 +106,7 @@ namespace ECommerce_Application.Pages.Categories
             };
             await _cart.CreateCart(cart);
 
-            return new RedirectToPageResult($"/");
+            return new RedirectToPageResult($"/Categories/Receipt");
         }
     }
 }

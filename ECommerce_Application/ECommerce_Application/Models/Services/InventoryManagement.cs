@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models.Services
 {
+
+    /// <summary>
+    /// Referencing the Interface Product
+    /// </summary>
     public class InventoryManagement : IProduct
     {
         private readonly StoreDbContext _context;
@@ -23,6 +27,13 @@ namespace ECommerce_Application.Models.Services
             _config = config;
             _image = image;
         }
+
+
+        /// <summary>
+        /// Create the product
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         public async Task<Product> CreateProduct(Product product)
         {
 
@@ -32,6 +43,12 @@ namespace ECommerce_Application.Models.Services
             return product;
         }
 
+
+        /// <summary>
+        /// Delete the product
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task DeleteProduct(int id)
         {
             Product dog = await _context.Products.FirstOrDefaultAsync(x => x.Id == id);
@@ -39,6 +56,12 @@ namespace ECommerce_Application.Models.Services
             await _context.SaveChangesAsync();
         }
 
+
+        /// <summary>
+        /// Get the product
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<Product> GetProduct(int id)
         {
             var dog = await _context.Products
@@ -48,6 +71,12 @@ namespace ECommerce_Application.Models.Services
             return dog;
         }
 
+
+
+        /// <summary>
+        /// Get all the products
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<Product>> GetProducts()
         {
             List<Product> dogs = await _context.Products
@@ -56,6 +85,12 @@ namespace ECommerce_Application.Models.Services
             return dogs;
         }
 
+
+        /// <summary>
+        /// Update the product
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         public async Task<Product> UpdateProduct(Product product)
         {
             var dog = await _context.Products.FindAsync(product.Id);

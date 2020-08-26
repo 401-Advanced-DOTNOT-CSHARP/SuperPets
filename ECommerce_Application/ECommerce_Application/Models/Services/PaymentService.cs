@@ -13,6 +13,10 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models.Services
 {
+
+    /// <summary>
+    /// Referencing Interface Payment
+    /// </summary>
     public class PaymentService : IPayment
     {
         private readonly IConfiguration _config;
@@ -25,6 +29,16 @@ namespace ECommerce_Application.Models.Services
             _order = order;
             _userManager = userManager;
         }
+
+
+        /// <summary>
+        /// Authorize the credit card information
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <param name="cardName"></param>
+        /// <param name="expiration"></param>
+        /// <param name="cvc"></param>
+        /// <returns></returns>
         public async Task<string> Run(string userEmail, string cardName, string expiration, string cvc)
         {
             // decalred the type of environment
@@ -74,6 +88,7 @@ namespace ECommerce_Application.Models.Services
             {
                 if(response.messages.resultCode == messageTypeEnum.Ok)
                 {
+
                     return "Success";
                 }
             }
@@ -82,6 +97,12 @@ namespace ECommerce_Application.Models.Services
             return "Failed";
         }
 
+
+        /// <summary>
+        /// Get the users billing address by email
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <returns></returns>
         private async Task<customerAddressType> GetsBillingAddress(string userEmail)
         {
             // you can pull this data from teh db the individual data from the order/cart itself

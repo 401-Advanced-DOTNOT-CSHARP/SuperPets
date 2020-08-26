@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models.Services
 {
+    /// <summary>
+    /// Referencing the Interface CartItem
+    /// </summary>
     public class CartItemService : ICartItem
     {
         private readonly StoreDbContext _context;
@@ -21,6 +24,14 @@ namespace ECommerce_Application.Models.Services
             _cart = cart;
             _product = product;
         }
+
+        /// <summary>
+        /// Add the product to cart
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="cart"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
         public async Task<CartItem> AddProductToCart(Product product, Cart cart, int quantity)
         {
             CartItem cartItem = new CartItem()
@@ -42,6 +53,12 @@ namespace ECommerce_Application.Models.Services
             return cartItem;
         }
 
+        
+        /// <summary>
+        /// Get the cart items using user's email
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <returns></returns>
         public async Task<List<CartItem>> GetCartItems(string userEmail)
         {
             var cartItem = await _context.CartItems.Where(x => x.Cart.UserEmail == userEmail)
@@ -51,6 +68,13 @@ namespace ECommerce_Application.Models.Services
             return cartItem;
 
         }
+
+        /// <summary>
+        /// Get cart item by product id and cart id
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="cartId"></param>
+        /// <returns></returns>
 
         public async Task<CartItem> GetCartItem(int productId, int cartId)
         {
@@ -62,6 +86,13 @@ namespace ECommerce_Application.Models.Services
 
         }
 
+
+        /// <summary>
+        /// remove product from cart
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="cart"></param>
+        /// <returns></returns>
         public async Task RemoveProductFromCart(Product product, Cart cart)
         {
             CartItem removedCartItem = _context.CartItems
@@ -78,6 +109,12 @@ namespace ECommerce_Application.Models.Services
 
         }
 
+
+        /// <summary>
+        /// Update the cart item
+        /// </summary>
+        /// <param name="cartItem"></param>
+        /// <returns></returns>
         public async Task<CartItem> UpdateCartItem(CartItem cartItem)
         {
             CartItem updatedCartItem = _context.CartItems
@@ -90,6 +127,14 @@ namespace ECommerce_Application.Models.Services
             await _context.SaveChangesAsync();
             return updatedCartItem;
         }
+
+        /// <summary>
+        /// Update the carts quantity and price
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="cart"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
         public async Task<CartItem> UpdateCartQuantityAndPrice(Product product, Cart cart, int quantity)
         {
             var cartItem = await _context.CartItems.Where(x => x.ProductId == product.Id && x.CartId == cart.Id)

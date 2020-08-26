@@ -9,6 +9,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce_Application.Pages.Categories
 {
+
+    /// <summary>
+    /// References the page
+    /// </summary>
     public class AllModel : PageModel
     {
         private readonly IProduct _product;
@@ -20,6 +24,12 @@ namespace ECommerce_Application.Pages.Categories
         {
             _product = product;
         }
+
+
+        /// <summary>
+        /// Return the page full of products when called
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnGet()
         {
             Products = await _product.GetProducts();

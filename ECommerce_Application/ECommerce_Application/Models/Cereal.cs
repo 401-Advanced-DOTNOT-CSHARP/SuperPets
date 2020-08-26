@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models
 {
+    /// <summary>
+    /// This was for the first assignment, we no longer use this class product reference
+    /// </summary>
     public class Cereal : Product
     {
         public string Manufacturer { get; set; }

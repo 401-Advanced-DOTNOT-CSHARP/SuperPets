@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models.Services
 {
+    /// <summary>
+    /// Referencing the Interface Order
+    /// </summary>
     public class OrderService : IOrder
     {
         private readonly StoreDbContext _context;
@@ -16,6 +19,13 @@ namespace ECommerce_Application.Models.Services
         {
             _context = context;
         }
+
+
+        /// <summary>
+        /// Create the order
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public async Task<Order> CreateOrder(Order order)
         {
             _context.Entry(order).State = EntityState.Added;
@@ -23,6 +33,13 @@ namespace ECommerce_Application.Models.Services
             return order;
         }
 
+
+
+        /// <summary>
+        /// Get the order by the user's email
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <returns></returns>
         public async Task<Order> GetOrder(string userEmail)
         {
             Order order = await _context.Orders.Where(x => x.UserEmail == userEmail)

@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models
 {
+    /// <summary>
+    /// The order contains the information required for the final checkout for the user
+    /// </summary>
     public class Order
     {
         public int Id { get; set; }
+        public string OrderNumber { get; set; }
         public string UserEmail { get; set; }
         public int CartId { get; set; }
         public Cart Cart { get; set; }

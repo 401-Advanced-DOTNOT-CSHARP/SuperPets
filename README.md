@@ -120,6 +120,13 @@ Unit testing is included in the ECommerceTesting/Testing project using the xUnit
 
 ---
 
+### Admin
+
+Login: dummyEmail@gmail.com
+Password: @Test123!
+
+---
+
 ## Change Log
 1.5: *Added checkout page* - 23 Aug 2020  
 1.4: *Added admin page* - 19 Aug 2020  

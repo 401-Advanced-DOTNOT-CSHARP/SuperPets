@@ -141,14 +141,14 @@ namespace ECommerce_Application.Models.Services
                 .Include(x => x.Product)
                 .Include(x => x.Cart)
                 .FirstOrDefaultAsync();
-            if (cartItem.Quantity > quantity && product.Quantity >= quantity - 1)
+            if (cartItem.Quantity > quantity && product.Quantity >= quantity)
             {
                 cart.Quantity -= cartItem.Quantity - quantity;
                 cart.Price -= product.Price * (cartItem.Quantity - quantity);
                 cartItem.Quantity = quantity;
                 product.Quantity += cartItem.Quantity - quantity;
             }
-            if (cartItem.Quantity < quantity && product.Quantity >= quantity - 1)
+            if (cartItem.Quantity < quantity && product.Quantity >= quantity)
             {
                 cart.Quantity += quantity - cartItem.Quantity;
                 cart.Price += product.Price * (quantity - cartItem.Quantity);

@@ -11,6 +11,7 @@ namespace ECommerce_Application.Models
     public class Order
     {
         public int Id { get; set; }
+        public string OrderNumber { get; set; }
         public string UserEmail { get; set; }
         public int CartId { get; set; }
         public Cart Cart { get; set; }

@@ -87,6 +87,7 @@ namespace ECommerce_Application.Pages.Categories
             card += Name;
             card += ":Number";
             Order.Cart = Cart;
+            Order.OrderNumber = $"{Guid.NewGuid().ToString()}{Order.Id}";
             await _order.CreateOrder(Order);
             var payment = await _payment.Run(Order.UserEmail, card, Expiration, CVC);
             if(payment == "Failed")
@@ -105,7 +106,7 @@ namespace ECommerce_Application.Pages.Categories
             };
             await _cart.CreateCart(cart);
 
-            return new RedirectToPageResult($"/");
+            return new RedirectToPageResult($"/Categories/Receipt");
         }
     }
 }

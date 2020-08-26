@@ -14,6 +14,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce_Application.Pages.Account
 {
+    /// <summary>
+    /// References the page
+    /// </summary>
     public class RegisterModel : PageModel
     {
         private UserManager<Customer> _usermanager;
@@ -35,6 +38,10 @@ namespace ECommerce_Application.Pages.Account
 
         }
 
+        /// <summary>
+        /// On post register the user, then send the user an email
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPost()
         {
             Customer customer = new Customer()
@@ -77,6 +84,9 @@ namespace ECommerce_Application.Pages.Account
 
         }
 
+        /// <summary>
+        /// Register view model requires the user to have set information.
+        /// </summary>
         public class RegisterViewModel
         {
             public string Email { get; set; }

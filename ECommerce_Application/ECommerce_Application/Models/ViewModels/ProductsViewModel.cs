@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models.ViewModels
 {
+    /// <summary>
+    /// This was for the first assignment, no longer needed.
+    /// </summary>
     public class ProductsViewModel : CerealDTO
     {
         public List<CerealDTO> Products;

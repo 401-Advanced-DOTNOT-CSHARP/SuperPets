@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce_Application.Pages.Dashboard
 {
+    /// <summary>
+    /// Only admin can edit
+    /// </summary>
     [Authorize(Policy = "Administrator")]
 
     public class CreateModel : PageModel
@@ -30,6 +33,10 @@ namespace ECommerce_Application.Pages.Dashboard
         {
             return Page();
         }
+
+        /// <summary>
+        /// Property to bind our create to the product
+        /// </summary>
 
         [BindProperty]
         public Product Product { get; set; }

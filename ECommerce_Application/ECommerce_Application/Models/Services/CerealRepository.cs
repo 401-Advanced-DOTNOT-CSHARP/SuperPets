@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models.Services
 {
+    /// <summary>
+    /// This was for the first assignment
+    /// </summary>
     public class CerealRepository : IProduct
     {
         public Task<Product> CreateProduct(Product product)

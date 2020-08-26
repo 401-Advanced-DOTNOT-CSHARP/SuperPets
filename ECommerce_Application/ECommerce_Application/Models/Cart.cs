@@ -5,8 +5,12 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models
 {
+    /// <summary>
+    /// Cart class that holds appropriate properties for a "cart"
+    /// </summary>
     public class Cart 
     {
+
         public int Id { get; set; }
         public string UserEmail { get; set; }
         public decimal Price { get; set; }

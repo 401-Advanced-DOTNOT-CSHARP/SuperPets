@@ -11,7 +11,10 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce_Application.Pages.Dashboard
 {
-   [Authorize(Policy = "Administrator")]
+    /// <summary>
+    /// Only admin can edit
+    /// </summary>
+    [Authorize(Policy = "Administrator")]
 
     public class DeleteModel : PageModel
     {
@@ -25,7 +28,11 @@ namespace ECommerce_Application.Pages.Dashboard
         [BindProperty]
         public Product Product { get; set; }
         
-
+        /// <summary>
+        /// Get the property for deletion
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -42,6 +49,11 @@ namespace ECommerce_Application.Pages.Dashboard
             return Page();
         }
 
+        /// <summary>
+        /// Update the product deleted
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)

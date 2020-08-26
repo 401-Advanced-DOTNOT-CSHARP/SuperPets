@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models.DTO
 {
+    /// <summary>
+    /// This was from the first assignment which required us to use cereal products
+    /// </summary>
     public class CerealDTO
     {
         public string Name { get; set; }

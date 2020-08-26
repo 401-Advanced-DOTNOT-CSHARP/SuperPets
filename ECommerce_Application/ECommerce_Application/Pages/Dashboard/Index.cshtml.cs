@@ -11,7 +11,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ECommerce_Application.Pages.Dashboard
 {
-  [Authorize(Policy = "Administrator")]
+
+    /// <summary>
+    /// Only admin can edit
+    /// </summary>
+    [Authorize(Policy = "Administrator")]
 
     public class IndexModel : PageModel
     {
@@ -25,6 +29,11 @@ namespace ECommerce_Application.Pages.Dashboard
         [BindProperty]
         public IList<Product> Products { get; set; }
 
+
+        /// <summary>
+        /// Get the products upon request
+        /// </summary>
+        /// <returns></returns>
         public async Task OnGetAsync()
         {
             Products = await _context.Products.ToListAsync();

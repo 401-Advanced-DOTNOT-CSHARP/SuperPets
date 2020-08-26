@@ -1,0 +1,93 @@
+﻿@page
+@model ECommerce_Application.Pages.Categories.IndexModel
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1 style="text-align: center">SUPER DOG CART </h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Product Price
+                </th>
+                <th>
+                    Remove
+                </th>
+                <th>
+                    Update Quantity
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Cart.CartItems)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                @{ 
+                    var price = item.Product.Price * item.Quantity;
+                }
+                <td>
+                    @price
+                </td>
+                <td>
+                    <form method="post" asp-page-handler="delete">
+                        <input hidden asp-for="@Model.ProductId" value="@item.ProductId" />
+                        <input hidden asp-for="@Model.CartId" value="@item.CartId" />
+                        <button type="submit">X</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" asp-page-handler="update">
+                        <label asp-for="@Model.Quantity">Quantity</label>
+                        <input asp-for="@Model.Quantity" />
+                        <input hidden asp-for="@Model.ProductId" value="@item.ProductId" />
+                        <input hidden asp-for="@Model.CartId" value="@item.CartId" />
+                        <input type="submit" />
+                    </form>
+                </td>
+            </tr>
+            }
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                Total:
+
+            </td>
+            <td>
+                   @Model.Cart.Price
+            </td>
+            <td>
+                <button><a asp-page="/Categories/Checkout">Checkout</a></button>
+
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</body>
+
+
+</html>

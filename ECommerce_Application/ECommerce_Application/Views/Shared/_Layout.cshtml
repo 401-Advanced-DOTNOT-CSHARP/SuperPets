@@ -27,38 +27,57 @@
 
                     </li>
                 </ul>
-                <div class="mx-auto">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active" style="margin-right: 1em;">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active" style="margin-right: 1em;">
-                            <a class="nav-link" asp-page="/Account/Login">Login</a>
-                        </li>
-                        <li class="nav-item active" style="margin-right: 1em;">
-                            <a class="nav-link" asp-page="/Account/Register">Register</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Browse
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-controller="Products" asp-action="Index">Super Hero Pets</a>
-                                <a class="dropdown-item" href="Accessories">Accessories</a>
-                            </div>
+                @if (this.User.IsInRole("Administrator"))
+                {
+                    <div class="mx-auto">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active" style="margin-right: 1em;">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-page="/Categories/All"><img style="width:40px;">Browse</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-page="/Dashboard/Index">Dashboard</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a asp-page="/Categories/Index"><img style="width:40px;" src="https://img.icons8.com/nolan/2x/fast-cart.png" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul>
+                            <li style="list-style:none;">
+                                <form asp-page="/Account/Logout" method="post"> <button class="btn btn-outline-warning" type="submit"> LOGOUT</button></form>
+                            </li>
+                        </ul>
+                }
+                else
+                {
+                    <div class="mx-auto">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active" style="margin-right: 1em;">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" asp-page="/Categories/All"><img style="width:40px;">Browse</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a asp-page="/Categories/Index"><img style="width:40px;" src="https://img.icons8.com/nolan/2x/fast-cart.png" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul>
+                        <li style="list-style:none;">
+                            <form asp-page="/Account/Logout" method="post"> <button class="btn btn-outline-warning" type="submit"> LOGOUT</button></form>
                         </li>
                     </ul>
-                </div>
+                }
 
-                <ul class="navbar-nav ">
-                    <li>
-                        <form asp-page="/Account/Logout" method="post"> <button class="btn btn-outline-warning" type="submit"> LOGOUT</button></form>
-                    </li>
-                </ul>
 
             }
             else
             {
+
                 <div class="mx-auto" style="margin-bottom: 3em;">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active" style="margin-right: 1em;">
@@ -70,31 +89,23 @@
                         <li class="nav-item active" style="margin-right: 1em;">
                             <a class="nav-link" asp-page="/Account/Register">Register</a>
                         </li>
-                        <li class="nav-item dropdown" style="margin-right: 1em;">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Browse
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-controller="Products" asp-action="Index">Super Hero Pets</a>
-                                <a class="dropdown-item" href="Accessories">Accessories</a>
-                            </div>
-                        </li>
- 
                     </ul>
-                    </div>
-                
-                       
-                    }
-            </nav>
+                </div>
+            }
 
-        <h1>WELCOME TO SUPER HERO PETS!</h1>
+
+
+
+        </nav>
+
+    
     </header>
 
 
     <div>
         @RenderBody()
     </div>
- 
+
     <footer>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

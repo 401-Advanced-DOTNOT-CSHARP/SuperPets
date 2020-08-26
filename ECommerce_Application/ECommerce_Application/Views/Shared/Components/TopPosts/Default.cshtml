@@ -1,9 +1,60 @@
-﻿@model List<ECommerce_Application.Models.Post>
-
-<h1>Default</h1>
-
-@foreach (var item in Model)
+﻿@model ECommerce_Application.Models.Cart
+<h1 style="text-align: center; margin-top: 5em;">Items in Cart</h1>
+@if(Model != null)
 {
-    <h1>@item.Name</h1>
 
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CartItems)
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+        </thead>
+        <tbody>
+
+@foreach (var item in @Model.CartItems)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+
+            @Html.DisplayFor(modelItem => item.Product.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Price)
+
+        </td>
+    </tr>
+}
+            <tr>
+                <td>
+    @Model.Quantity
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+    @Model.Price
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
 }

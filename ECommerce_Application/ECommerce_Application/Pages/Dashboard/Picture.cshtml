@@ -9,6 +9,9 @@
 
 <body>
     <form method="post" enctype="multipart/form-data">
+
+        {
+
         <select asp-for="@Model.Name">
             @foreach (var item in Model.Products)
             {
@@ -19,5 +22,6 @@
         <label asp-for="@Model.Image"></label>
         <input type="file" asp-for="@Model.Image" />
         <button type="submit">Submit</button>
+        
     </form>
 </body>

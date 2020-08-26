@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using ECommerce_Application.Controllers;
 using ECommerce_Application.Models;
+using ECommerce_Application.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -13,18 +14,22 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce_Application.Pages.Account
 {
+    /// <summary>
+    /// References the page
+    /// </summary>
     public class RegisterModel : PageModel
     {
         private UserManager<Customer> _usermanager;
         private readonly SignInManager<Customer> _signInManager;
         private IEmailSender _sender;
+        private readonly ICart _cart;
 
-
-        public RegisterModel(UserManager<Customer> userManager, SignInManager<Customer> signInManager, IEmailSender sender)
+        public RegisterModel(UserManager<Customer> userManager, SignInManager<Customer> signInManager, IEmailSender sender, ICart cart)
         {
             _usermanager = userManager;
             _signInManager = signInManager;
             _sender = sender;
+            _cart = cart;
         }
         [BindProperty]
         public RegisterViewModel Registration { get; set; }
@@ -33,6 +38,10 @@ namespace ECommerce_Application.Pages.Account
 
         }
 
+        /// <summary>
+        /// On post register the user, then send the user an email
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPost()
         {
             Customer customer = new Customer()
@@ -58,6 +67,12 @@ namespace ECommerce_Application.Pages.Account
                 await _usermanager.AddClaimAsync(customer, fullName);
                 await _signInManager.SignInAsync(customer, isPersistent: false);
                 await _sender.SendEmailAsync(customer.Email, subject, htmlMessage);
+                Cart cart = new Cart()
+                {
+                    UserEmail = customer.Email,
+                    Date = DateTime.Now
+                };
+                await _cart.CreateCart(cart);
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -69,6 +84,9 @@ namespace ECommerce_Application.Pages.Account
 
         }
 
+        /// <summary>
+        /// Register view model requires the user to have set information.
+        /// </summary>
         public class RegisterViewModel
         {
             public string Email { get; set; }

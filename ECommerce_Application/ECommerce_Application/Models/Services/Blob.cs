@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models.Services
 {
+    /// <summary>
+    /// Referencing the Interface Image
+    /// </summary>
     public class Blob : IImage
     {
         private IConfiguration _storageConfig { get; set; }
@@ -19,6 +22,13 @@ namespace ECommerce_Application.Models.Services
         {
             _storageConfig = storageConfig;
         }
+
+
+        /// <summary>
+        /// Get the container
+        /// </summary>
+        /// <param name="containerName"></param>
+        /// <returns></returns>
 
         public async Task<CloudBlobContainer> GetContainer(string containerName)
         {
@@ -37,6 +47,15 @@ namespace ECommerce_Application.Models.Services
 
             return cbc;
         }
+
+
+
+        /// <summary>
+        /// Get the blob
+        /// </summary>
+        /// <param name="imageName"></param>
+        /// <param name="containerName"></param>
+        /// <returns></returns>
         public async Task<string> GetBlob(string imageName, string containerName)
         {
             var container = await GetContainer(containerName);
@@ -47,6 +66,15 @@ namespace ECommerce_Application.Models.Services
 
         }
 
+
+
+        /// <summary>
+        /// Upload the image
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="image"></param>
+        /// <param name="contentType"></param>
+        /// <returns></returns>
         public async Task UploadImage(string fileName, byte[] image, string contentType)
         {
 

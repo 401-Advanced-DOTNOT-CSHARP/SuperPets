@@ -10,15 +10,21 @@ namespace ECommerce_Application.Data
 {
     public class StoreDbContext : DbContext
     {
+        //Remains empty//
         public StoreDbContext(DbContextOptions<StoreDbContext> options) : base(options)
         {
 
         }
 
+        /// <summary>
+        /// Create the database model of the products
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<CartItem>().HasKey(x => new { x.CartId, x.ProductId });
 
             modelBuilder.Entity<Product>().HasData(
 
@@ -33,6 +39,10 @@ namespace ECommerce_Application.Data
                         "from sunbathing in the backyard to going for long walks. Is very obedient and will let you clean his ears, brush ",
                     Price = 200,
                     SuperPower = "Super Love",
+                    Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Rampage",
+                    Category = "Bully",
+                    Quantity = 1,
+                    IsFeature = true
                 },
                 new Product
                 {
@@ -44,7 +54,9 @@ namespace ECommerce_Application.Data
                     Description = "Loves ",
                     Price = 200,
                     SuperPower = "Super Love",
-
+                    Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Snowball",
+                    Category = "Poodles",
+                    Quantity = 1
                 },
                 new Product
                 {
@@ -56,6 +68,9 @@ namespace ECommerce_Application.Data
                     Description = "Her thick hips won't stop her from dragging you across the concrete to catch a squirrel",
                     Price = 2000,
                     SuperPower = "Fly",
+                    Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Whiskey",
+                    Category = "Poodles",
+                    Quantity = 1
                 },
                  new Product
                  {
@@ -65,69 +80,81 @@ namespace ECommerce_Application.Data
                      Breed = "Labradoodle",
                      Color = "black",
                      Description = "Fastest dog in the world. She's beat Usain Bolt... Twice. ",
-                     Price = 90000000,
+                     Price = 9000,
                      SuperPower = "Super speed",
-
+                     Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/rye.jpeg",
+                     Category = "Poodles",
+                     Quantity = 1
                  },
                   new Product
                   {
                       Id = 5,
                       Name = "Snowball",
                       Age = 3,
-                      Breed = "Siamese Cat",
-                      Color = "Black and White",
+                      Breed = "Dog",
+                      Color = "Brown and White",
                       Description = "Will knock anything on your desk onto the floor. Can also poop in toilet. ",
-                      Price = 40000,
+                      Price = 4000,
                       SuperPower = "Personality",
-
+                      Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/backup.jpeg",
+                      Category = "Poodles",
+                      Quantity = 1
                   },
                    new Product
                    {
                        Id = 6,
                        Name = "Duke",
                        Age = 15,
-                       Breed = "Bear",
+                       Breed = "Dog",
                        Color = "Brown",
                        Description = "Speaks English... And a little Spanish. ",
                        Price = 9000,
                        SuperPower = "Speaking",
-
+                       Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Duke1.jpeg",
+                       Category = "Bully",
+                       Quantity = 1
                    },
                     new Product
                     {
                         Id = 7,
                         Name = "Josie",
                         Age = 99,
-                        Breed = "Tabbie Cat (unsure)",
+                        Breed = "Dog",
                         Color = "Grey",
                         Description = "Disrupts Zoom meetings. Can order Starbucks on occassion.",
-                        Price = 6000000,
+                        Price = 6000,
                         SuperPower = "Ordering coffee",
-
+                        Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Josie",
+                        Category = "Bully",
+                        Quantity = 1
                     },
                      new Product
                      {
                          Id = 8,
                          Name = "Chubbs",
                          Age = 8,
-                         Breed = "Lion",
+                         Breed = "Dog",
                          Color = "Orangeish",
-                         Description = "As if a lion wasn't enough, this guy comes with laser eyes. ",
-                         Price = 1000000,
+                         Description = "As if a dog wasn't enough, this guy comes with laser eyes. ",
+                         Price = 1000,
                          SuperPower = "Laser Eyes",
-
+                         Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/chubbs.jpeg",
+                         Category = "Bully",
+                         Quantity = 1
                      },
                       new Product
                       {
                           Id = 9,
                           Name = "Peanut",
                           Age = 15,
-                          Breed = "Hamster",
+                          Breed = "Dog",
                           Color = "Orange and White",
                           Description = "An engineer who dabbles in explosives.",
-                          Price = 500000,
+                          Price = 5000,
                           SuperPower = "Super Genius",
-
+                          Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Peanut.jpeg",
+                          Category = "Bully",
+                          Quantity = 1
                       },
                        new Product
                        {
@@ -137,93 +164,26 @@ namespace ECommerce_Application.Data
                            Breed = "Pomeranian",
                            Color = "Black",
                            Description = "Makes bukoo money.",
-                           Price = 1000000000000,
+                           Price = 1000,
                            SuperPower = "Can produce cash out of thin-air",
-
+                           Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Mani",
+                           Category = "Mixed",
+                           Quantity = 1
                        }
 
-
-
                 );
-            modelBuilder.Entity<Post>().HasData(
 
-                       new Post
-                       {
-                           Id = 1,
-                           Name = "Rampage",
-                           Price = 200,
-                           Quantity = 1
-                       },
-                        new Post
-                        {
-                            Id = 2,
-                            Name = "Snowball",
-                            Price = 200,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 3,
-                            Name = "Whiskey",
-                            Price = 2000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 4,
-                            Name = "Rye",
-                            Price = 90000000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 5,
-                            Name = "Snowball",
-                            Price = 40000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 6,
-                            Name = "Duke",
-                            Price = 9000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 7,
-                            Name = "Josie",
-                            Price = 6000000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 8,
-                            Name = "Chubbs",
-                            Price = 1000000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 9,
-                            Name = "Peanut",
-                            Price = 500000,
-                            Quantity = 1
-                        },
-                        new Post
-                        {
-                            Id = 10,
-                            Name = "Mani",
-                            Price = 1000000000000,
-                            Quantity = 1
-                        }
-
-
-
-                ); ;
         }
 
+        /// <summary>
+        /// This is the information we want to query. Collection of all entitys. 
+        /// </summary>
         public DbSet<Product> Products { get; set; }
-        public DbSet<Post> Posts { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
+
+
     }
 }

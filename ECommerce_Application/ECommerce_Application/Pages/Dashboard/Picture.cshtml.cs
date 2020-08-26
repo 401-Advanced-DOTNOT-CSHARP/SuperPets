@@ -12,9 +12,12 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce_Application.Pages.Dashboard
 {
-/*    [Authorize(Policy = "Administrator")]
-*/    
-    
+    /// <summary>
+    /// Only admin can edit
+    /// </summary>
+    [Authorize(Policy = "Administrator")]
+
+
     public class PictureModel : PageModel
     {
         private IImage _image;
@@ -32,13 +35,23 @@ namespace ECommerce_Application.Pages.Dashboard
             _image = image;
             _product = product;
         }
-        public async void OnGet()
+
+        /// <summary>
+        /// get the products to add pictures to
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> OnGet()
 
         {
             Products = await _product.GetProducts();
+            return Page();
         }
 
-        public async void OnPost()
+        /// <summary>
+        /// Update the image upon post
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IActionResult> OnPost()
         {
             string ext = Path.GetExtension(Image.FileName);
 
@@ -51,6 +64,8 @@ namespace ECommerce_Application.Pages.Dashboard
                     await _image.UploadImage(Name, bytes, Image.ContentType);
                 }
             }
+
+            return Page();
 
         }
     }

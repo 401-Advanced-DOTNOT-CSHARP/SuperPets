@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ECommerce_Application.Migrations.UserDb
 {
-    public partial class AddingUserToPostSeedNew : Migration
+    public partial class updatedStore : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -67,26 +67,24 @@ Unit testing is included in the ECommerceTesting/Testing project using the xUnit
 ### Overview Super Dogs Website
 ![Overview of Recent Posts](https://via.placeholder.com/500x250)
 
-### Creating a Post
+### Home Page
 ![Post Creation](https://via.placeholder.com/500x250)
 
-### Enriching a Post
+### Product Page
 ![Enriching Post](https://via.placeholder.com/500x250)
 
-### Viewing Post Details
+### Checkout Page
 ![Details of Post](https://via.placeholder.com/500x250)
 
 ---
-## Data Flow (Frontend, Backend, REST API)
-***[Add a clean and clear explanation of what the data flow is. Walk me through it.]***
-![Data Flow Diagram](/assets/img/Flowchart.png)
+
 
 ---
 ## Data Model
 
 ### Overall Project Schema
 ***[Add a description of your DB schema. Explain the relationships to me.]***
-![Database Schema](/wwwroot/Assets/erd.png)
+![Database Schema](./wwwroot/Assets/erd.png)
 
 ---
 ## Model Properties and Requirements
@@ -98,11 +96,11 @@ Unit testing is included in the ECommerceTesting/Testing project using the xUnit
 | ID  | int | YES |
 | Name | string | YES |
 | SKU | string | YES |
-| Price | decimal | NO |
-| Description | string | NO |
-| Breed | string | NO |
-| Age | int | NO |
-| SuperPower | string | NO |
+| Price | decimal | YES |
+| Description | string | YES |
+| Breed | string | YES |
+| Age | int | YES |
+| SuperPower | string | YES |
 | Color | string | YES |
 | Image | string | YES |
 | Quantity | int | YES |
@@ -110,13 +108,40 @@ Unit testing is included in the ECommerceTesting/Testing project using the xUnit
 | IsFeature | bool | YES |
 
 
-### User
+### Cart 
 
 | Parameter | Type | Required |
 | --- | --- | --- |
 | ID  | int | YES |
-| Name | string | YES |
+| Price | decimal | YES |
+| Quantity | int | YES |
 | User Email | string | YES |
+
+
+### Cart Items
+
+| Parameter | Type | Required |
+| --- | --- | --- |
+| ID  | int | YES |
+| CartID | int| YES |
+| ProductID | int | YES |
+| User Email | string | YES |
+
+
+### Order
+
+| Parameter | Type | Required |
+| --- | --- | --- |
+| ID  | int | YES |
+| CartID | int | YES |
+| First name | string | YES |
+| Last Name | string | YES |
+| Address | string | YES |
+| City | string | YES |
+| State | string | YES |
+| Zip | string | YES |
+
+
 
 ---
 

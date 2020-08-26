@@ -1,259 +1,265 @@
 ﻿@page
 @model ECommerce_Application.Pages.Categories.CheckoutModel
-@{ 
+@{
     Layout = "_Layout";
 }
 <body>
 
-<!--Main layout-->
-<main class="mt-5 pt-4">
-    <div class="container wow fadeIn">
+    <!--Main layout-->
+    <main class="mt-5 pt-4">
+        <div class="container wow fadeIn">
 
-        <!-- Heading -->
-        <h2 class="my-5 h2 text-center">Checkout form</h2>
+            <!-- Heading -->
+            <h2 class="my-5 h2 text-center">Checkout form</h2>
 
-        <!--Grid row-->
-        <div class="row">
+            <!--Grid row-->
+            <div class="row">
 
-            <!--Grid column-->
-            <div class="col-md-8 mb-4">
+                <!--Grid column-->
+                <div class="col-md-8 mb-4">
 
-                <!--Card-->
-                <div class="card">
+                    <!--Card-->
+                    <div class="card">
 
-                    <!--Card content-->
-                    <form method="post" class="card-body">
+                        <!--Card content-->
+                        <form method="post" class="card-body">
 
-                        <!--Grid row-->
-                        <div class="row">
+                            <input hidden asp-for="@Model.Order.CartId" value="@Model.Cart.Id" />
+                            <input hidden asp-for="@Model.Order.UserEmail" value="@User.Identity.Name" />
+                            <input hidden asp-for="@Model.Order.Cart.CartItems" value="@Model.Cart.CartItems" />
 
-                            <!--Grid column-->
-                            <div class="col-md-6 mb-2">
+                            <!--Grid row-->
+                            <div class="row">
 
-                                <!--firstName-->
-                                <div class="md-form ">
-                                    <input asp-for="@Model.Order.FirstName" type="text" id="firstName" class="form-control" placeholder="First Name">
-                                    <label asp-for="@Model.Order.FirstName" for="firstName" class="">First name</label>
+                                <!--Grid column-->
+                                <div class="col-md-6 mb-2">
+
+                                    <!--firstName-->
+                                    <div class="md-form ">
+                                        <input asp-for="@Model.Order.FirstName" type="text" id="firstName" class="form-control" placeholder="First Name">
+                                        <label asp-for="@Model.Order.FirstName" for="firstName" class="">First name</label>
+                                    </div>
+
                                 </div>
+                                <!--Grid column-->
+                                <!--Grid column-->
+                                <div class="col-md-6 mb-2">
 
-                            </div>
-                            <!--Grid column-->
-                            <!--Grid column-->
-                            <div class="col-md-6 mb-2">
+                                    <!--lastName-->
+                                    <div class="md-form">
+                                        <input asp-for="@Model.Order.LastName" type="text" id="lastName" class="form-control" placeholder="Last Name">
+                                        <label asp-for="@Model.Order.LastName" for="lastName" class="">Last name</label>
+                                    </div>
 
-                                <!--lastName-->
-                                <div class="md-form">
-                                    <input asp-for="@Model.Order.LastName" type="text" id="lastName" class="form-control" placeholder="Last Name">
-                                    <label asp-for="@Model.Order.LastName" for="lastName" class="">Last name</label>
                                 </div>
+                                <!--Grid column-->
 
                             </div>
-                            <!--Grid column-->
+                            <!--Grid row-->
+                            <!--email-->
+                            <div class="md-form mb-5">
+                                <input asp-for="@Model.Order.UserEmail" type="text" id="email" class="form-control" placeholder="youremail@example.com">
+                                <label asp-for="@Model.Order.UserEmail" for="email" class="">Email (optional)</label>
+                            </div>
 
-                        </div>
-                        <!--Grid row-->
+                            <!--address-->
+                            <div class="md-form mb-5">
+                                <input asp-for="@Model.Order.Address" type="text" id="address" class="form-control" placeholder="1234 Main St">
+                                <label asp-for="@Model.Order.Address" for="address" class="">Address</label>
+                            </div>
 
+                            <!--address-2-->
+                            <div class="md-form mb-5">
+                                <input type="text" id="address-2" class="form-control" placeholder="Apartment or suite">
+                                <label for="address-2" class="">Address 2 (optional)</label>
+                            </div>
 
-                        <!--email-->
-                        <div class="md-form mb-5">
-                            <input asp-for="@Model.Order.UserEmail" type="text" id="email" class="form-control" placeholder="youremail@example.com">
-                            <label asp-for="@Model.Order.UserEmail" for="email" class="">Email (optional)</label>
-                        </div>
+                            <!--Grid row-->
+                            <div class="row">
 
-                        <!--address-->
-                        <div class="md-form mb-5">
-                            <input asp-for="@Model.Order.Address" type="text" id="address" class="form-control" placeholder="1234 Main St">
-                            <label asp-for="@Model.Order.Address" for="address" class="">Address</label>
-                        </div>
+                                <!--Grid column-->
+                                <div class="col-lg-4 col-md-12 mb-4">
 
-                        <!--address-2-->
-                        <div class="md-form mb-5">
-                            <input type="text" id="address-2" class="form-control" placeholder="Apartment or suite">
-                            <label for="address-2" class="">Address 2 (optional)</label>
-                        </div>
+                                    <label for="country">Country</label>
+                                    <select class="custom-select d-block w-100" id="country" required>
+                                        <option value="">Country</option>
+                                        <option>United States</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid country.
+                                    </div>
 
-                        <!--Grid row-->
-                        <div class="row">
-
-                            <!--Grid column-->
-                            <div class="col-lg-4 col-md-12 mb-4">
-
-                                <label for="country">Country</label>
-                                <select  class="custom-select d-block w-100" id="country" required>
-                                    <option value="">Country</option>
-                                    <option>United States</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a valid country.
                                 </div>
+                                <!--Grid column-->
+                                <!--Grid column-->
+                                <div class="col-lg-4 col-md-6 mb-4">
 
-                            </div>
-                            <!--Grid column-->
-                            <!--Grid column-->
-                            <div class="col-lg-4 col-md-6 mb-4">
+                                    <label asp-for="@Model.Order.State" for="state">State</label>
+                                    <select asp-for="@Model.Order.State" class="custom-select d-block w-100" id="state" required>
+                                        <option value="STATE">State</option>
+                                        <option>Washington</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid state.
+                                    </div>
 
-                                <label asp-for="@Model.Order.State" for="state">State</label>
-                                <select asp-for="@Model.Order.State" class="custom-select d-block w-100" id="state" required>
-                                    <option value="STATE">State</option>
-                                    <option>Washington</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please provide a valid state.
                                 </div>
-
-                            </div>
-                            <!--Grid column-->
-                            <!--Grid column-->
-                            <div class="col-lg-4 col-md-6 mb-4">
-
-                                <label asp-for="@Model.Order.ZipCode" for="zip">Zip</label>
-                                <input asp-for="@Model.Order.ZipCode" type="text" class="form-control" id="zip" placeholder="zip code" required>
-                                <div class="invalid-feedback">
-                                    Zip code required.
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <label asp-for="@Model.Order.City" for="city" class="">City</label>
+                                    <input asp-for="@Model.Order.City" type="text" id="city" class="form-control" placeholder="City">
                                 </div>
+                                <!--Grid column-->
+                                <!--Grid column-->
+                                <div class="col-lg-4 col-md-6 mb-4">
+
+                                    <label asp-for="@Model.Order.ZipCode" for="zip">Zip</label>
+                                    <input asp-for="@Model.Order.ZipCode" type="text" class="form-control" id="zip" placeholder="zip code" required>
+                                    <div class="invalid-feedback">
+                                        Zip code required.
+                                    </div>
+
+                                </div>
+                                <!--Grid column-->
 
                             </div>
-                            <!--Grid column-->
+                            <!--Grid row-->
 
-                        </div>
-                        <!--Grid row-->
+                            <hr>
 
-                        <hr>
-
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="same-address">
-                            <label style="color: black;" class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="save-info">
-                            <label style="color: black;" class="custom-control-label" for="save-info">Save this information for next time</label>
-                        </div>
-
-                        <hr>
-
-                        <div class="d-block my-3">
-                            <div class="custom-control custom-radio">
-                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                                <label style="color: black;" class="custom-control-label" for="credit">Credit card</label>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="same-address">
+                                <label style="color: black;" class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
                             </div>
-                            <div class="custom-control custom-radio">
-                                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                                <label style="color: black;" class="custom-control-label" for="debit">Debit card</label>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="save-info">
+                                <label style="color: black;" class="custom-control-label" for="save-info">Save this information for next time</label>
                             </div>
-                            <div class="custom-control custom-radio">
-                                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                                <label style="color: black;" class="custom-control-label" for="paypal">Paypal</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="cc-name">Name on card</label>
-                                <input type="text" class="form-control" id="cc-name" placeholder="" required>
-                                <small class="text-muted">Full name as displayed on card</small>
-                                <div class="invalid-feedback">
-                                    Name on card is required
+
+                            <hr>
+
+                            <div class="d-block my-3">
+                                <div class="custom-control custom-radio">
+                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+                                    <label style="color: black;" class="custom-control-label" for="credit">Credit card</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                    <label style="color: black;" class="custom-control-label" for="debit">Debit card</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                                    <label style="color: black;" class="custom-control-label" for="paypal">Paypal</label>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <label >Credit card number</label>
-                                <select class="custom-select d-block w-100">
-                                    <option value="0">Select a card:</option>
-                                    <option value="1">XXX-XXX-XXX-XXXX</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Credit card number is required
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="cc-name">Name on card</label>
+                                    <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                                    <small class="text-muted">Full name as displayed on card</small>
+                                    <div class="invalid-feedback">
+                                        Name on card is required
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Credit card number</label>
+                                    <select class="custom-select d-block w-100">
+                                        <option value="0">Select a card:</option>
+                                        <option value="1">XXX-XXX-XXX-XXXX</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Credit card number is required
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-expiration">Expiration</label>
-                                <select class="custom-select d-block w-100">
-                                    <option value="0">Select Expiration Date:</option>
-                                    <option value="1">02/2026</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Expiration date required
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <label for="cc-expiration">Expiration</label>
+                                    <select class="custom-select d-block w-100">
+                                        <option value="0">Select Expiration Date:</option>
+                                        <option value="1">02/2026</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Expiration date required
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <label for="cc-expiration">CVV</label>
+
+                                    <select class="custom-select d-block w-100">
+                                        <option value="0">CVV (3 numbers on back):</option>
+                                        <option value="1">911</option>
+                                    </select>
+
+                                    <div class="invalid-feedback">
+                                        Security code required
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 mb-3">
-                                <label for="cc-expiration">CVV</label>
+                            <hr class="mb-4">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
 
-                                <select class="custom-select d-block w-100">
-                                    <option value="0">CVV (3 numbers on back):</option>
-                                    <option value="1">911</option>
-                                </select>
+                        </form>
 
-                                <div class="invalid-feedback">
-                                    Security code required
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-
-                    </form>
+                    </div>
+                    <!--/.Card-->
 
                 </div>
-                <!--/.Card-->
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-md-4 mb-4">
+                    <form method="post">
+                        <!-- Heading -->
+                        @*      <input  asp-for="@Model.Cart.Quantity" value="@Model.Cart.Quantity" />Items*@
 
-            </div>
-            <!--Grid column-->
-            <!--Grid column-->
-            <div class="col-md-4 mb-4">
-                <form method="post">
-                    <!-- Heading -->
-
-
-                      @*      <input  asp-for="@Model.Cart.Quantity" value="@Model.Cart.Quantity" />Items*@
-
-                    <!-- Cart -->
-                    <ul class="list-group mb-3 z-depth-1">
-                        <li class="list-group-item d-flex justify-content-between">
-                            <span style="color:black; margin-bottom: auto">
-                                @await Component.InvokeAsync("TopPosts", User.Identity.Name)
-                            </span>
-                        </li>
-                    </ul>
-                    <!-- Cart -->
+                        <!-- Cart -->
+                        <ul class="list-group mb-3 z-depth-1">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span style="color:black; margin-bottom: auto">
+                                    @await Component.InvokeAsync("TopPosts", User.Identity.Name)
+                                </span>
+                            </li>
+                        </ul>
+                        <!-- Cart -->
 
                     </form>
+                </div>
+                <!--Grid column-->
+
             </div>
-            <!--Grid column-->
+            <!--Grid row-->
 
         </div>
-        <!--Grid row-->
-
-    </div>
-</main>
-<!--Main layout-->
-<!--Footer-->
-<footer class="page-footer text-center font-small mt-4 wow fadeIn">
+    </main>
+    <!--Main layout-->
+    <!--Footer-->
+    <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
 
-    <hr class="my-4">
+        <hr class="my-4">
 
 
-    <!-- Social icons -->
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-        © 2020 Copyright: Lami&Bryant 
+        <!-- Social icons -->
+        <!--Copyright-->
+        <div class="footer-copyright py-3">
+            © 2020 Copyright: Lami&Bryant
 
-    </div>
-    <!--/.Copyright-->
+        </div>
+        <!--/.Copyright-->
 
-</footer>
-<!--/.Footer-->
+    </footer>
+    <!--/.Footer-->
 
-<script>
-    new WOW().init();
-</script>
+    <script>
+        new WOW().init();
+    </script>
 
-@*
+    @*
 
-@*<form method="post">
-    <label asp-for="@Model.Order.City">City</label>
-    <input asp-for="@Model.Order.City" />
-</form>
-*@
-    </body>
+
+
+        @*<form method="post">
+            <label asp-for="@Model.Order.City">City</label>
+            <input asp-for="@Model.Order.City" />
+        </form>
+    *@
+</body>

@@ -22,8 +22,7 @@ namespace ECommerce_Application.Pages.Account
 
         private UserManager<Customer> _usermanager;
 
-        [BindProperty]
-        public AccountPageModel AccountPage { get; set; }
+
 
         public IndexModel(UserManager<Customer> userManger, SignInManager<Customer> signInManager)
         {
@@ -50,43 +49,12 @@ namespace ECommerce_Application.Pages.Account
         }
 
 
-        /// <summary>
-        /// Post the login information
-        /// </summary>
-        /// <returns></returns>
 
 
 
 
-        public class AccountPageModel
-        {
-            public string Password { get; set; }
-            [Required]
-            [DataType(DataType.Password)]
-            [Compare("Password", ErrorMessage = "Password's don't match")]
 
-            public string ConfirmPassword { get; set; }
-            [BindProperty]
-            public string Email { get; set; }
-            [BindProperty]
 
-            public string FirstName { get; set; }
-            [BindProperty]
-
-            public string LastName { get; set; }
-            [BindProperty]
-
-            public string Address { get; set; }
-            [BindProperty]
-
-            public string City { get; set; }
-            [BindProperty]
-
-            public string State { get; set; }
-            [BindProperty]
-
-            public string ZipCode { get; set; }
-        }
     }
 }
 

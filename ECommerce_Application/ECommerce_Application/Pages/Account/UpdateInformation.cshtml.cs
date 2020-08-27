@@ -56,6 +56,10 @@ namespace ECommerce_Application.Pages.Account
             return Page();
         }
 
+        /// <summary>
+        /// Update the users information
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPost()
         {
 

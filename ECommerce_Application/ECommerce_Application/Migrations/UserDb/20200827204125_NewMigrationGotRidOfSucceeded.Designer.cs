@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce_Application.Migrations.UserDb
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20200827174344_HadToResetTheMigrationsUserIsSecond")]
-    partial class HadToResetTheMigrationsUserIsSecond
+    [Migration("20200827204125_NewMigrationGotRidOfSucceeded")]
+    partial class NewMigrationGotRidOfSucceeded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,9 +83,6 @@ namespace ECommerce_Application.Migrations.UserDb
 
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Succeeded")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");

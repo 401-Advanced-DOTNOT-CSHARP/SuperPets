@@ -82,9 +82,6 @@ namespace ECommerce_Application.Migrations.UserDb
                     b.Property<string>("State")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Succeeded")
-                        .HasColumnType("bit");
-
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 

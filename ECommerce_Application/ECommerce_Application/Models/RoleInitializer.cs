@@ -74,10 +74,15 @@ namespace ECommerce_Application.Models
                 user.FirstName = user.FirstName;
                 user.LastName = user.LastName;
                 user.FullName = user.FirstName + user.LastName;
+                user.Address = user.Address;
+                user.City = user.City;
+                user.State = user.State;
+                user.ZipCode = user.ZipCode;
+
                 IdentityResult result = userManager.CreateAsync(user, _config["Password"]).Result;
                 if (result.Succeeded)
                 {
-                    userManager.AddToRoleAsync(user, ApplicationRoles.Administrator);
+                    userManager.AddToRoleAsync(user, ApplicationRoles.Administrator).Wait();
                 }
             }
         }

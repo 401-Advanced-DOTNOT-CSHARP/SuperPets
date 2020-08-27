@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @using ECommerce_Application.Models;
 @inject SignInManager<Customer> SignInManager
+
+
+
 <!DOCTYPE html>
 
 <html>
@@ -23,7 +26,7 @@
                 <ul class="navbar-nav ">
                     <li style="margin-bottom: 2em;">
 
-                        WELCOME @User.Claims.FirstOrDefault(x => x.Type == "FullName")?.Value!
+                        WELCOME @User.Claims.FirstOrDefault(x => x.Type == "FirstName")?.Value!
 
                     </li>
                 </ul>

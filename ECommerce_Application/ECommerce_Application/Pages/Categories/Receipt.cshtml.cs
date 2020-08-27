@@ -19,9 +19,17 @@ namespace ECommerce_Application.Pages.Categories
         }
         [BindProperty]
         public Order Order { get; set; }
-        public async Task<IActionResult> OnGet()
+        public async Task<IActionResult> OnGet(int id)
         {
+            if (id == 0)
+            {
+                Order = await _order.GetOrder(id);
+            }
+            else
+            {
             Order = await _order.GetOrder(User.Identity.Name);
+
+            }
             return Page();
         }
     }

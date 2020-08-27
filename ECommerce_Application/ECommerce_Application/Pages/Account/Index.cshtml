@@ -1,0 +1,26 @@
+﻿@page
+@model ECommerce_Application.Pages.Account.IndexModel
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1 style="text-align: center;">@User.Claims.FirstOrDefault(x => x.Type == "FirstName")?.Value's ACCOUNT PAGE!</h1><br />
+
+
+
+    <a class="btn btn-danger" asp-page="UpdateInformation">Update Your Information</a><br>
+
+    <a class="btn btn-warning" asp-page="AllOrders">Order History</a><br>
+
+
+</body>
+</html>
+

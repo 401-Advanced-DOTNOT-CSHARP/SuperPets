@@ -1,6 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @using ECommerce_Application.Models;
 @inject SignInManager<Customer> SignInManager
+
+
+
 <!DOCTYPE html>
 
 <html>
@@ -23,7 +26,7 @@
                 <ul class="navbar-nav ">
                     <li style="margin-bottom: 2em;">
 
-                        WELCOME @User.Claims.FirstOrDefault(x => x.Type == "FullName")?.Value!
+                        WELCOME @User.Claims.FirstOrDefault(x => x.Type == "FirstName")?.Value!
 
                     </li>
                 </ul>
@@ -34,10 +37,10 @@
                             <li class="nav-item active" style="margin-right: 1em;">
                                 <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" asp-page="/Categories/All"><img style="width:40px;">Browse</a>
+                            <li class="nav-item active" style="margin-right: 1em;">
+                                <a class="nav-link" asp-page="/Categories/All">Shop</a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item active margin-right: 1em;">
                                 <a class="nav-link" asp-page="/Dashboard/Index">Dashboard</a>
                             </li>
                             <li class="nav-item active">
@@ -58,9 +61,16 @@
                             <li class="nav-item active" style="margin-right: 1em;">
                                 <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" asp-page="/Categories/All"><img style="width:40px;">Browse</a>
+                            <li class="nav-item active" style="margin-right: 1em;">
+                                <a class="nav-link" asp-page="/Categories/All">Shop</a>
                             </li>
+                            @if (SignInManager.IsSignedIn(User))
+	{
+                            <li class="nav-item active" style="margin-right: 1em;">
+                                <a class="nav-link" asp-page="/Account/Index">MyAccount</a>
+                            </li>
+		 
+	}
                             <li class="nav-item active">
                                 <a asp-page="/Categories/Index"><img style="width:40px;" src="https://img.icons8.com/nolan/2x/fast-cart.png" /></a>
                             </li>

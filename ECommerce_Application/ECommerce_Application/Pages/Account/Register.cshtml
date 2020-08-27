@@ -16,24 +16,42 @@
 
 <body>
 
-    <h1 style="margin-bottom: 2em;">Register</h1>
+    <h1 style="margin-bottom: 2em; text-align: center;">Register</h1>
 
-    <form method="post" style="text-align:center">
+
+
+
+    <div style=" display: block; text-align: center; margin-left: 500px; margin-right: 500px;">
+    <form method="post" style="text-align:center; display: inline-block;  margin-left: auto;   margin-right: auto;">
         <label asp-for="@Model.Registration.FirstName"></label>
-        <input asp-for="@Model.Registration.FirstName" />
+        <input style="width: 100%;" asp-for="@Model.Registration.FirstName" /><br />
 
         <label asp-for="@Model.Registration.LastName"></label>
-        <input asp-for="@Model.Registration.LastName" />
+        <input style="width: 100%;" asp-for="@Model.Registration.LastName" /><br />
+
+        <label asp-for="@Model.Registration.Address"></label>
+        <input style="width: 100%;" asp-for="@Model.Registration.Address" /><br />
+
+        <label asp-for="@Model.Registration.City"></label>
+        <input style="width: 100%;" asp-for="@Model.Registration.City" /><br />
+
+        <label asp-for="@Model.Registration.State"></label>
+        <input style="width: 100%;" asp-for="@Model.Registration.State" /><br />
+
+        <label asp-for="@Model.Registration.ZipCode"></label>
+        <input style="width: 100%;" asp-for="@Model.Registration.ZipCode" /><br />
+
 
         <label asp-for="@Model.Registration.Email"></label>
-        <input asp-for="@Model.Registration.Email" />
+        <input style="width: 100%;" asp-for="@Model.Registration.Email" /><br />
 
         <label asp-for="@Model.Registration.Password"></label>
-        <input asp-for="@Model.Registration.Password" />
+        <input style="width: 100%;" asp-for="@Model.Registration.Password" /><br />
 
         <label asp-for="@Model.Registration.ConfirmPassword"></label>
-        <input style="margin-bottom: 1em;" asp-for="@Model.Registration.ConfirmPassword" /><br />
+        <input  style="width: 100%; margin-bottom: 1em;" asp-for="@Model.Registration.ConfirmPassword" /><br /><br />
 
         <button class="btn btn-outline-warning" type="submit">SUBMIT</button>
     </form>
+        </div>
 </body>

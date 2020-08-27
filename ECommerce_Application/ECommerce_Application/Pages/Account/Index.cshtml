@@ -1,0 +1,60 @@
+﻿@page
+@model ECommerce_Application.Pages.Account.IndexModel
+@using Microsoft.AspNetCore.Identity;
+@using ECommerce_Application.Models;
+@inject SignInManager<Customer> SignInManager
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1 style="text-align: center;">@User.Claims.FirstOrDefault(x => x.Type == "FirstName")?.Value ACCOUNT PAGE!</h1><br />
+
+
+
+
+    <h2 style="text-align: center; margin-bottom: 1em;">UPDATE YOUR INFORMATION</h2>
+
+    <div style=" display: block; text-align: center; margin-left: 500px; margin-right: 500px;">
+        <form method="post" style="text-align:center; display: inline-block;  margin-left: auto;   margin-right: auto;">
+            <label asp-for="@Model.AccountPage.FirstName"></label>
+            <input style="width: 100%;" asp-for="@Model.AccountPage.FirstName" placeholder="@User.Claims.FirstOrDefault(x => x.Type == "FirstName")?.Value" /><br />
+
+            <label asp-for="@Model.AccountPage.LastName"></label>
+            <input style="width: 100%;" asp-for="@Model.AccountPage.LastName" placeholder=" @User.Claims.FirstOrDefault(x => x.Type == "LastName")?.Value" /><br />
+
+            <label asp-for="@Model.AccountPage.Address"></label>
+            <input style="width: 100%;" asp-for="@Model.AccountPage.Address" placeholder="@User.Claims.FirstOrDefault(x => x.Type == "Address")?.Value" /><br />
+
+            <label asp-for="@Model.AccountPage.City"></label>
+            <input style="width: 100%;" asp-for="@Model.AccountPage.City" placeholder=" @User.Claims.FirstOrDefault(x => x.Type == "City")?.Value" /><br />
+
+            <label asp-for="@Model.AccountPage.State"></label>
+            <input style="width: 100%;" asp-for="@Model.AccountPage.State" placeholder="@User.Claims.FirstOrDefault(x => x.Type == "State")?.Value" /><br />
+
+            <label asp-for="@Model.AccountPage.ZipCode"></label>
+            <input style="width: 100%;" asp-for="@Model.AccountPage.ZipCode" placeholder="@User.Claims.FirstOrDefault(x => x.Type == "Zip")?.Value" /><br />
+
+
+            <label asp-for="@Model.AccountPage.Email"></label>
+            <input style="width: 100%;" asp-for="@Model.AccountPage.Email" placeholder="" /><br />
+
+            <label asp-for="@Model.AccountPage.Password"></label>
+            <input style="width: 100%;" asp-for="@Model.AccountPage.Password" placeholder="" /><br />
+
+            <label asp-for="@Model.AccountPage.ConfirmPassword"></label>
+            <input style="width: 100%;" asp-for="@Model.AccountPage.ConfirmPassword" placeholder="" /><br />
+
+            <button class="btn btn-outline-warning" type="submit">SUBMIT</button>
+        </form>
+    </div>
+</body>
+</html>
+

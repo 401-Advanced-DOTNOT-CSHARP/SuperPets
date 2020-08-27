@@ -152,7 +152,13 @@ Password: @Test123!
 
 ---
 
-## Change Log
+
+### Claims
+
+
+
+### Change Log
+1.6: *Added Account Page* - 27 Aug 2020
 1.5: *Added checkout page* - 23 Aug 2020  
 1.4: *Added admin page* - 19 Aug 2020  
 1.3: *Allow user to see individual product details* - 19 Aug 2020  
@@ -161,7 +167,7 @@ Password: @Test123!
 
 ---
 
-## Authors
+### Authors
 Bryant Davis & Lami Beach
 
 ---

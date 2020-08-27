@@ -50,12 +50,7 @@ namespace ECommerce_Application.Pages.Account
                 FirstName = Registration.FirstName,
                 FullName = Registration.FirstName + " " + Registration.LastName,
                 LastName = Registration.LastName,
-                UserName = Registration.Email,
-                Address = Registration.Address,
-                City = Registration.City,
-                State = Registration.State,
-                ZipCode = Registration.ZipCode
-                
+                UserName = Registration.Email
             };
 
 
@@ -69,28 +64,7 @@ namespace ECommerce_Application.Pages.Account
             if (result.Succeeded)
             {
                 Claim fullName = new Claim("FullName", customer.FullName);
-                Claim firstName = new Claim("FirstName", customer.FirstName);
-                Claim lastName = new Claim("LastName", customer.LastName);
-                Claim address = new Claim("Address", customer.Address);
-                Claim city = new Claim("City", customer.City);
-                Claim state = new Claim("State", customer.State);
-                Claim zip = new Claim("Zip", customer.ZipCode);
-
-
                 await _usermanager.AddClaimAsync(customer, fullName);
-                await _usermanager.AddClaimAsync(customer, firstName);
-                await _usermanager.AddClaimAsync(customer, lastName);
-                await _usermanager.AddClaimAsync(customer, address);
-                await _usermanager.AddClaimAsync(customer, city);
-                await _usermanager.AddClaimAsync(customer, state);
-                await _usermanager.AddClaimAsync(customer, zip);
-
-
-
-
-
-
-
                 await _signInManager.SignInAsync(customer, isPersistent: false);
                 await _sender.SendEmailAsync(customer.Email, subject, htmlMessage);
                 Cart cart = new Cart()
@@ -125,10 +99,6 @@ namespace ECommerce_Application.Pages.Account
             public string ConfirmPassword { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
-            public string Address { get; set; }
-            public string City { get; set; }
-            public string State { get; set; }
-            public string ZipCode { get; set; }
         }
     }
 }

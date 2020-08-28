@@ -32,5 +32,7 @@ namespace ECommerce_Application.Models.Interfaces
         /// <param name="containerName"></param>
         /// <returns></returns>
         public Task<string> GetBlob(string imageName, string containerName);
+
+        public Task<List<string>> GetAllBlobs();
     }
 }

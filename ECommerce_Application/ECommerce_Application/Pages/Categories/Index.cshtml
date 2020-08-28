@@ -41,6 +41,11 @@
             </tr>
         </thead>
         <tbody>
+            @if (Model.Cart != null)
+            {
+                @if (Model.Cart.CartItems.Count > 0)
+                {
+
             @foreach (var item in Model.Cart.CartItems)
             {
             <tr>
@@ -90,6 +95,8 @@
 
             </td>
         </tr>
+                }
+            }
 
         </tbody>
     </table>

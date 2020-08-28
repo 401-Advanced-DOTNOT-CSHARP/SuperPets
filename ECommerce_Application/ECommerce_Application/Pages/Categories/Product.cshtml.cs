@@ -76,6 +76,8 @@ namespace ECommerce_Application.Pages.Categories
             }
 
             var cart = await _cart.GetCart(user.Email);
+
+
             if (cart == null)
             {
                 cart = new Cart()
@@ -96,11 +98,31 @@ namespace ECommerce_Application.Pages.Categories
 
             if (Quantity <= Product.Quantity && Quantity > 0)
             {
-                await _cartItem.AddProductToCart(Product, cart, Quantity);
-                Product.Quantity = Product.Quantity - Quantity;
+                if (cart.CartItems != null)
+                {
+                    foreach (var item in cart.CartItems)
+                    {
+                        if (item.ProductId == Product.Id)
+                        {
+                            var productExist = await _product.GetProduct(Product.Id);
+                            productExist.Quantity = productExist.Quantity - Quantity;
+                            _product.UpdateProduct(productExist).Wait();
+                            var duplicateCart = await _cartItem.GetCartItem(Product.Id, cart.Id);
+                            duplicateCart.Quantity = duplicateCart.Quantity + Quantity;
+                            _cartItem.UpdateCartItem(duplicateCart).Wait();
+                            cart.Quantity = cart.Quantity + Quantity;
+                            cart.Price += Product.Price * Quantity;
+                            _cart.UpdateCart(cart).Wait();
+                            return Page();
 
-                await _product.UpdateProduct(Product);
 
+                        }
+                    }
+                }
+                     await _cartItem.AddProductToCart(Product, cart, Quantity);
+                    Product.Quantity = Product.Quantity - Quantity;
+
+                    await _product.UpdateProduct(Product);
             }
 
             return Page();

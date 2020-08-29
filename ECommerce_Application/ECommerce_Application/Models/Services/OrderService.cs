@@ -67,6 +67,17 @@ namespace ECommerce_Application.Models.Services
 
             return order;
         }
+        public async Task<List<Order>> GetAllOrders()
+        {
+            List<Order> order = await _context.Orders
+                .Include(x => x.Cart)
+                .ThenInclude(x => x.CartItems)
+                .ThenInclude(x => x.Product)
+                .OrderByDescending(x => x.Date)
+                .ToListAsync();
+
+            return order;
+        }
         public async Task<Order> GetOrder(int id)
         {
             Order order = await _context.Orders.Where(x => x.Id == id)

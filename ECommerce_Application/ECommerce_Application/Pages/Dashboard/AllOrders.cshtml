@@ -1,0 +1,61 @@
+﻿@page
+@model ECommerce_Application.Pages.Dashboard.AllOrdersModel
+@{
+    ViewData["Title"] = "AllOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>AllOrders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Amount
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Order#
+            </th>
+            <th>
+                Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Orders != null)
+        {
+
+            @foreach (var item in Model.Orders)
+            {
+
+                <tr>
+                    <td>
+                        @item.FirstName @item.LastName
+                    </td>
+                    <td>
+                        @item.Cart.Price
+                    </td>
+                    <td>
+                        @item.Cart.Quantity
+                    </td>
+                    <td>
+                        @item.OrderNumber
+                    </td>
+                    <td>
+                        @item.Date
+                    </td>
+                    <td>
+                        <button> <a style="color:white" asp-page="Order/" asp-route-id="@item.Id">View Details</a> </button>
+                    </td>
+                </tr>
+            }
+}
+        </tbody>
+    </table>

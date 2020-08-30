@@ -5,53 +5,41 @@
 @inject SignInManager<Customer> SignInManager
 @{
     ViewData["Title"] = "Register";
-    Layout = "_Layout";
 
 }
 
 <head>
-    <link rel="stylesheet" href="~/Styles/StyleSheet.css" type="text/css" />
+    <title>Login</title>
+    <link href="~/Styles/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/Styles/signin.css" rel="stylesheet">
 </head>
 
 
-<body>
-
-    <h1 style="margin-bottom: 2em; text-align: center;">Register</h1>
-
-
-
-
-    <div style=" display: block; text-align: center; margin-left: 500px; margin-right: 500px;">
-    <form method="post" style="text-align:center; display: inline-block;  margin-left: auto;   margin-right: auto;">
+<body class="text-center">
+    <form class="form-signin" method="post">
+        <h1 class="h3 mb-3 font-weight-normal">Please Register</h1>
+        <label asp-for="@Model.Registration.Email" class="sr-only">Email address</label>
+        <input asp-for="@Model.Registration.Email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label asp-for="@Model.Registration.Password" class="sr-only">Password</label>
+        <input asp-for="@Model.Registration.Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <label asp-for="@Model.Registration.ConfirmPassword" class="sr-only">Password</label>
+        <input asp-for="@Model.Registration.ConfirmPassword" type="password" id="inputPassword" class="form-control" placeholder="Confirm Password" required>
+        <h1 class="h3 mb-3 font-weight-normal">Billing Address</h1>
         <label asp-for="@Model.Registration.FirstName"></label>
-        <input style="width: 100%;" asp-for="@Model.Registration.FirstName" /><br />
-
+        <input style="width: 100%;" asp-for="@Model.Registration.FirstName" class="form-control" placeholder="First Name" required autofocus />
         <label asp-for="@Model.Registration.LastName"></label>
-        <input style="width: 100%;" asp-for="@Model.Registration.LastName" /><br />
-
+        <input style="width: 100%;" asp-for="@Model.Registration.LastName" class="form-control" placeholder="Last Name" required autofocus />
         <label asp-for="@Model.Registration.Address"></label>
-        <input style="width: 100%;" asp-for="@Model.Registration.Address" /><br />
-
+        <input style="width: 100%;" asp-for="@Model.Registration.Address" class="form-control" placeholder="Address" required autofocus />
         <label asp-for="@Model.Registration.City"></label>
-        <input style="width: 100%;" asp-for="@Model.Registration.City" /><br />
-
+        <input style="width: 100%;" asp-for="@Model.Registration.City" class="form-control" placeholder="City" required autofocus />
         <label asp-for="@Model.Registration.State"></label>
-        <input style="width: 100%;" asp-for="@Model.Registration.State" /><br />
-
-        <label asp-for="@Model.Registration.ZipCode"></label>
-        <input style="width: 100%;" asp-for="@Model.Registration.ZipCode" /><br />
-
-
-        <label asp-for="@Model.Registration.Email"></label>
-        <input style="width: 100%;" asp-for="@Model.Registration.Email" /><br />
-
-        <label asp-for="@Model.Registration.Password"></label>
-        <input style="width: 100%;" asp-for="@Model.Registration.Password" /><br />
-
-        <label asp-for="@Model.Registration.ConfirmPassword"></label>
-        <input  style="width: 100%; margin-bottom: 1em;" asp-for="@Model.Registration.ConfirmPassword" /><br /><br />
-
-        <button class="btn btn-outline-warning" type="submit">SUBMIT</button>
+        <input style="width: 100%;" asp-for="@Model.Registration.State" class="form-control" placeholder="State" required autofocus />
+        <label asp-for="@Model.Registration.FirstName"></label>
+        <input style="width: 100%;" asp-for="@Model.Registration.ZipCode" class="form-control" placeholder="Zip Code" required autofocus />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Complete Registration</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
-        </div>
 </body>

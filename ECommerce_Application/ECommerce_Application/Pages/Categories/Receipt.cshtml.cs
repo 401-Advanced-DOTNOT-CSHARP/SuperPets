@@ -23,11 +23,11 @@ namespace ECommerce_Application.Pages.Categories
         {
             if (id == 0)
             {
-                Order = await _order.GetOrder(id);
+                Order = await _order.GetOrder(User.Identity.Name);
             }
             else
             {
-            Order = await _order.GetOrder(User.Identity.Name);
+            Order = await _order.GetOrder(id);
 
             }
             return Page();

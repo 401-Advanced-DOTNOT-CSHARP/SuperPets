@@ -1,18 +1,19 @@
 ﻿@page
-@model ECommerce_Application.Pages.Dashboard.PictureModel
+@model ECommerce_Application.Pages.Dashboard.AllProductsModel
 @{
-    ViewData["Title"] = "Picture";
-    Layout = "_Layout";
-
+    ViewData["Title"] = "AllProducts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Picture Upload</title>
+    <title>Index</title>
     <link href="~/Styles/dashboard.css" rel="stylesheet">
 
 </head>
 
 <body>
+
     <div class="container-fluid" style="margin-top:5vh;">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -52,14 +53,54 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard</h1>
         </div>
-        <form method="post" enctype="multipart/form-data">
-            <label asp-for="@Model.Name">Name:</label>
-            <input asp-for="@Model.Name"/>
-            <label asp-for="@Model.Image"></label>
-            <input type="file" asp-for="@Model.Image" />
-            <button type="submit">Submit</button>
 
-        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Products != null)
+                {
+
+                    @foreach (var item in Model.Products)
+                    {
+
+                        <tr>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @item.Price
+                            </td>
+                            <td>
+                                @item.Quantity
+                            </td>
+                            <td>
+                                <button> <a asp-page="Details/" asp-route-id="@item.Id">View Details</a> </button>
+                            </td>
+                            <td>
+                                <button> <a asp-page="Edit/" asp-route-id="@item.Id">Update Details</a> </button>
+                            </td>
+                            <td>
+                                <button> <a asp-page="Delete/" asp-route-id="@item.Id">Delete Product</a> </button>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
         </main>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script>window.jQuery || document.write('<script src="~/JS/jquery-slim.min.js"><\/script>')</script>
@@ -72,3 +113,4 @@
             feather.replace()
         </script>
 </body>
+

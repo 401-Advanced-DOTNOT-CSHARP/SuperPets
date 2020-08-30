@@ -5,46 +5,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>AllOrders</h1>
 
-<table>
-    <thead>
-        <tr>
-        <th>
-            Date
-        </th>
-            <th>
-                Order Number
-            </th>
-        <th>
-            Quantity
-        </th>
-        <th>
-            Price
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-        @if(Model.Orders != null)
-        {
 
-        @foreach(var item in Model.Orders)
-        {
-            <tr>
-                <td>
-                    @item.Date
-                </td>
-                <td>
-                    <a asp-page="/Categories/Receipt" asp-route-id="@item.Id">@item.OrderNumber</a> 
-                </td>
-                <td>
-                    @item.Cart.Quantity
-                </td>
-                <td>
-                    @item.Cart.Price
-                </td>
-            </tr>
-        }
-        }
-    </tbody>
-</table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Order Number
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Orders != null)
+                    {
+
+                        @foreach (var item in Model.Orders)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Date
+                                </td>
+                                <td>
+                                    <a asp-page="/Categories/Receipt" asp-route-id="@item.Id">@item.OrderNumber</a>
+                                </td>
+                                <td>
+                                    @item.Cart.Quantity
+                                </td>
+                                <td>
+                                    @item.Cart.Price
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+

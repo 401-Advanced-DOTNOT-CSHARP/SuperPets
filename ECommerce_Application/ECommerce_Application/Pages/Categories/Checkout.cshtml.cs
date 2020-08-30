@@ -22,17 +22,15 @@ namespace ECommerce_Application.Pages.Categories
         private readonly ICart _cart;
         private readonly IPayment _payment;
         private IEmailSender _sender;
-        private readonly IConfiguration _config;
-        private UserManager<Customer> _usermanager;
 
 
-        public CheckoutModel(IOrder order, ICart cart, IPayment payment, IEmailSender sender, IConfiguration config)
+
+        public CheckoutModel(IOrder order, ICart cart, IPayment payment, IEmailSender sender)
         {
             _order = order;
             _cart = cart;
             _payment = payment;
             _sender = sender;
-            _config = config;
 
         }
 

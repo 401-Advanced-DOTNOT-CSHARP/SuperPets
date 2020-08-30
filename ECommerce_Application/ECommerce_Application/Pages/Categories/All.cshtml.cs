@@ -19,6 +19,8 @@ namespace ECommerce_Application.Pages.Categories
 
         [BindProperty]
         public List<Product> Products { get; set; }
+        [BindProperty]
+        public int Index { get; set; }
 
         public AllModel(IProduct product)
         {
@@ -33,7 +35,9 @@ namespace ECommerce_Application.Pages.Categories
         public async Task<IActionResult> OnGet()
         {
             Products = await _product.GetProducts();
+
             return Page();
         }
+
     }
 }

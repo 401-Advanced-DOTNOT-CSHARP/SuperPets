@@ -24,6 +24,8 @@ namespace ECommerce_Application.Controllers
         {
             _productService = productService;
         }
+        [BindProperty]
+        public List<Product> Products { get; set; }
 
         /// <summary>
         /// Get the home index and return view
@@ -31,8 +33,8 @@ namespace ECommerce_Application.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Index()
         {
-            var products = await _productService.GetProducts();
-            return View(products);
+            Products = await _productService.GetProducts();
+            return View(Products);
         }
 
 

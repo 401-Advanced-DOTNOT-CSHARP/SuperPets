@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ECommerce_Application.Data;
 using ECommerce_Application.Models;
 using Microsoft.AspNetCore.Authorization;
+using ECommerce_Application.Models.Interfaces;
 
 namespace ECommerce_Application.Pages.Dashboard
 {
@@ -19,24 +20,48 @@ namespace ECommerce_Application.Pages.Dashboard
 
     public class IndexModel : PageModel
     {
-        private readonly ECommerce_Application.Data.StoreDbContext _context;
+        private readonly IOrder _order;
 
-        public IndexModel(ECommerce_Application.Data.StoreDbContext context)
+        public IProduct _product { get; }
+
+        public IndexModel(IOrder order, IProduct product)
         {
-            _context = context;
+            _order = order;
+            _product = product;
         }
 
         [BindProperty]
-        public IList<Product> Products { get; set; }
+        public List<Product> Products { get; set; }
+        [BindProperty]
+        public List<Order> Orders { get; set; }
+        [BindProperty]
+        public decimal[] Prices { get; set; }
+        [BindProperty]
+        public DateTime[] Dates { get; set; }
 
 
         /// <summary>
         /// Get the products upon request
         /// </summary>
         /// <returns></returns>
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            Products = await _context.Products.ToListAsync();
+            Orders = await _order.GetAllOrders();
+            decimal[] prices = new decimal[Orders.Count];
+            DateTime[] dates = new DateTime[Orders.Count];
+
+            Products = await _product.GetProducts();
+            for(var i = 0; i < Orders.Count; i++)
+            {
+                prices[i] = Orders[i].Cart.Price;
+            }
+            for (var i = 0; i < Orders.Count; i++)
+            {
+                dates[i] = Orders[i].Date;
+            }
+            Prices = prices;
+            Dates = dates;
+            return Page();
         }
     }
 }

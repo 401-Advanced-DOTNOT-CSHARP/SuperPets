@@ -3,27 +3,26 @@
 
 @{
     ViewData["Title"] = "Login";
-    Layout = "_Layout";
 
 }
 
 
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="~/Styles/StyleSheet.css" type="text/css" />
-</head>
+    <head>
+        <title>Login</title>
+        <link href="~/Styles/bootstrap.min.css" rel="stylesheet">
 
-<body>
-    <h1 style="margin-bottom: 2em;">Login</h1>
+        <!-- Custom styles for this template -->
+        <link href="~/Styles/signin.css" rel="stylesheet">
+    </head>
 
-    <form method="post" style="text-align:center">
-        <label asp-for="@Model.Login.Email"></label>
-        <input style="margin-right: 4em;" asp-for="@Model.Login.Email" />
-
-        <label asp-for="@Model.Login.Password"></label>
-        <input style="margin-right: 4em;" asp-for="@Model.Login.Password" />
-
-        <button class="btn btn-outline-warning" type="submit">SUBMIT</button>
-    </form>
-     
-</body>
+    <body class="text-center">
+        <form class="form-signin" method="post">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <label asp-for="@Model.Login.Email" class="sr-only">Email address</label>
+            <input asp-for="@Model.Login.Email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label asp-for="@Model.Login.Password" class="sr-only">Password</label>
+            <input asp-for="@Model.Login.Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+        </form>
+    </body>

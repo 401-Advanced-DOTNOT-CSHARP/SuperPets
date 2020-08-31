@@ -7,47 +7,90 @@
 }
 
 
+    <head>
+        <link rel="stylesheet" href="~/Styles/product.css" type="text/css" />
 
-<body>
-    <h1 style="margin-bottom: 1em; text-align: center;">@Model.Product.Name | Price: $@Model.Product.Price | Category: @Model.Product.Category </h1><br>
-
-
-    @if (Model.IsAvailable)
-    {
-        <h1>Quantity Entered is larger than available.</h1>
-    }
-
-    <form method="post" style="text-align:center">
-        <label style="margin-bottom: 1em;" asp-for="@Model.Quantity">Quantity Available: @Model.Product.Quantity</label>
-        <input asp-for="@Model.Quantity" placeholder="1" />
-        <input hidden asp-for="@Model.Product.Id" value="@Model.Product.Id" />
-        <input hidden asp-for="@Model.Product.Quantity" value="@Model.Product.Quantity" />
-        <input hidden asp-for="@Model.Product.Image" value="@Model.Product.Image" />
-        <input hidden asp-for="@Model.Product.IsFeature" value="@Model.Product.IsFeature" />
-        <input hidden asp-for="@Model.Product.Name" value="@Model.Product.Name" />
-        <input hidden asp-for="@Model.Product.Price" value="@Model.Product.Price" />
-        <input hidden asp-for="@Model.Product.SuperPower" value="@Model.Product.SuperPower" />
-        <input hidden asp-for="@Model.Product.Description" value="@Model.Product.Description" />
-        <input hidden asp-for="@Model.Product.Color" value="@Model.Product.Color" />
-        <input hidden asp-for="@Model.Product.Category" value="@Model.Product.Category" />
-        <input hidden asp-for="@Model.Product.Breed" value="@Model.Product.Breed" />
-        <input hidden asp-for="@Model.Product.Age" value="@Model.Product.Age" />
-        <button class="btn btn-outline-warning" type="submit">Add to Cart</button>
-    </form>
-
-    <img style='width: 30%; display: block;  margin-left: auto;  margin-right: auto; border-radius: 20px;' src=@Model.Product.Image>
-
-    <h2 style="text-align: center; margin-top: 1em;">Age: @Model.Product.Age</h2>
-    <h2 style="text-align: center; margin-top: 1em;">Breed: @Model.Product.Breed</h2>
-    <h2 style="text-align: center; margin-top: 1em;">Color: @Model.Product.Color</h2>
-    <h2 style="text-align: center; margin-top: 1em;">SuperPower: @Model.Product.SuperPower</h2>
-    <h3 style="text-align: center; margin-top: 1em; margin-bottom: 2em; ">Description:<br /> @Model.Product.Description</h3>
+    </head>
+    <body>
+        <h1 style="margin-bottom: 1em; margin-top:10vh; text-align: center;">@Model.Product.Name | Price: $@Model.Product.Price | Category: @Model.Product.Category </h1><br>
 
 
-    @await Component.InvokeAsync("TopPosts", User.Identity.Name)
+        @if (Model.IsAvailable)
+        {
+            <h1>Quantity Entered is larger than available.</h1>
+        }
+        <div class="container bootdey">
+            <div class="col-md-12">
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            <div class="pro-img-details">
+                                <img src="@Model.Product.Image" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 class="pro-d-title">
+                                <a href="#" class="">
+                                    @Model.Product.Name
+                                </a>
+                            </h4>
+                            <p>
+                                @Model.Product.Description
+                            </p>
+                            <div class="m-bot15"> <strong>Price : @Model.Product.Price </strong>
+                                                  <form method="post" style="text-align:center">
+                                                      <label style="margin-bottom: 1em;" asp-for="@Model.Quantity">Quantity Available: @Model.Product.Quantity</label>
+                                                      <input asp-for="@Model.Quantity" placeholder="1" class="form-control quantity" />
+                                                      <input hidden asp-for="@Model.Product.Id" value="@Model.Product.Id" />
+                                                      <input hidden asp-for="@Model.Product.Quantity" value="@Model.Product.Quantity" />
+                                                      <input hidden asp-for="@Model.Product.Image" value="@Model.Product.Image" />
+                                                      <input hidden asp-for="@Model.Product.IsFeature" value="@Model.Product.IsFeature" />
+                                                      <input hidden asp-for="@Model.Product.Name" value="@Model.Product.Name" />
+                                                      <input hidden asp-for="@Model.Product.Price" value="@Model.Product.Price" />
+                                                      <input hidden asp-for="@Model.Product.SuperPower" value="@Model.Product.SuperPower" />
+                                                      <input hidden asp-for="@Model.Product.Description" value="@Model.Product.Description" />
+                                                      <input hidden asp-for="@Model.Product.Color" value="@Model.Product.Color" />
+                                                      <input hidden asp-for="@Model.Product.Category" value="@Model.Product.Category" />
+                                                      <input hidden asp-for="@Model.Product.Breed" value="@Model.Product.Breed" />
+                                                      <input hidden asp-for="@Model.Product.Age" value="@Model.Product.Age" />
+                                                      <input class="btn btn-round btn-danger" type="submit" value="Add to Cart" />
+                                                  </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        @*<form method="post" style="text-align:center">
+            <label style="margin-bottom: 1em;" asp-for="@Model.Quantity">Quantity Available: @Model.Product.Quantity</label>
+            <input asp-for="@Model.Quantity" placeholder="1" />
+            <input hidden asp-for="@Model.Product.Id" value="@Model.Product.Id" />
+            <input hidden asp-for="@Model.Product.Quantity" value="@Model.Product.Quantity" />
+            <input hidden asp-for="@Model.Product.Image" value="@Model.Product.Image" />
+            <input hidden asp-for="@Model.Product.IsFeature" value="@Model.Product.IsFeature" />
+            <input hidden asp-for="@Model.Product.Name" value="@Model.Product.Name" />
+            <input hidden asp-for="@Model.Product.Price" value="@Model.Product.Price" />
+            <input hidden asp-for="@Model.Product.SuperPower" value="@Model.Product.SuperPower" />
+            <input hidden asp-for="@Model.Product.Description" value="@Model.Product.Description" />
+            <input hidden asp-for="@Model.Product.Color" value="@Model.Product.Color" />
+            <input hidden asp-for="@Model.Product.Category" value="@Model.Product.Category" />
+            <input hidden asp-for="@Model.Product.Breed" value="@Model.Product.Breed" />
+            <input hidden asp-for="@Model.Product.Age" value="@Model.Product.Age" />
+            <button class="btn btn-outline-warning" type="submit">Add to Cart</button>
+        </form>
+
+        <img style='width: 30%; display: block;  margin-left: auto;  margin-right: auto; border-radius: 20px;' src=@Model.Product.Image>
+
+        <h2 style="text-align: center; margin-top: 1em;">Age: @Model.Product.Age</h2>
+        <h2 style="text-align: center; margin-top: 1em;">Breed: @Model.Product.Breed</h2>
+        <h2 style="text-align: center; margin-top: 1em;">Color: @Model.Product.Color</h2>
+        <h2 style="text-align: center; margin-top: 1em;">SuperPower: @Model.Product.SuperPower</h2>
+        <h3 style="text-align: center; margin-top: 1em; margin-bottom: 2em; ">Description:<br /> @Model.Product.Description</h3>*@
 
 
-   <button><a asp-page="/Categories/Checkout">Checkout</a></button>
+        @await Component.InvokeAsync("TopPosts", User.Identity.Name)
 
-</body>
+
+        <button><a asp-page="/Categories/Checkout">Checkout</a></button>
+
+    </body>
 

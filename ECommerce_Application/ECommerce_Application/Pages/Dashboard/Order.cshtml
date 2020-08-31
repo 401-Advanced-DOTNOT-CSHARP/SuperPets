@@ -4,133 +4,188 @@
     ViewData["Title"] = "Order";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+        <link href="~/Styles/dashboard.css" rel="stylesheet">
 
-<h1>Order</h1>
+    </head>
+    <body>
+        <div class="container-fluid" style="margin-top:5vh;">
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-page="Index">
+                                    <span data-feather="home"></span>
+                                    Dashboard <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="AllOrders">
+                                    <span data-feather="file"></span>
+                                    Orders
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-page="AllProducts">
+                                    <span data-feather="shopping-cart"></span>
+                                    Products
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <button> <a class="nav-link" asp-page="Create">Create New Product</a> </button>
+                            </li>
+                            <li class="nav-item">
+                                <button> <a class="nav-link" asp-page="Picture">Upload New Picture</a> </button>
+                            </li>
+                        </ul>
+                    </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Quantity
-            </th>
-            <th>
-                Name
-            </th>
-            <th>
-                Product Price
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Order.Cart.CartItems)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Quantity)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Product.Name)
-                </td>
-                @{
-                    var price = item.Product.Price * item.Quantity;
-                }
-                <td>
-                    @price
-                </td>
-            </tr>
-        }
-        <tr>
-            <td>
-            </td>
-            <td>
-                Total:
+                </nav>
+            </div>
+        </div>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                <h1 class="h2">Dashboard</h1>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Product Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Order.Cart.CartItems)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Product.Name)
+                            </td>
+                            @{
+                                var price = item.Product.Price * item.Quantity;
+                            }
+                            <td>
+                                @price
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            Total:
 
-            </td>
-            <td>
-                @Model.Order.Cart.Price
-            </td>
-        </tr>
+                        </td>
+                        <td>
+                            @Model.Order.Cart.Price
+                        </td>
+                    </tr>
 
-    </tbody>
-</table>
+                </tbody>
+            </table>
 
-<h1>Billing Information:</h1>
+            <h1>Billing Information:</h1>
 
-<table class="table">
-    <tbody>
-        <tr>
-            <td>
-                E-Mail
-            </td>
-            <td>
-                @Model.Order.UserEmail
-            </td>
-        </tr>
-        <tr>
-            <td>
-                First Name
-            </td>
-            <td>
-                @Model.Order.FirstName
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Last Name
-            </td>
-            <td>
-                @Model.Order.LastName
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Address
-            </td>
-            <td>
-                @Model.Order.Address
-            </td>
-        </tr>
-        <tr>
-            <td>
-                City
-            </td>
-            <td>
-                @Model.Order.City
-            </td>
-        </tr>
-        <tr>
-            <td>
-                State
-            </td>
-            <td>
-                @Model.Order.State
-            </td>
-        </tr>
-        <tr>
-            <td>
-                ZipCode
-            </td>
-            <td>
-                @Model.Order.ZipCode
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Order Number
-            </td>
-            <td>
-                @Model.Order.OrderNumber
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Amount Charged
-            </td>
-            <td>
-                @Model.Order.Cart.Price
-            </td>
-        </tr>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>
+                            E-Mail
+                        </td>
+                        <td>
+                            @Model.Order.UserEmail
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            First Name
+                        </td>
+                        <td>
+                            @Model.Order.FirstName
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Last Name
+                        </td>
+                        <td>
+                            @Model.Order.LastName
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Address
+                        </td>
+                        <td>
+                            @Model.Order.Address
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            City
+                        </td>
+                        <td>
+                            @Model.Order.City
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            State
+                        </td>
+                        <td>
+                            @Model.Order.State
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ZipCode
+                        </td>
+                        <td>
+                            @Model.Order.ZipCode
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Order Number
+                        </td>
+                        <td>
+                            @Model.Order.OrderNumber
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Amount Charged
+                        </td>
+                        <td>
+                            @Model.Order.Cart.Price
+                        </td>
+                    </tr>
 
-    </tbody>
-</table>
-    <button> <a style="color:white" asp-page="AllOrders">Back to Orders</a> </button>
+                </tbody>
+            </table>
+            </main>
+            <button> <a style="color:white" asp-page="AllOrders">Back to Orders</a> </button>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script>window.jQuery || document.write('<script src="~/JS/jquery-slim.min.js"><\/script>')</script>
+            <script src="../../../../assets/js/vendor/popper.min.js"></script>
+            <script src="../../../../dist/js/bootstrap.min.js"></script>
+
+            <!-- Icons -->
+            <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+            <script>
+                feather.replace()
+            </script>
+    </body>

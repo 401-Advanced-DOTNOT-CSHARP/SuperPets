@@ -123,6 +123,8 @@ namespace ECommerce_Application.Pages.Account
             [DataType(DataType.Password)]
             [Compare("Password", ErrorMessage = "Password's don't match")]
             public string ConfirmPassword { get; set; }
+            [Display(Name = "First Name")]
+
             public string FirstName { get; set; }
             public string LastName { get; set; }
             public string Address { get; set; }

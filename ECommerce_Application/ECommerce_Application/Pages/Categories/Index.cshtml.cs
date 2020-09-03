@@ -18,11 +18,13 @@ namespace ECommerce_Application.Pages.Categories
     {
         private readonly ICartItem _cartItem;
         private readonly ICart _cart;
+        private readonly IProduct _product;
 
-        public IndexModel(ICart cart, ICartItem cartItem)
+        public IndexModel(ICart cart, ICartItem cartItem, IProduct product)
         {
             _cart = cart;
             _cartItem = cartItem;
+            _product = product;
         }
 
 
@@ -39,6 +41,13 @@ namespace ECommerce_Application.Pages.Categories
         public int CartId { get; set; }
         [BindProperty]
         public int Quantity { get; set; }
+
+        [BindProperty]
+        public Product Product { get; set; }
+
+
+        [BindProperty]
+        public bool IsAvailable { get; set; }
 
 
         /// <summary>
@@ -72,9 +81,27 @@ namespace ECommerce_Application.Pages.Categories
         /// <returns></returns>
         public async Task<IActionResult> OnPostUpdate()
         {
+            Cart = await _cart.GetCart(User.Identity.Name);
+            Product = await _product.GetProduct(ProductId);
             CartItem = await _cartItem.GetCartItem(ProductId, CartId);
+
+            if (CartItem == null)
+            {
+                IsAvailable = true;
+                return Page();
+            }
+            if (Quantity <= Product.Quantity && Quantity > 0)
+            {
             await _cartItem.UpdateCartQuantityAndPrice(CartItem.Product, CartItem.Cart, Quantity);
             return new RedirectToPageResult("/Categories/Index");
+
+            }
+            if (Quantity > Product.Quantity || Quantity <= 0)
+            {
+                IsAvailable = true;
+                return Page();
+            }
+            return Page();
         }
     }
 }

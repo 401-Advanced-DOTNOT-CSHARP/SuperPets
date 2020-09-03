@@ -1,0 +1,46 @@
+﻿@page
+@model ECommerce_Application.Pages.Account.UpdateInformationModel
+@{
+    Layout = "_Layout";
+}
+
+
+<h2 style="text-align: center; margin-bottom: 1em;">UPDATE YOUR INFORMATION</h2>
+
+@if (Model.Failed)
+{
+    <h3>Account Information Updated</h3>
+}
+<div style=" display: block; text-align: center; margin-left: 500px; margin-right: 500px;">
+    <form method="post" style="text-align:center; display: inline-block;  margin-left: auto;   margin-right: auto;">
+
+        <label asp-for="@Model.Customer.FirstName"></label>
+        <input style="width: 100%;" asp-for="@Model.Customer.FirstName" placeholder="@User.Claims.FirstOrDefault(x => x.Type == "FirstName")?.Value" /><br />
+
+        <label asp-for="@Model.Customer.LastName"></label>
+        <input style="width: 100%;" asp-for="@Model.Customer.LastName" placeholder=" @User.Claims.FirstOrDefault(x => x.Type == "LastName")?.Value" /><br />
+
+        <label asp-for="@Model.Customer.Address"></label>
+        <input style="width: 100%;" asp-for="@Model.Customer.Address" placeholder="@User.Claims.FirstOrDefault(x => x.Type == "Address")?.Value" /><br />
+
+        <label asp-for="@Model.Customer.City"></label>
+        <input style="width: 100%;" asp-for="@Model.Customer.City" placeholder=" @User.Claims.FirstOrDefault(x => x.Type == "City")?.Value" /><br />
+
+        <label asp-for="@Model.Customer.State"></label>
+        <input style="width: 100%;" asp-for="@Model.Customer.State" placeholder="@User.Claims.FirstOrDefault(x => x.Type == "State")?.Value" /><br />
+
+        <label asp-for="@Model.Customer.ZipCode"></label>
+        <input style="width: 100%;" asp-for="@Model.Customer.ZipCode" placeholder="@User.Claims.FirstOrDefault(x => x.Type == "Zip")?.Value" /><br />
+
+        <input hidden style="width: 100%;" asp-for="@Model.Customer.UserName" value="@Model.Customer.UserName" />
+        <input hidden style="width: 100%;" asp-for="@Model.Customer.Email" value="@Model.Customer.Email" />
+        <input hidden style="width: 100%;" asp-for="@Model.Customer.PasswordHash" value="@Model.Customer.PasswordHash" />
+
+
+        <button class="btn btn-outline-warning" type="submit">SUBMIT</button>
+        @if (Model.Succeeded)
+        {
+            <h3>Information Updated</h3>
+        }
+    </form>
+</div>

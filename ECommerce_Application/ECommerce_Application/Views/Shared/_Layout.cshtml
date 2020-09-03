@@ -1,84 +1,91 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @using ECommerce_Application.Models;
 @inject SignInManager<Customer> SignInManager
+
+
+
 <!DOCTYPE html>
 
 <html>
 
 <head>
-    <link rel="stylesheet" href="~/Styles/StyleSheet.css" type="text/css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    @*<link rel="stylesheet" href="~/Styles/StyleSheet.css" type="text/css" />*@
+    <link href="~/Styles/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 </head>
 
-<body class="p-3 mb-2 bg-info text-white">
+<body>
+
     <header>
-
-        <nav class="navbar navbar-expand-lg navbar-dark ">
-            <br />
-
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             @if (SignInManager.IsSignedIn(User))
             {
-                <ul class="navbar-nav ">
-                    <li style="margin-bottom: 2em;">
-
-                        WELCOME @User.Claims.FirstOrDefault(x => x.Type == "FullName")?.Value!
-
-                    </li>
-                </ul>
                 @if (this.User.IsInRole("Administrator"))
                 {
-                    <div class="mx-auto">
+                    <a class="navbar-brand" href="#">Super Pets</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active" style="margin-right: 1em;">
                                 <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" asp-page="/Categories/All"><img style="width:40px;">Browse</a>
+                            <li class="nav-item active" style="margin-right: 1em;">
+                                <a class="nav-link" asp-page="/Categories/All">Shop</a>
                             </li>
-                            <li class="nav-item active">
+                            <li class="nav-item active margin-right: 1em;">
                                 <a class="nav-link" asp-page="/Dashboard/Index">Dashboard</a>
                             </li>
                             <li class="nav-item active">
                                 <a asp-page="/Categories/Index"><img style="width:40px;" src="https://img.icons8.com/nolan/2x/fast-cart.png" /></a>
                             </li>
                         </ul>
+                        <img style="margin-right:35vw;" src="~/Assets/bryant-dog-head (1).png" />
+                        <form asp-page="/Account/Index" method="post" style="margin-right:1vw;"> <button class="btn btn-outline-warning" type="submit">Account</button></form>
+                        <form asp-page="/Account/Logout" method="post"> <button class="btn btn-outline-warning" type="submit"> LOGOUT</button></form>
                     </div>
-                    <ul>
-                            <li style="list-style:none;">
-                                <form asp-page="/Account/Logout" method="post"> <button class="btn btn-outline-warning" type="submit"> LOGOUT</button></form>
-                            </li>
-                        </ul>
                 }
                 else
                 {
-                    <div class="mx-auto">
+                    <a class="navbar-brand" href="#">Super Pets</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active" style="margin-right: 1em;">
                                 <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" asp-page="/Categories/All"><img style="width:40px;">Browse</a>
+                            <li class="nav-item active" style="margin-right: 1em;">
+                                <a class="nav-link" asp-page="/Categories/All">Shop</a>
                             </li>
                             <li class="nav-item active">
                                 <a asp-page="/Categories/Index"><img style="width:40px;" src="https://img.icons8.com/nolan/2x/fast-cart.png" /></a>
                             </li>
                         </ul>
-                    </div>
-                    <ul>
-                        <li style="list-style:none;">
+
+
+                        <form class="form-inline mt-2 mt-md-0" style="margin-right:40vw;">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <form asp-page="/Account/Index" method="post" style="margin-right:1vw;"> <button class="btn btn-outline-warning" type="submit">Account</button></form>
                             <form asp-page="/Account/Logout" method="post"> <button class="btn btn-outline-warning" type="submit"> LOGOUT</button></form>
-                        </li>
-                    </ul>
+                        }
+                    </div>
                 }
-
-
             }
             else
             {
-
-                <div class="mx-auto" style="margin-bottom: 3em;">
+                <a class="navbar-brand" href="#">Super Pets</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active" style="margin-right: 1em;">
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
@@ -90,26 +97,124 @@
                             <a class="nav-link" asp-page="/Account/Register">Register</a>
                         </li>
                     </ul>
+                    <form class="form-inline mt-2 mt-md-0" style="margin-right:40vw;">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
                 </div>
             }
-
-
-
-
         </nav>
-
-    
     </header>
+
+    @*<header>
+
+            <nav class="navbar navbar-expand-lg navbar-dark ">
+                <br />
+
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <ul class="navbar-nav ">
+                        <li style="margin-bottom: 2em;">
+
+                            WELCOME @User.Claims.FirstOrDefault(x => x.Type == "FirstName")?.Value!
+
+                        </li>
+                    </ul>
+                    @if (this.User.IsInRole("Administrator"))
+                    {
+                        <div class="mx-auto">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active" style="margin-right: 1em;">
+                                    <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item active" style="margin-right: 1em;">
+                                    <a class="nav-link" asp-page="/Categories/All">Shop</a>
+                                </li>
+                                <li class="nav-item active margin-right: 1em;">
+                                    <a class="nav-link" asp-page="/Dashboard/Index">Dashboard</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a asp-page="/Categories/Index"><img style="width:40px;" src="https://img.icons8.com/nolan/2x/fast-cart.png" /></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul>
+                            <li style="list-style:none;">
+                                <form asp-page="/Account/Logout" method="post"> <button class="btn btn-outline-warning" type="submit"> LOGOUT</button></form>
+                            </li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <div class="mx-auto">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active" style="margin-right: 1em;">
+                                    <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item active" style="margin-right: 1em;">
+                                    <a class="nav-link" asp-page="/Categories/All">Shop</a>
+                                </li>
+                                @if (SignInManager.IsSignedIn(User))
+                                {
+                                    <li class="nav-item active" style="margin-right: 1em;">
+                                        <a class="nav-link" asp-page="/Account/Index">MyAccount</a>
+                                    </li>
+
+                                }
+                                <li class="nav-item active">
+                                    <a asp-page="/Categories/Index"><img style="width:40px;" src="https://img.icons8.com/nolan/2x/fast-cart.png" /></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul>
+                            <li style="list-style:none;">
+                                <form asp-page="/Account/Logout" method="post"> <button class="btn btn-outline-warning" type="submit"> LOGOUT</button></form>
+                            </li>
+                        </ul>
+                    }
+
+
+                }
+                else
+                {
+
+                    <div class="mx-auto" style="margin-bottom: 3em;">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active" style="margin-right: 1em;">
+                                <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active" style="margin-right: 1em;">
+                                <a class="nav-link" asp-page="/Account/Login">Login</a>
+                            </li>
+                            <li class="nav-item active" style="margin-right: 1em;">
+                                <a class="nav-link" asp-page="/Account/Register">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                }
+
+
+
+
+            </nav>
+
+
+        </header>*@
 
 
     <div>
         @RenderBody()
     </div>
 
-    <footer>
+    <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src=""~/JS/jquery-slim.min.js"><\/script>')</script>
+    <script src="~/JS/popper.min.js"></script>
+    <script src="~/JS/bootstrap.min.js"></script>
 </body>
 </html>

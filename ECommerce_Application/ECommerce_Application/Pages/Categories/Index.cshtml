@@ -14,6 +14,12 @@
 </head>
 <body>
     <h1 style="text-align: center">SUPER DOG CART </h1>
+
+    @if (Model.IsAvailable)
+	{
+		 <h1>Number of items is unavailable</h1>
+	}
+
     <table class="table">
         <thead>
             <tr>
@@ -35,6 +41,11 @@
             </tr>
         </thead>
         <tbody>
+            @if (Model.Cart != null)
+            {
+                @if (Model.Cart.CartItems.Count > 0)
+                {
+
             @foreach (var item in Model.Cart.CartItems)
             {
             <tr>
@@ -84,6 +95,8 @@
 
             </td>
         </tr>
+                }
+            }
 
         </tbody>
     </table>

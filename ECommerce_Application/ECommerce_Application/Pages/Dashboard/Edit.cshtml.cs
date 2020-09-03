@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ECommerce_Application.Data;
 using ECommerce_Application.Models;
 using Microsoft.AspNetCore.Authorization;
+using ECommerce_Application.Models.Interfaces;
 
 namespace ECommerce_Application.Pages.Dashboard
 {
@@ -19,15 +20,19 @@ namespace ECommerce_Application.Pages.Dashboard
 
     public class EditModel : PageModel
     {
-        private readonly ECommerce_Application.Data.StoreDbContext _context;
+        private readonly StoreDbContext _context;
+        private readonly IImage _image;
 
-        public EditModel(ECommerce_Application.Data.StoreDbContext context)
+        public EditModel(StoreDbContext context, IImage image)
         {
             _context = context;
+            _image = image;
         }
 
         [BindProperty]
         public Product Product { get; set; }
+        [BindProperty]
+        public List<string> Blobs { get; set; }
 
 
         /// <summary>
@@ -48,6 +53,8 @@ namespace ECommerce_Application.Pages.Dashboard
             {
                 return NotFound();
             }
+
+            Blobs = await _image.GetAllBlobs();
             return Page();
         }
 

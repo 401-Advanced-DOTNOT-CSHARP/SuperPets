@@ -22,17 +22,15 @@ namespace ECommerce_Application.Pages.Categories
         private readonly ICart _cart;
         private readonly IPayment _payment;
         private IEmailSender _sender;
-        private readonly IConfiguration _config;
-        private UserManager<Customer> _usermanager;
 
 
-        public CheckoutModel(IOrder order, ICart cart, IPayment payment, IEmailSender sender, IConfiguration config)
+
+        public CheckoutModel(IOrder order, ICart cart, IPayment payment, IEmailSender sender)
         {
             _order = order;
             _cart = cart;
             _payment = payment;
             _sender = sender;
-            _config = config;
 
         }
 
@@ -49,10 +47,7 @@ namespace ECommerce_Application.Pages.Categories
         public string Name { get; set; }
         [BindProperty]
         public bool Payment { get; set; }
-        [BindProperty]
-        public string Expiration { get; set; }
-        [BindProperty]
-        public string CVC { get; set; }
+
 
 
 
@@ -72,10 +67,11 @@ namespace ECommerce_Application.Pages.Categories
         /// <returns></returns>
         public async Task<IActionResult> OnPost()
         {
+            Order.OrderNumber = $"{Guid.NewGuid().ToString()}{Order.Id}";
             Cart = await _cart.GetCart(User.Identity.Name);
             string subject = $"Receipt of purchase from SuperPets for {Order.FirstName}";
             Order.Date = DateTime.Now;
-            string htmlMessage = $"<h1>Your Order {Order.Date}!</h1><br><ul><li>{Order.CartId}</li></ul><ul>";
+            string htmlMessage = $"<h1>Your Order {Order.Date}!</h1><br><ul><li>{Order.OrderNumber}</li></ul><ul>";
             foreach (var item in Cart.CartItems)
             {
                 htmlMessage += $"<li><h2>Name: {item.Product.Name}</h2>" +
@@ -87,8 +83,14 @@ namespace ECommerce_Application.Pages.Categories
             card += Name;
             card += ":Number";
             Order.Cart = Cart;
-            Order.OrderNumber = $"{Guid.NewGuid().ToString()}{Order.Id}";
             await _order.CreateOrder(Order);
+            string Expiration = "0221";
+            string CVC = "012";
+            if (Name == "My Credit Card")
+            {
+                CVC = "1234";
+            }
+
             var payment = await _payment.Run(Order.UserEmail, card, Expiration, CVC);
             if(payment == "Failed")
             {

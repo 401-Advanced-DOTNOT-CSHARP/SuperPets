@@ -18,9 +18,12 @@ namespace ECommerce_Application.Models.Services
     {
         private IConfiguration _storageConfig { get; set; }
 
-        public Blob(IConfiguration storageConfig)
+        private readonly IConfiguration _config;
+
+        public Blob(IConfiguration storageConfig, IConfiguration config)
         {
             _storageConfig = storageConfig;
+            _config = config;
         }
 
 
@@ -65,7 +68,18 @@ namespace ECommerce_Application.Models.Services
             return FileURL;
 
         }
+        public async Task<List<string>> GetAllBlobs()
+        {
+            var container = await GetContainer(_config["ImageContainer"]);
+            List<string> FileUrls = new List<string>();
+            foreach(IListBlobItem item in container.ListBlobs(null, false))
+            {
+                FileUrls.Add(item.Uri.AbsoluteUri);
+            }
 
+            return FileUrls;
+
+        }
 
 
         /// <summary>

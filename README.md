@@ -17,6 +17,7 @@ We are hoping to implement accessories at some point.
 
 ## Tools Used
 Microsoft Visual Studio Community 2019 
+test
 
 - C#
 - ASP.Net Core
@@ -67,26 +68,24 @@ Unit testing is included in the ECommerceTesting/Testing project using the xUnit
 ### Overview Super Dogs Website
 ![Overview of Recent Posts](https://via.placeholder.com/500x250)
 
-### Creating a Post
+### Home Page
 ![Post Creation](https://via.placeholder.com/500x250)
 
-### Enriching a Post
+### Product Page
 ![Enriching Post](https://via.placeholder.com/500x250)
 
-### Viewing Post Details
+### Checkout Page
 ![Details of Post](https://via.placeholder.com/500x250)
 
 ---
-## Data Flow (Frontend, Backend, REST API)
-***[Add a clean and clear explanation of what the data flow is. Walk me through it.]***
-![Data Flow Diagram](/assets/img/Flowchart.png)
+
 
 ---
 ## Data Model
 
 ### Overall Project Schema
 ***[Add a description of your DB schema. Explain the relationships to me.]***
-![Database Schema](/wwwroot/Assets/erd.png)
+![Database Schema](./wwwroot/Assets/erd.png)
 
 ---
 ## Model Properties and Requirements
@@ -98,11 +97,11 @@ Unit testing is included in the ECommerceTesting/Testing project using the xUnit
 | ID  | int | YES |
 | Name | string | YES |
 | SKU | string | YES |
-| Price | decimal | NO |
-| Description | string | NO |
-| Breed | string | NO |
-| Age | int | NO |
-| SuperPower | string | NO |
+| Price | decimal | YES |
+| Description | string | YES |
+| Breed | string | YES |
+| Age | int | YES |
+| SuperPower | string | YES |
 | Color | string | YES |
 | Image | string | YES |
 | Quantity | int | YES |
@@ -110,13 +109,40 @@ Unit testing is included in the ECommerceTesting/Testing project using the xUnit
 | IsFeature | bool | YES |
 
 
-### User
+### Cart 
 
 | Parameter | Type | Required |
 | --- | --- | --- |
 | ID  | int | YES |
-| Name | string | YES |
+| Price | decimal | YES |
+| Quantity | int | YES |
 | User Email | string | YES |
+
+
+### Cart Items
+
+| Parameter | Type | Required |
+| --- | --- | --- |
+| ID  | int | YES |
+| CartID | int| YES |
+| ProductID | int | YES |
+| User Email | string | YES |
+
+
+### Order
+
+| Parameter | Type | Required |
+| --- | --- | --- |
+| ID  | int | YES |
+| CartID | int | YES |
+| First name | string | YES |
+| Last Name | string | YES |
+| Address | string | YES |
+| City | string | YES |
+| State | string | YES |
+| Zip | string | YES |
+
+
 
 ---
 
@@ -127,7 +153,13 @@ Password: @Test123!
 
 ---
 
-## Change Log
+
+### Claims
+
+
+
+### Change Log
+1.6: *Added Account Page* - 27 Aug 2020
 1.5: *Added checkout page* - 23 Aug 2020  
 1.4: *Added admin page* - 19 Aug 2020  
 1.3: *Allow user to see individual product details* - 19 Aug 2020  
@@ -136,7 +168,7 @@ Password: @Test123!
 
 ---
 
-## Authors
+### Authors
 Bryant Davis & Lami Beach
 
 ---

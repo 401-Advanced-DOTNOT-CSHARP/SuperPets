@@ -32,6 +32,9 @@ namespace ECommerce_Application.Pages.Categories
         [BindProperty]
         public int ProductId { get; set; }
 
+        [BindProperty]
+        public bool IsAvailable { get; set; }
+
 
         public ProductModel(IProduct product, ICartItem cartItem, ICart cart, UserManager<Customer> userManager)
         {
@@ -67,15 +70,60 @@ namespace ECommerce_Application.Pages.Categories
         {
 
             var user = await _userManager.GetUserAsync(User);
-            if(user == null)
+            if (user == null)
             {
                 return new RedirectToPageResult("/Account/Login");
             }
-            var cart = await _cart.GetCart(user.Email);
-            await _cartItem.AddProductToCart(Product, cart, Quantity);
-            Product.Quantity = 0;
 
-            await _product.UpdateProduct(Product);
+            var cart = await _cart.GetCart(user.Email);
+
+
+            if (cart == null)
+            {
+                cart = new Cart()
+                {
+                    Date = DateTime.Now,
+                    UserEmail = User.Identity.Name
+                };
+
+                await _cart.CreateCart(cart);
+
+            }
+
+            if (Quantity > Product.Quantity || Quantity <= 0)
+            {
+                IsAvailable = true;
+                return Page();
+            }
+
+            if (Quantity <= Product.Quantity && Quantity > 0)
+            {
+                if (cart.CartItems != null)
+                {
+                    foreach (var item in cart.CartItems)
+                    {
+                        if (item.ProductId == Product.Id)
+                        {
+                            var productExist = await _product.GetProduct(Product.Id);
+                            productExist.Quantity = productExist.Quantity - Quantity;
+                            _product.UpdateProduct(productExist).Wait();
+                            var duplicateCart = await _cartItem.GetCartItem(Product.Id, cart.Id);
+                            duplicateCart.Quantity = duplicateCart.Quantity + Quantity;
+                            _cartItem.UpdateCartItem(duplicateCart).Wait();
+                            cart.Quantity = cart.Quantity + Quantity;
+                            cart.Price += Product.Price * Quantity;
+                            _cart.UpdateCart(cart).Wait();
+                            return Page();
+
+
+                        }
+                    }
+                }
+                     await _cartItem.AddProductToCart(Product, cart, Quantity);
+                    Product.Quantity = Product.Quantity - Quantity;
+
+                    await _product.UpdateProduct(Product);
+            }
 
             return Page();
         }

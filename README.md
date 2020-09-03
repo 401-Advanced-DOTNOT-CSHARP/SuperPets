@@ -17,7 +17,6 @@ We are hoping to implement accessories at some point.
 
 ## Tools Used
 Microsoft Visual Studio Community 2019 
-test
 
 - C#
 - ASP.Net Core

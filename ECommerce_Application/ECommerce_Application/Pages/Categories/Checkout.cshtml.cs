@@ -91,7 +91,7 @@ namespace ECommerce_Application.Pages.Categories
                 CVC = "1234";
             }
 
-            var payment = await _payment.Run(Order.UserEmail, card, Expiration, CVC);
+            var payment = await _payment.Run(Order.UserEmail, "370000000000002", Expiration, CVC);
             if(payment == "Failed")
             {
                 Payment = true;

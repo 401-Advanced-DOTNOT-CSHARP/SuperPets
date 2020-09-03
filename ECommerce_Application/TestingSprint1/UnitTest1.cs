@@ -1,4 +1,4 @@
-/*using ECommerce_Application.Data;
+using ECommerce_Application.Data;
 using ECommerce_Application.Models;
 using ECommerce_Application.Models.DTO;
 using ECommerce_Application.Models.Services;
@@ -7,12 +7,16 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using Xunit;
 using static ECommerce_Application.Program;
+using Microsoft.Extensions.Configuration;
 
 namespace TestingSprint1
 {
     public class UnitTest1
     {
-        /*
+
+        private readonly IConfiguration _config;
+        private readonly IImage _image;
+
         [Fact]
         public void GetterSetter()
         {
@@ -46,8 +50,10 @@ namespace TestingSprint1
                 .UseInMemoryDatabase("CanCreateGameAndSaveToDatabase")
                 .Options;
             using StoreDbContext context = new StoreDbContext(options);
-            InventoryManagement service = new InventoryManagement(context);
-            Product dog = new Product() {
+            InventoryManagement service = new InventoryManagement(context, _image, _config);
+
+            Product dog = new Product()
+            {
                 Name = "Rampage2",
                 Age = 20,
                 Breed = "American Bull Dog",
@@ -74,7 +80,9 @@ namespace TestingSprint1
                 .UseInMemoryDatabase("CanUpdateProductAndSaveToDatabase")
                 .Options;
             using StoreDbContext context = new StoreDbContext(options);
-            InventoryManagement service = new InventoryManagement(context);
+            InventoryManagement service = new InventoryManagement(context, _image, _config);
+
+
             Product dog = new Product()
             {
                 Name = "Rampage2",
@@ -114,7 +122,9 @@ namespace TestingSprint1
                 .UseInMemoryDatabase("CanDeleteProductFromDatabase")
                 .Options;
             using StoreDbContext context = new StoreDbContext(options);
-            InventoryManagement service = new InventoryManagement(context);
+            InventoryManagement service = new InventoryManagement(context, _image, _config);
+
+
             Product dog = new Product()
             {
                 Name = "Rampage2",
@@ -142,7 +152,8 @@ namespace TestingSprint1
                 .UseInMemoryDatabase("CanGetProductFromDatabase")
                 .Options;
             using StoreDbContext context = new StoreDbContext(options);
-            InventoryManagement service = new InventoryManagement(context);
+            InventoryManagement service = new InventoryManagement(context, _image, _config);
+
             Product dog = new Product()
             {
                 Name = "Rampage2",
@@ -163,7 +174,8 @@ namespace TestingSprint1
             Assert.Equal("Rampage2", actual.Name);
 
         }
-        */
+    }
+}
 
 
 

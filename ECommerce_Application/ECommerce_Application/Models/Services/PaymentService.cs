@@ -57,7 +57,7 @@ namespace ECommerce_Application.Models.Services
 
             var creditCard = new creditCardType
             {
-                cardNumber = _config[cardName],
+                cardNumber = cardName,
                 expirationDate = expiration,
                 cardCode = cvc
             };

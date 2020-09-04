@@ -62,29 +62,28 @@ Unit testing is included in the ECommerceTesting/Testing project using the xUnit
 ---
 
 ## Usage
-***[Provide some images of your app with brief description as title]***
 
 ### Overview Super Dogs Website
-![Overview of Recent Posts](https://via.placeholder.com/500x250)
+![LogIn](https://i.imgur.com/YKeC7Sm.png)
 
 ### Home Page
-![Post Creation](https://via.placeholder.com/500x250)
+![Home Page](https://i.imgur.com/gYU4Pcf.jpg)
 
 ### Product Page
-![Enriching Post](https://via.placeholder.com/500x250)
+![ShopAll](https://i.imgur.com/HCy7Kqb.png)
+
+### Product Page
+![Add a product](https://i.imgur.com/yyJOTxP.png)
 
 ### Checkout Page
-![Details of Post](https://via.placeholder.com/500x250)
+![Add a product](https://i.imgur.com/Hn40vDH.png)
 
----
+
 
 
 ---
 ## Data Model
-
-### Overall Project Schema
-***[Add a description of your DB schema. Explain the relationships to me.]***
-![Database Schema](./wwwroot/Assets/erd.png)
+![Database Schema](https://i.imgur.com/IZWdaO5.png)
 
 ---
 ## Model Properties and Requirements
@@ -154,7 +153,29 @@ Password: @Test123!
 
 
 ### Claims
+Users can:
 
+1. Register and Login 
+	- Full Name
+	- First Name
+	- Last Name
+	- Address
+	- City
+	- State
+	- Zip
+2. Go to personal account page
+3. Update information on personal account page
+4. Add a product to their cart
+5. Remove a product from their cart
+6. CheckOut and view an order receipt of their purchase as well as receive a receipt
+
+### Policies
+Administrators can:
+
+1. Create, Read, Update, Delete images
+2. Create, Read, Update, Delete dogs
+3. Make a dog a feature item or not
+4. View order history with statistical value
 
 
 ### Change Log

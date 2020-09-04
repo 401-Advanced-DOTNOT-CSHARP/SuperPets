@@ -5,19 +5,70 @@
     Layout = "_Layout";
 
 }
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Picture Upload</title>
+    <link href="~/Styles/dashboard.css" rel="stylesheet">
 
+</head>
 
 <body>
-    <form method="post" enctype="multipart/form-data">
-        <select asp-for="@Model.Name">
-            @foreach (var item in Model.Products)
-            {
-                <option value=@item.Name>@item.Name</option>
-            }
-        </select>
+    <div class="container-fluid" style="margin-top:5vh;">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-page="Index">
+                                <span data-feather="home"></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="AllOrders">
+                                <span data-feather="file"></span>
+                                Orders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="AllProducts">
+                                <span data-feather="shopping-cart"></span>
+                                Products
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <button> <a class="nav-link" asp-page="Create">Create New Product</a> </button>
+                        </li>
+                        <li class="nav-item">
+                            <button> <a class="nav-link" asp-page="Picture">Upload New Picture</a> </button>
+                        </li>
+                    </ul>
+                </div>
 
-        <label asp-for="@Model.Image"></label>
-        <input type="file" asp-for="@Model.Image" />
-        <button type="submit">Submit</button>
-    </form>
+            </nav>
+        </div>
+    </div>
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard</h1>
+        </div>
+        <form method="post" enctype="multipart/form-data">
+            <label asp-for="@Model.Name">Name:</label>
+            <input asp-for="@Model.Name"/>
+            <label asp-for="@Model.Image"></label>
+            <input type="file" asp-for="@Model.Image" />
+            <button type="submit">Submit</button>
+
+        </form>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="~/JS/jquery-slim.min.js"><\/script>')</script>
+        <script src="../../../../assets/js/vendor/popper.min.js"></script>
+        <script src="../../../../dist/js/bootstrap.min.js"></script>
+
+        <!-- Icons -->
+        <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+        <script>
+            feather.replace()
+        </script>
 </body>

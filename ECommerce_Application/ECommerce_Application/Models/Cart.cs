@@ -5,15 +5,18 @@ using System.Threading.Tasks;
 
 namespace ECommerce_Application.Models
 {
-    public class Post 
+    /// <summary>
+    /// Cart class that holds appropriate properties for a "cart"
+    /// </summary>
+    public class Cart 
     {
+
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string UserEmail { get; set; }
         public decimal Price { get; set; }
-        public string Image { get; set; }
-
         public int Quantity  { get; set; }
-
+        public DateTime Date { get; set; }
+        public List<CartItem> CartItems { get; set; }
 
     }
 }

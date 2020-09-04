@@ -1,0 +1,235 @@
+﻿@page
+@model ECommerce_Application.Pages.Dashboard.IndexModel
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Styles/dashboard.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="container-fluid" style="margin-top:5vh;">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" asp-page="Dashboard/Index">
+                                <span data-feather="home"></span>
+                                Dashboard <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="AllOrders">
+                                <span data-feather="file"></span>
+                                Orders
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-page="AllProducts">
+                                <span data-feather="shopping-cart"></span>
+                                Products
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <button> <a class="nav-link" asp-page="Create">Create New Product</a> </button>
+                        </li>
+                        <li class="nav-item">
+                            <button> <a class="nav-link" asp-page="Picture">Upload New Picture</a> </button>
+                        </li>
+                    </ul>
+                </div>
+
+            </nav>
+        </div>
+    </div>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard</h1>
+        </div>
+
+        <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
+
+        <h2>Sales</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th>Order#</th>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Orders)
+                    {
+
+                        <tr>
+                            <td>@item.OrderNumber</td>
+                            <td>@item.Cart.Price</td>
+                            <td>@item.Date</td>
+                            <td></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </main>
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="~/JS/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+        feather.replace()
+    </script>
+
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["@Model.Dates[0]"],
+                datasets: [{
+                    data: ["@Model.Prices[0]"],
+                    lineTension: 0,
+                    backgroundColor: 'transparent',
+                    borderColor: '#007bff',
+                    borderWidth: 4,
+                    pointBackgroundColor: '#007bff'
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }]
+                },
+                legend: {
+                    display: false,
+                }
+            }
+        });
+
+    </script>
+    @*<p>
+            <button><a style="color:white" asp-page="Create">Create A New Super Pet</a></button><br>
+            <button><a style="color:white" asp-page="Picture">Upload A New Picture For Super Pet</a></button>
+            <button> <a style="color:white" asp-page="AllOrders">Orders Dashboard</a> </button>
+
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].SKU)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].Breed)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].Age)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].SuperPower)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].Color)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].Image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].Category)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Products[0].IsFeature)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.Products)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SKU)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Breed)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Age)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SuperPower)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Color)
+                        </td>
+                        <td>
+                            @if (@item.Image != null)
+                            {
+                                <img src=@item.Image style='width: 150px; height: 125px;'/>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsFeature)
+                        </td>
+                        <td>
+                            <a style="color:white" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+                            <a style="color:white" asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                            <a style="color:white" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
+</body>

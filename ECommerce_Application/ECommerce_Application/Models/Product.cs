@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 namespace ECommerce_Application.Models
 {
     /// <summary>
-    /// comment
+    /// The product class represents the meat of our site. It contains what we're selling.
     /// </summary>
     public class Product
     {
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string SKU { get; set; }
@@ -20,7 +21,9 @@ namespace ECommerce_Application.Models
         public string SuperPower { get; set; }
         public string Color { get; set; }
         public string Image { get; set; }
-
+        public int Quantity { get; set; }
+        public string Category { get; set; }
+        public bool IsFeature { get; set; }
 
 
     }

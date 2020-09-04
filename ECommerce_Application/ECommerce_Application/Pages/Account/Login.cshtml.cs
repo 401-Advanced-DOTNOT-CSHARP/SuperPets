@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ECommerce_Application.Pages.Account
 {
+    /// <summary>
+    /// References the Page
+    /// </summary>
     public class LoginModel : PageModel
     {
         private SignInManager<Customer> _signInManager;
@@ -25,6 +28,10 @@ namespace ECommerce_Application.Pages.Account
 
         }
 
+        /// <summary>
+        /// Post the login information
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> OnPost()
         {
             if (ModelState.IsValid)
@@ -33,7 +40,7 @@ namespace ECommerce_Application.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return new RedirectToPageResult("/");
                 }
             }
 
@@ -43,7 +50,9 @@ namespace ECommerce_Application.Pages.Account
         }
 
 
-
+        /// <summary>
+        /// The login view model contains our required properties in order to join
+        /// </summary>
         public class LoginViewModel
         {
             [Required]

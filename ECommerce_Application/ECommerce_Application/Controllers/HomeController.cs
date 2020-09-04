@@ -16,15 +16,25 @@ namespace ECommerce_Application.Controllers
     {
         private readonly IProduct _productService;
 
+        /// <summary>
+        /// Home controller displays the products, so we bring in the private context
+        /// </summary>
+        /// <param name="productService"></param>
         public HomeController(IProduct productService)
         {
             _productService = productService;
         }
+        [BindProperty]
+        public List<Product> Products { get; set; }
 
+        /// <summary>
+        /// Get the home index and return view
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
-            var products = await _productService.GetProducts();
-            return View(products);
+            Products = await _productService.GetProducts();
+            return View(Products);
         }
 
 

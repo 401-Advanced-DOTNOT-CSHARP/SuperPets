@@ -9,7 +9,6 @@
 <html>
 
 <head>
-    @*<link rel="stylesheet" href="~/Styles/StyleSheet.css" type="text/css" />*@
     <link href="~/Styles/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
@@ -42,7 +41,6 @@
                                 <a asp-page="/Categories/Index"><img style="width:40px;" src="https://img.icons8.com/nolan/2x/fast-cart.png" /></a>
                             </li>
                         </ul>
-                        <img style="margin-right:35vw;" src="~/Assets/bryant-dog-head (1).png" />
                         <form asp-page="/Account/Index" method="post" style="margin-right:1vw;"> <button class="btn btn-outline-warning" type="submit">Account</button></form>
                         <form asp-page="/Account/Logout" method="post"> <button class="btn btn-outline-warning" type="submit"> LOGOUT</button></form>
                     </div>
@@ -67,10 +65,7 @@
                         </ul>
 
 
-                        <form class="form-inline mt-2 mt-md-0" style="margin-right:40vw;">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
+
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <form asp-page="/Account/Index" method="post" style="margin-right:1vw;"> <button class="btn btn-outline-warning" type="submit">Account</button></form>
@@ -91,16 +86,15 @@
                             <a class="nav-link" asp-controller="Home" asp-action="Index">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item active" style="margin-right: 1em;">
+                            <a class="nav-link" asp-page="/Categories/All">Shop</a>
+                        </li>
+                        <li class="nav-item active" style="margin-right: 1em;">
                             <a class="nav-link" asp-page="/Account/Login">Login</a>
                         </li>
                         <li class="nav-item active" style="margin-right: 1em;">
                             <a class="nav-link" asp-page="/Account/Register">Register</a>
                         </li>
                     </ul>
-                    <form class="form-inline mt-2 mt-md-0" style="margin-right:40vw;">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
                 </div>
             }
         </nav>

@@ -32,7 +32,10 @@ namespace ECommerce_Application.Models.Interfaces
         /// <param name="containerName"></param>
         /// <returns></returns>
         public Task<string> GetBlob(string imageName, string containerName);
-
+        /// <summary>
+        /// Gets all Images inside the Blob Container
+        /// </summary>
+        /// <returns>List of all the Image URL's</returns>
         public Task<List<string>> GetAllBlobs();
     }
 }

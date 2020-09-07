@@ -33,6 +33,10 @@ namespace ECommerce_Application.Models.Interfaces
         /// <param name="userEmail">The users email of orders you wish to retireve</param>
         /// <returns>A List of Orders sorted by date</returns>
         Task<List<Order>> GetAllOrders(string userEmail);
+        /// <summary>
+        /// Retrieves all Orders in the Dashboard
+        /// </summary>
+        /// <returns>List of all orders currently in the Database</returns>
         Task<List<Order>> GetAllOrders();
 
 

@@ -68,6 +68,10 @@ namespace ECommerce_Application.Models.Services
             return FileURL;
 
         }
+        /// <summary>
+        /// Gets all Images inside the Blob Container
+        /// </summary>
+        /// <returns>List of all the Image URL's</returns>
         public async Task<List<string>> GetAllBlobs()
         {
             var container = await GetContainer(_config["ImageContainer"]);

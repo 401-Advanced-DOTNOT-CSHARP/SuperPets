@@ -67,6 +67,10 @@ namespace ECommerce_Application.Models.Services
 
             return order;
         }
+        /// <summary>
+        /// Retrieves all Orders in the Dashboard
+        /// </summary>
+        /// <returns>List of all orders currently in the Database</returns>
         public async Task<List<Order>> GetAllOrders()
         {
             List<Order> order = await _context.Orders
@@ -78,6 +82,11 @@ namespace ECommerce_Application.Models.Services
 
             return order;
         }
+        /// <summary>
+        /// Get the order for the user
+        /// </summary>
+        /// <param name="id">Id of the order to be retrieved</param>
+        /// <returns>Returns the requested Order</returns>
         public async Task<Order> GetOrder(int id)
         {
             Order order = await _context.Orders.Where(x => x.Id == id)

@@ -39,7 +39,7 @@ namespace ECommerce_Application.Data
                         "from sunbathing in the backyard to going for long walks. Is very obedient and will let you clean his ears, brush ",
                     Price = 200,
                     SuperPower = "Super Love",
-                    Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Rampage",
+                    Image = "",
                     Category = "Bully",
                     Quantity = 1,
                     IsFeature = true
@@ -54,7 +54,7 @@ namespace ECommerce_Application.Data
                     Description = "Loves ",
                     Price = 200,
                     SuperPower = "Super Love",
-                    Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Snowball",
+                    Image = "",
                     Category = "Poodles",
                     Quantity = 1
                 },
@@ -68,7 +68,7 @@ namespace ECommerce_Application.Data
                     Description = "Her thick hips won't stop her from dragging you across the concrete to catch a squirrel",
                     Price = 2000,
                     SuperPower = "Fly",
-                    Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Whiskey",
+                    Image = "",
                     Category = "Poodles",
                     Quantity = 1
                 },
@@ -82,7 +82,7 @@ namespace ECommerce_Application.Data
                      Description = "Fastest dog in the world. She's beat Usain Bolt... Twice. ",
                      Price = 9000,
                      SuperPower = "Super speed",
-                     Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/rye.jpeg",
+                     Image = "",
                      Category = "Poodles",
                      Quantity = 1
                  },
@@ -96,7 +96,7 @@ namespace ECommerce_Application.Data
                       Description = "Will knock anything on your desk onto the floor. Can also poop in toilet. ",
                       Price = 4000,
                       SuperPower = "Personality",
-                      Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/backup.jpeg",
+                      Image = "",
                       Category = "Poodles",
                       Quantity = 1
                   },
@@ -110,7 +110,7 @@ namespace ECommerce_Application.Data
                        Description = "Speaks English... And a little Spanish. ",
                        Price = 9000,
                        SuperPower = "Speaking",
-                       Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Duke1.jpeg",
+                       Image = "",
                        Category = "Bully",
                        Quantity = 1
                    },
@@ -124,7 +124,7 @@ namespace ECommerce_Application.Data
                         Description = "Disrupts Zoom meetings. Can order Starbucks on occassion.",
                         Price = 6000,
                         SuperPower = "Ordering coffee",
-                        Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Josie",
+                        Image = "",
                         Category = "Bully",
                         Quantity = 1
                     },
@@ -138,7 +138,7 @@ namespace ECommerce_Application.Data
                          Description = "As if a dog wasn't enough, this guy comes with laser eyes. ",
                          Price = 1000,
                          SuperPower = "Laser Eyes",
-                         Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/chubbs.jpeg",
+                         Image = "",
                          Category = "Bully",
                          Quantity = 1
                      },
@@ -152,7 +152,7 @@ namespace ECommerce_Application.Data
                           Description = "An engineer who dabbles in explosives.",
                           Price = 5000,
                           SuperPower = "Super Genius",
-                          Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Peanut.jpeg",
+                          Image = "",
                           Category = "Bully",
                           Quantity = 1
                       },
@@ -166,7 +166,7 @@ namespace ECommerce_Application.Data
                            Description = "Makes bukoo money.",
                            Price = 1000,
                            SuperPower = "Can produce cash out of thin-air",
-                           Image = "https://superpetpicturestorage.blob.core.windows.net/productimages/Mani",
+                           Image = "",
                            Category = "Mixed",
                            Quantity = 1
                        }

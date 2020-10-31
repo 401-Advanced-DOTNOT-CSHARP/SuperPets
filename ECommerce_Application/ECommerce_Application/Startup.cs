@@ -21,27 +21,38 @@ namespace ECommerce_Application
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        public IWebHostEnvironment WebHostEnvironment { get; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IWebHostEnvironment webHostEnvironment)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder().AddEnvironmentVariables();
+            builder.AddUserSecrets<Startup>();
+            Configuration = builder.Build();
+            WebHostEnvironment = webHostEnvironment;
+        }
+        private string GetHerokuConnectionString(string connectionString)
+        {
+            // Get the connection string from the ENV variables
+            // Modified to bring in connection string from secrets in Development
+            string connectionUrl = WebHostEnvironment.IsDevelopment()
+                ? Configuration["ConnectionStrings:" + connectionString]
+                : Environment.GetEnvironmentVariable(connectionString);
+
+            // parse the connection string
+            var databaseUri = new Uri(connectionUrl);
+
+            string db = databaseUri.LocalPath.TrimStart('/');
+            string[] userInfo = databaseUri.UserInfo.Split(':', StringSplitOptions.RemoveEmptyEntries);
+
+            return $"User ID={userInfo[0]};Password={userInfo[1]};Host={databaseUri.Host};Port={databaseUri.Port};Database={db};Pooling=true;SSL Mode=Require;Trust Server Certificate=True;";
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddDbContext<UserDbContext>(options =>
-            {
-                // Install-Package Microsoft.EntityFrameworkCore.SqlServer
-                options.UseSqlServer(Configuration.GetConnectionString("UserConnection"));
-            });
-
-            services.AddDbContext<StoreDbContext>(options =>
-            {
-                // Install-Package Microsoft.EntityFrameworkCore.SqlServer
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-            });
+            services.AddDbContext<StoreDbContext>(options => options.UseNpgsql(GetHerokuConnectionString("STORE_DATABASE_URL_ENV")));
+            services.AddDbContext<UserDbContext>(options => options.UseNpgsql(GetHerokuConnectionString("USER_DATABASE_URL_ENV")));
 
             services.AddIdentity<Customer, IdentityRole>()
                     .AddEntityFrameworkStores<UserDbContext>()
@@ -77,7 +88,7 @@ namespace ECommerce_Application
             app.UseAuthorization();
             app.UseStaticFiles();
             var userManager = serviceProvider.GetRequiredService<UserManager<Customer>>();
-            RoleInitializer.SeedData(serviceProvider, userManager, Configuration);
+            RoleInitializer.SeedData(serviceProvider, userManager, Configuration, env);
             app.UseEndpoints(endpoints  =>
             {
                 endpoints.MapRazorPages();

@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce_Application", "EC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestingSprint1", "TestingSprint1\TestingSprint1.csproj", "{D78CA502-6C26-4E64-B827-2A58342FFC7E}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A3CC1A7E-F995-483E-885C-D8015B6F7666}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D78CA502-6C26-4E64-B827-2A58342FFC7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D78CA502-6C26-4E64-B827-2A58342FFC7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D78CA502-6C26-4E64-B827-2A58342FFC7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3CC1A7E-F995-483E-885C-D8015B6F7666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3CC1A7E-F995-483E-885C-D8015B6F7666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3CC1A7E-F995-483E-885C-D8015B6F7666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3CC1A7E-F995-483E-885C-D8015B6F7666}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

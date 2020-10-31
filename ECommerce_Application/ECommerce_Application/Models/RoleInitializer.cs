@@ -1,8 +1,10 @@
 ﻿using ECommerce_Application.Data;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,13 +34,13 @@ namespace ECommerce_Application.Models
         /// <param name="serviceProvider"></param>
         /// <param name="userManager"></param>
         /// <param name="_config"></param>
-        public static void SeedData(IServiceProvider serviceProvider, UserManager<Customer> userManager, IConfiguration _config)
+        public static void SeedData(IServiceProvider serviceProvider, UserManager<Customer> userManager, IConfiguration _config, IWebHostEnvironment _webHostEnvironment)
         {
             using (var dbContext = new UserDbContext(serviceProvider.GetRequiredService<DbContextOptions<UserDbContext>>()))
             {
                 dbContext.Database.EnsureCreated();
                 AddRoles(dbContext);
-                SeedUsers(userManager, _config);
+                SeedUsers(userManager, _config, _webHostEnvironment);
             }
         }
 
@@ -64,12 +66,16 @@ namespace ECommerce_Application.Models
         /// </summary>
         /// <param name="userManager"></param>
         /// <param name="_config"></param>
-        public static void SeedUsers(UserManager<Customer> userManager, IConfiguration _config)
+        public static void SeedUsers(UserManager<Customer> userManager, IConfiguration _config, IWebHostEnvironment _webHostEnvironment)
         {
+            string AdminEmail = _webHostEnvironment.IsDevelopment()
+                ? _config["Administrator"]
+                : Environment.GetEnvironmentVariable("Administrator");
+
             if (userManager.FindByEmailAsync(_config["Administrator"]).Result == null)
             {
                 Customer user = new Customer();
-                user.UserName = _config["Administrator"];
+                user.UserName = AdminEmail;
                 user.Email = user.UserName;
                 user.FirstName = user.FirstName;
                 user.LastName = user.LastName;
@@ -79,7 +85,11 @@ namespace ECommerce_Application.Models
                 user.State = user.State;
                 user.ZipCode = user.ZipCode;
 
-                IdentityResult result = userManager.CreateAsync(user, _config["Password"]).Result;
+                string AdminPass = _webHostEnvironment.IsDevelopment()
+                ? _config["Passowrd"]
+                : Environment.GetEnvironmentVariable("Password");
+
+                IdentityResult result = userManager.CreateAsync(user, AdminPass).Result;
                 if (result.Succeeded)
                 {
                     userManager.AddToRoleAsync(user, ApplicationRoles.Administrator).Wait();

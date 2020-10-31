@@ -61,6 +61,13 @@ namespace ECommerce_Application.Pages.Dashboard
             }
             Prices = prices;
             Dates = dates;
+            if(Prices.Length == 0)
+            {
+                Prices = new decimal[1];
+                Prices[0] = 5;
+                Dates = new DateTime[1];
+                Dates[0] = new DateTime();
+            }
             return Page();
         }
     }

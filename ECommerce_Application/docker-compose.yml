@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  ecommerce_application:
+    image: ${DOCKER_REGISTRY-}ecommerceapplication
+    build:
+      context: .
+      dockerfile: ECommerce_Application/Dockerfile
